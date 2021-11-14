@@ -1,31 +1,33 @@
 export async function fetchAsahiData() {
   const asahi = await fetch(
-    "https://lm8gbiweyk.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData",
+    "https://lz16rqcbei.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData",
     {
       method: "GET",
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
         "x-api-key": process.env.API_GATEWAY_APIKEY2,
       },
     }
   );
   const aData = await asahi.json();
   const asahiData = aData.Items;
+  return asahiData;
 }
 
 export async function fetchYomiuriData() {
   const yomiuri = await fetch(
-    "https://erzss0zhpd.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData",
+    "https://8rvpib53gd.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData",
     {
       method: "GET",
       headers: {
         "Content-type": "application/json",
         "x-api-key": process.env.API_GATEWAY_APIKEY,
-      }:
+      },
     }
   );
   const ydata = await yomiuri.json();
   const yomiuriData = ydata.Items;
+  return yomiuriData;
 }
 
 export async function fetchMainichiData() {
@@ -41,6 +43,7 @@ export async function fetchMainichiData() {
   );
   const mData = await mainichi.json();
   const mainichiData = mData.Items;
+  return mainichiData;
 }
 
 export async function fetchSankeiData() {
@@ -55,7 +58,8 @@ export async function fetchSankeiData() {
     }
   );
   const sData = await sankei.json();
-  sankeiData = sData.Items;
+  const sankeiData = sData.Items;
+  return sankeiData;
 }
 
 export async function fetchNikkeiData() {
@@ -71,4 +75,5 @@ export async function fetchNikkeiData() {
   );
   const nData = await nikkei.json();
   const nikkeiData = nData.Items;
+  return nikkeiData;
 }

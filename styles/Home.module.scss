@@ -1,11 +1,11 @@
 .topbar {
   display: flex;
+  position: relative;
 
   p {
     width: 50%;
     text-align: right;
     margin-top: 50px;
-    position: relative;
 
     span {
       position: absolute;
@@ -13,8 +13,22 @@
       bottom: -2px;
     }
   }
+
+  p:nth-child(2) {
+    padding-right: 30px;
+  }
 }
 
 .main {
   height: calc(100% - 200px);
+  display: flex;
+
+  .main__left {
+    border-right: solid black 1px;
+    width: 50%;
+  }
+
+  .main__right {
+    width: 50%;
+  }
 }
