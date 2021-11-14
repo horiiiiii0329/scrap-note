@@ -9,8 +9,9 @@ import {
   ChevronLeftIcon,
 } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
-import styles from "./Header.module.scss";
 import { useState } from "react";
+
+import styles from "./Header.module.scss";
 
 const navBarIconStyle = { width: "30px", height: "30px", cursor: "pointer" };
 
