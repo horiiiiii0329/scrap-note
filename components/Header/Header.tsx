@@ -21,7 +21,7 @@ function Header() {
 
   return (
     <header
-      className={styles.Header}
+      className={styles.header}
       style={{ width: isExpand ? "200px" : "80px" }}
     >
       <div className={styles.Icon}>

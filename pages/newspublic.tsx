@@ -1,5 +1,7 @@
 function newspublic() {
-  return <div></div>;
+  return (
+    <div>ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</div>
+  );
 }
 
 export default newspublic;

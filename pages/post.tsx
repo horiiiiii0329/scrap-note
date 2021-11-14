@@ -1,5 +1,12 @@
+import LoadingThreeDots from "../components/Utility/LoadingThreeDots";
+
 function post() {
-  return <div></div>;
+  return (
+    <div>
+      {" "}
+      <LoadingThreeDots />
+    </div>
+  );
 }
 
 export default post;
