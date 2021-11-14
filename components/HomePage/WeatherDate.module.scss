@@ -1,0 +1,30 @@
+.bottom {
+  display: flex;
+
+  align-items: center;
+  border-top: solid black 1px;
+
+  @media screen and (max-width: 1280px) {
+    display: block;
+    height: 200px;
+    align-items: center;
+  }
+}
+
+.bottom_left {
+  flex: 1;
+  display: flex;
+  border-left: 1px solid black;
+  padding: 20px;
+  align-items: flex-end;
+
+  @media screen and (max-width: 1280px) {
+    display: none;
+    align-items: center;
+  }
+}
+
+.bottom_right {
+  flex: 3;
+  margin: auto;
+}
