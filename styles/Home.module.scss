@@ -1,1 +1,16 @@
+.topbar {
+  display: flex;
 
+  p {
+    width: 50%;
+    text-align: right;
+    margin-top: 50px;
+    position: relative;
+
+    span {
+      position: absolute;
+      margin-left: -25px;
+      bottom: -2px;
+    }
+  }
+}
