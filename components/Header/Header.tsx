@@ -52,7 +52,7 @@ function Header() {
           </li>
           <li
             onClick={() => {
-              router.push("/clip");
+              router.push("/note");
             }}
           >
             <span>
@@ -68,7 +68,7 @@ function Header() {
           </li>
           <li
             onClick={() => {
-              router.push("/feed");
+              router.push("/newspublic");
             }}
           >
             <span>
