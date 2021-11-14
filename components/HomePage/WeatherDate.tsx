@@ -17,10 +17,10 @@ function WeatherDate({ weatherNews }: any) {
   }, []);
   return (
     <div className={styles.bottom}>
-      <div className={styles.bottom_right}>
+      <div className={styles.bottom_left}>
         <Weather weatherNews={weatherNews} />
       </div>
-      <div className={styles.bottom_left}>
+      <div className={styles.bottom_right}>
         <p>{dateState}</p>
       </div>
     </div>

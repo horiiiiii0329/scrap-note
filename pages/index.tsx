@@ -40,11 +40,12 @@ const Home: NextPage = ({ weatherNews }: any) => {
         </div>
       </TopBar>
       <Main>
-        <LoadingThreeDots />
+        <div className={styles.main}>
+          <LoadingThreeDots />
+        </div>
 
         <WeatherDate weatherNews={weatherNews} />
       </Main>
-
       <footer></footer>
     </div>
   );
