@@ -91,7 +91,7 @@ const Home: NextPage = ({ weatherNews }: any) => {
         <meta name="description" content="あなたのスクラップノート" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
+
       <TopBar>
         <div className={styles.topbar}>
           <p>
