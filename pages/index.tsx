@@ -22,45 +22,64 @@ import {
 const leftNews = ["朝日新聞", "毎日新聞"];
 const rightNews = ["読売新聞", "産経新聞", "日経新聞"];
 
-const Home: NextPage = ({
-  weatherNews,
-}: // yomiuriData,
-// sankeiData,
-// mainichiData,
-// nikkeiData,
-any) => {
+const Home: NextPage = ({ weatherNews }: any) => {
   const [isLoading, setIsLoading] = useState(false);
   const [leftIsOpen, setLeftIsOpen] = useState(true);
   const [rightIsOpen, setRightIsOpen] = useState(true);
   const [leftPickedNews, setLeftPickedNews] = useState([]);
   const [rightPickedNews, setRightPickedNews] = useState([]);
 
+  const [asahiData, setAsahiData] = useState([]);
   const [mainichiData, setMainichiData] = useState([]);
-  // const [nikkeiData, setNikkeiData] = useState([]);
-  // const [sankeiData, setSankeiData] = useState([]);
-  // const [yomiuriData, setYomiuriData] = useState([]);
+  const [nikkeiData, setNikkeiData] = useState([]);
+  const [sankeiData, setSankeiData] = useState([]);
+  const [yomiuriData, setYomiuriData] = useState([]);
 
-  // const leftNewsData = [asahiData, mainichiData];
-  // const rightNewsData = [yomiuriData, sankeiData, nikkeiData];
+  const leftNewsData = [asahiData, mainichiData];
+  const rightNewsData = [yomiuriData, sankeiData, nikkeiData];
 
   useEffect(() => {
+    setIsLoading(true);
     const mData = async () =>
       await axios
         .get(
-          "https://tyuz1jflm6.execute-api.us-east-1.amazonaws.com/default/fetchMainichi",
-          {
-            headers: {
-              "Content-type": "application/json",
-              "x-api-key": process.env.API_GATEWAY_APIKEY4,
-            },
-          }
+          "https://10x4sx0ksf.execute-api.us-east-1.amazonaws.com/default/fetchMainichi"
         )
-        .then((response) => setMainichiData(response.data));
+        .then((response) => setMainichiData(response.data.Items));
+    const yData = async () =>
+      await axios
+        .get(
+          "https://dfidli0e6a.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData"
+        )
+        .then((response) => setYomiuriData(response.data.Items));
+    const aData = async () =>
+      await axios
+        .get(
+          "https://364do95wh5.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData"
+        )
+        .then((response) => setAsahiData(response.data.Items));
+
+    const sData = async () =>
+      await axios
+        .get(
+          "https://69y7orpkvf.execute-api.us-east-1.amazonaws.com/default/fetchSankei"
+        )
+        .then((response) => setSankeiData(response.data.Items));
+
+    const nData = async () =>
+      await axios
+        .get(
+          "https://oz0czga9rj.execute-api.us-east-1.amazonaws.com/default/nikkeiData"
+        )
+        .then((response) => setNikkeiData(response.data.Items));
 
     mData();
+    yData();
+    nData();
+    aData();
+    sData();
+    setIsLoading(false);
   }, []);
-
-  console.log(mainichiData);
 
   return (
     <div>
@@ -97,30 +116,47 @@ any) => {
         </div>
       </TopBar>
       <Main>
-        <div className={styles.main}>
-          {/* <LoadingThreeDots /> */}
-          <div className={styles.main__left}>
-            {leftIsOpen ? (
-              leftNews.map((item, index) => (
-                <div
-                  key={index}
-                  onClick={() => {
-                    // setLeftPickedNews(leftNewsData[index]);
-                  }}
-                >
-                  <Row companyname={item} />
-                </div>
-              ))
-            ) : (
-              <NewsList newsData={leftPickedNews} />
-            )}
+        {isLoading ? (
+          <LoadingThreeDots />
+        ) : (
+          <div className={styles.main}>
+            {/* <LoadingThreeDots /> */}
+            <div className={styles.main__left}>
+              {leftIsOpen ? (
+                leftNews.map((item, index) => (
+                  <div
+                    key={index}
+                    onClick={() => {
+                      setLeftPickedNews(leftNewsData[index]);
+                      setLeftIsOpen(false);
+                    }}
+                  >
+                    <Row companyname={item} />
+                  </div>
+                ))
+              ) : (
+                <NewsList newsData={leftPickedNews} />
+              )}
+            </div>
+            <div className={styles.main__right}>
+              {rightIsOpen ? (
+                rightNews.map((item, index) => (
+                  <div
+                    key={index}
+                    onClick={() => {
+                      setRightPickedNews(leftNewsData[index]);
+                      setRightIsOpen(false);
+                    }}
+                  >
+                    <Row companyname={item} />
+                  </div>
+                ))
+              ) : (
+                <NewsList newsData={rightPickedNews} />
+              )}
+            </div>
           </div>
-          <div className={styles.main__right}>
-            {rightNews.map((item, index) => (
-              <Row companyname={item} key={index} />
-            ))}
-          </div>
-        </div>
+        )}
 
         <WeatherDate weatherNews={weatherNews} />
       </Main>
