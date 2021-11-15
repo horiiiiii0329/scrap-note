@@ -26,8 +26,6 @@ const Home: NextPage = ({ weatherNews }: any) => {
   const [isLoading, setIsLoading] = useState(false);
   const [leftIsOpen, setLeftIsOpen] = useState(true);
   const [rightIsOpen, setRightIsOpen] = useState(true);
-  const [leftPickedNews, setLeftPickedNews] = useState([]);
-  const [rightPickedNews, setRightPickedNews] = useState([]);
 
   const [asahiData, setAsahiData] = useState([]);
   const [mainichiData, setMainichiData] = useState([]);
@@ -35,8 +33,13 @@ const Home: NextPage = ({ weatherNews }: any) => {
   const [sankeiData, setSankeiData] = useState([]);
   const [yomiuriData, setYomiuriData] = useState([]);
 
+  const [leftPickedNews, setLeftPickedNews] = useState([]);
+  const [rightPickedNews, setRightPickedNews] = useState([]);
+
   const leftNewsData = [asahiData, mainichiData];
   const rightNewsData = [yomiuriData, sankeiData, nikkeiData];
+
+  console.log(leftPickedNews);
 
   useEffect(() => {
     setIsLoading(true);
@@ -116,47 +119,46 @@ const Home: NextPage = ({ weatherNews }: any) => {
         </div>
       </TopBar>
       <Main>
-        {isLoading ? (
-          <LoadingThreeDots />
-        ) : (
-          <div className={styles.main}>
-            {/* <LoadingThreeDots /> */}
-            <div className={styles.main__left}>
-              {leftIsOpen ? (
-                leftNews.map((item, index) => (
-                  <div
-                    key={index}
+        <div className={styles.main}>
+          {/* <LoadingThreeDots /> */}
+          <div className={styles.main__left}>
+            {leftIsOpen ? (
+              leftNews.map((item, index) => (
+                <div key={index}>
+                  <Row companyname={item} />
+                  <p
                     onClick={() => {
                       setLeftPickedNews(leftNewsData[index]);
                       setLeftIsOpen(false);
+                      console.log("aaaaaaaaaaa");
                     }}
                   >
-                    <Row companyname={item} />
-                  </div>
-                ))
-              ) : (
-                <NewsList newsData={leftPickedNews} />
-              )}
-            </div>
-            <div className={styles.main__right}>
-              {rightIsOpen ? (
-                rightNews.map((item, index) => (
-                  <div
-                    key={index}
-                    onClick={() => {
-                      setRightPickedNews(leftNewsData[index]);
-                      setRightIsOpen(false);
-                    }}
-                  >
-                    <Row companyname={item} />
-                  </div>
-                ))
-              ) : (
-                <NewsList newsData={rightPickedNews} />
-              )}
-            </div>
+                    aaaaa
+                  </p>
+                </div>
+              ))
+            ) : (
+              <NewsList newsData={leftPickedNews} />
+            )}
           </div>
-        )}
+          <div className={styles.main__right}>
+            {rightIsOpen ? (
+              rightNews.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setRightPickedNews(rightNewsData[index]);
+                    setRightIsOpen(false);
+                  }}
+                >
+                  <Row companyname={item} />
+                </div>
+              ))
+            ) : (
+              <NewsList newsData={rightPickedNews} />
+            )}
+          </div>
+        </div>
 
         <WeatherDate weatherNews={weatherNews} />
       </Main>
