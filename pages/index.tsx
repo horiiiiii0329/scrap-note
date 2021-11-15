@@ -10,6 +10,7 @@ import WeatherDate from "../components/HomePage/WeatherDate";
 import { useState, useEffect } from "react";
 import Row from "../components/Utility/Row";
 import NewsList from "../components/HomePage/NewsList";
+import axios from "axios";
 import {
   fetchAsahiData,
   fetchMainichiData,
@@ -23,7 +24,6 @@ const rightNews = ["読売新聞", "産経新聞", "日経新聞"];
 
 const Home: NextPage = ({
   weatherNews,
-  mainichiData,
 }: // yomiuriData,
 // sankeiData,
 // mainichiData,
@@ -35,13 +35,30 @@ any) => {
   const [leftPickedNews, setLeftPickedNews] = useState([]);
   const [rightPickedNews, setRightPickedNews] = useState([]);
 
-  // const [mainichiData, setMainichiData] = useState([]);
+  const [mainichiData, setMainichiData] = useState([]);
   // const [nikkeiData, setNikkeiData] = useState([]);
   // const [sankeiData, setSankeiData] = useState([]);
   // const [yomiuriData, setYomiuriData] = useState([]);
 
   // const leftNewsData = [asahiData, mainichiData];
   // const rightNewsData = [yomiuriData, sankeiData, nikkeiData];
+
+  useEffect(() => {
+    const mData = async () =>
+      await axios
+        .get(
+          "https://tyuz1jflm6.execute-api.us-east-1.amazonaws.com/default/fetchMainichi",
+          {
+            headers: {
+              "Content-type": "application/json",
+              "x-api-key": process.env.API_GATEWAY_APIKEY4,
+            },
+          }
+        )
+        .then((response) => setMainichiData(response.data));
+
+    mData();
+  }, []);
 
   console.log(mainichiData);
 
@@ -130,46 +147,9 @@ export async function getServerSideProps({ req }: any) {
 
   //get news list
 
-  // const asahi = await fetch(
-  //   "https://lz16rqcbei.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData",
-  //   {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "x-api-key": process.env.API_GATEWAY_APIKEY2,
-  //     },
-  //   }
-  // );
-  // const aData = await asahi.json();
-  // const asahiData = aData.Items;
-
-  const yomiuri = await fetch(
-    "https://8rvpib53gd.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData",
-    {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        "x-api-key": process.env.API_GATEWAY_APIKEY,
-      },
-    }
-  );
-  const mainichi = await fetch(
-    "https://tyuz1jflm6.execute-api.us-east-1.amazonaws.com/default/fetchMainichi",
-    {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        "x-api-key": process.env.API_GATEWAY_APIKEY4,
-      },
-    }
-  );
-  const mData = await mainichi.json();
-  const mainichiData = mData.Items;
-
   return {
     props: {
       weatherNews,
-      mainichiData,
     },
   };
 }
