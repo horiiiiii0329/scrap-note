@@ -126,15 +126,6 @@ const Home: NextPage = ({ weatherNews }: any) => {
               leftNews.map((item, index) => (
                 <div key={index}>
                   <Row companyname={item} />
-                  <p
-                    onClick={() => {
-                      setLeftPickedNews(leftNewsData[index]);
-                      setLeftIsOpen(false);
-                      console.log("aaaaaaaaaaa");
-                    }}
-                  >
-                    aaaaa
-                  </p>
                 </div>
               ))
             ) : (

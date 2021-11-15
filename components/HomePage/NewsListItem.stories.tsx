@@ -1,5 +1,4 @@
 import React from "react";
-import ArticleItemCardStories from "../Article/ArticleItemCard.stories";
 
 import NewsListItem from "./NewsListItem";
 

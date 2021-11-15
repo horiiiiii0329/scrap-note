@@ -4,4 +4,9 @@
   display: flex;
   align-items: center;
   padding-left: 20px;
+  cursor: pointer;
+
+  h3 {
+    cursor: pointer;
+  }
 }
