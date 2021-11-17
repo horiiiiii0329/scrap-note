@@ -1,0 +1,75 @@
+.wrapper {
+  width: 100%;
+
+  .scraplist {
+    border-bottom: solid 1px black;
+    display: flex;
+    align-items: center;
+    height: 60px;
+
+    .scrapelist__count {
+      height: 100%;
+      width: 70px;
+      flex: 1;
+      border-right: solid 1px black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scraplist__title {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      flex: 9;
+
+      &:hover {
+        background-color: black;
+        color: white;
+      }
+
+      h3 {
+        padding-left: 10px;
+        margin: 0;
+      }
+    }
+  }
+
+  .addscrap {
+    border-bottom: solid 1px black;
+    display: flex;
+    align-items: center;
+    height: 60px;
+
+    .addscrapicon {
+      height: 100%;
+      width: 70px;
+      border-right: solid 1px black;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: black;
+        color: white;
+      }
+    }
+
+    input {
+      border: none;
+      font-size: 24px;
+      padding-left: 10px;
+      height: 50px;
+      align-items: center;
+      width: 400px;
+      flex: 9;
+      display: block;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
