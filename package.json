@@ -12,7 +12,10 @@
   "dependencies": {
     "@heroicons/react": "^1.0.5",
     "@supabase/supabase-js": "^1.27.0",
+    "@types/simplemde": "^1.11.8",
+    "@types/uuid": "^8.3.1",
     "axios": "^0.24.0",
+    "easymde": "^2.15.0",
     "framer-motion": "^5.3.0",
     "heroicons": "^1.0.5",
     "moment": "^2.29.1",
@@ -21,7 +24,9 @@
     "puppeteer": "^11.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "sass": "^1.43.4"
+    "react-simplemde-editor": "^5.0.2",
+    "sass": "^1.43.4",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

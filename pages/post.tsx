@@ -1,10 +1,14 @@
-import LoadingThreeDots from "../components/Utility/LoadingThreeDots";
+import Main from "../components/Layout/Main";
+import Post from "../components/Post/Post";
+import TopBar from "../components/Utility/TopBar";
 
 function post() {
   return (
     <div>
-      {" "}
-      <LoadingThreeDots />
+      <TopBar></TopBar>
+      <Main>
+        <Post />
+      </Main>
     </div>
   );
 }
