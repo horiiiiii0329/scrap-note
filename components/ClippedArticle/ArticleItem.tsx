@@ -1,7 +1,7 @@
 import styles from "./ArticleItem.module.scss";
 import { useEffect, useContext } from "react";
 import { supabase } from "../../api";
-import AppWrapper from "../../context/state";
+import AppWrapper from "../../lib/state";
 import ArticleItemCard from "./ArticleItemCard";
 
 function ArticleItem() {
@@ -26,7 +26,7 @@ function ArticleItem() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.content_wrapper}>
-        {appCtx.posts.map((item, index) => {
+        {appCtx.posts.map((item: any, index: number) => {
           return (
             <ArticleItemCard
               item={item}

@@ -3,7 +3,7 @@ import { PlusIcon } from "@heroicons/react/outline";
 
 import { supabase } from "../../api";
 import { useState, useEffect, useContext } from "react";
-import AppWrapper from "../../context/state";
+import AppWrapper from "../../lib/state";
 
 interface Title {
   title: string;

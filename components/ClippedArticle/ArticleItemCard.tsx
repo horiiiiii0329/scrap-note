@@ -1,9 +1,7 @@
-import { HiDotsHorizontal } from "react-icons/hi";
-import { IconContext } from "react-icons";
 import styles from "./ArticleItemCard.module.scss";
 import { useState, useEffect, useContext } from "react";
 import { supabase } from "../../api";
-import AppWrapper from "../../context/state";
+import AppWrapper from "../../lib/state";
 import { DotsHorizontalIcon } from "@heroicons/react/solid";
 
 interface NewsList {
