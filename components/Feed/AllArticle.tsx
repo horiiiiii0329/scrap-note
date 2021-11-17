@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { supabase } from "../../api";
 
 import styles from "./AllArticle.module.scss";
-
 import AllArticleList from "./AllArticleList";
 import AllArticleType from "./AllArticleType";
 
@@ -18,8 +17,8 @@ interface CompanyList {
 }
 
 function AllArticle() {
-  const [posts, setPosts] = useState([] as any);
-  const [titles, setTitle] = useState([] as any);
+  const [posts, setPosts] = useState<NewsList[]>([]);
+  const [titles, setTitle] = useState<CompanyList[]>([]);
   const [company, setCompany] = useState([]);
   const [activeContent1, setActiveContent1] = useState(true);
   const [activeContent2, setActiveContent2] = useState(false);
@@ -43,22 +42,23 @@ function AllArticle() {
   async function fetchPosts() {
     const { data } = await supabase.from("save").select("*");
 
-    setPosts(data);
+    setPosts(data || []);
   }
 
   async function fetchFilteredPosts() {
     const { data } = await supabase.from("posts").select("*");
 
-    setPosts(data);
+    setPosts(data || []);
   }
 
+  console.log(posts);
   async function fetchFilteredTitlePosts(title: string) {
     const { data } = await supabase
       .from("save")
       .select("*")
       .filter("title", "eq", title);
 
-    setPosts(data);
+    setPosts(data || []);
   }
 
   async function fetchFilteredCompanyPosts(item: string) {
@@ -67,7 +67,7 @@ function AllArticle() {
       .select("*")
       .filter("company", "eq", item);
 
-    setPosts(data);
+    setPosts(data || []);
   }
 
   async function fetchCompany() {
@@ -86,7 +86,7 @@ function AllArticle() {
   async function fetchTitle() {
     const { data } = await supabase.from("save-scrap-title").select("*");
 
-    setTitle(data);
+    setTitle(data || []);
   }
 
   return (

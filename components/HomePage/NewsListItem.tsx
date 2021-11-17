@@ -42,7 +42,7 @@ function NewsListItem({ item }: Item) {
       alert(Error);
     } finally {
       setStatus(true);
-      appCtx.fetchSelectedTitle("");
+      appCtx.fetchSelectedTitle();
     }
   }
 
