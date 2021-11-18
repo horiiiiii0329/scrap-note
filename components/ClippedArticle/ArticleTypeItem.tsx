@@ -89,7 +89,7 @@ function ArticleTypeItem() {
           }}
         >
           <PlusIcon
-            style={{ width: "30px", height: "30px", cursor: "pointer" }}
+            style={{ width: "20px", height: "20px", cursor: "pointer" }}
           />
         </div>
 

@@ -24,24 +24,22 @@ function ArticleItem() {
   }
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.content_wrapper}>
-        {appCtx.posts.map((item: any, index: number) => {
-          return (
-            <ArticleItemCard
-              item={item}
-              key={index}
-              onDeleteHandler={deletePost}
-            />
-          );
-        })}
+    <div className={styles.content_wrapper}>
+      {appCtx.posts.map((item: any, index: number) => {
+        return (
+          <ArticleItemCard
+            item={item}
+            key={index}
+            onDeleteHandler={deletePost}
+          />
+        );
+      })}
 
-        {appCtx.posts.length === 0 && (
-          <div className={styles.articlecontent}>
-            <p>見出しを追加してください</p>
-          </div>
-        )}
-      </div>
+      {appCtx.posts.length === 0 && (
+        <div className={styles.articlecontent}>
+          <p>見出しを追加してください</p>
+        </div>
+      )}
     </div>
   );
 }

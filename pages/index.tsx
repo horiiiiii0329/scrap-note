@@ -9,8 +9,7 @@ import styles from "../styles/Home.module.scss";
 import WeatherDate from "../components/HomePage/WeatherDate";
 import { useState, useEffect } from "react";
 import Row from "../components/Utility/Row";
-import NewsList from "../components/HomePage/NewsList";
-import axios from "axios";
+
 import {
   fetchAsahiData,
   fetchMainichiData,
