@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import Head from "next/head";
-import Header from "../components/Header/Header";
+import NewsListItem from "../components/HomePage/NewsListItem";
 import Main from "../components/Layout/Main";
 import LoadingThreeDots from "../components/Utility/LoadingThreeDots";
 import TopBar from "../components/Utility/TopBar";
@@ -18,6 +18,7 @@ import {
   fetchSankeiData,
   fetchYomiuriData,
 } from "../lib/fetchNewsData";
+import { Item } from "framer-motion/types/components/Reorder/Item";
 
 const leftNews = ["朝日新聞", "毎日新聞"];
 const rightNews = ["読売新聞", "産経新聞", "日経新聞"];
@@ -131,49 +132,39 @@ const Home: NextPage = ({ weatherNews }: any) => {
         <div className={styles.main}>
           {/* <LoadingThreeDots /> */}
           <div className={styles.main__left}>
-            {leftIsOpen ? (
-              leftNews.map((item, index) => (
-                <div
-                  key={index}
-                  onClick={() => {
-                    setRightPickedNews(rightNewsData[0]);
-                    setRightIsOpen(false);
-                    console.log(222);
-                  }}
-                >
-                  <Row companyname={item} />
-                </div>
-              ))
-            ) : (
-              <NewsList newsData={leftPickedNews} />
-            )}
-            <p
-              onClick={() => {
-                setRightIsOpen(false);
-                console.log(222);
-              }}
-            >
-              {" "}
-              aaaaaaa
-            </p>
+            {leftIsOpen
+              ? leftNews.map((item, index) => (
+                  <div
+                    key={index}
+                    onClick={() => {
+                      setLeftPickedNews(rightNewsData[index]);
+                      setLeftIsOpen(false);
+                    }}
+                  >
+                    <Row companyname={item} />
+                  </div>
+                ))
+              : leftPickedNews.map((item: any, index: number) => {
+                  return <NewsListItem item={item} key={index} />;
+                })}
           </div>
           <div className={styles.main__right}>
-            {rightIsOpen ? (
-              rightNews.map((item, index) => (
-                <div
-                  key={index}
-                  onClick={() => {
-                    setRightPickedNews(rightNewsData[0]);
-                    setRightIsOpen(false);
-                    console.log(222);
-                  }}
-                >
-                  <Row companyname={item} />
-                </div>
-              ))
-            ) : (
-              <NewsList newsData={rightPickedNews} />
-            )}
+            {rightIsOpen
+              ? rightNews.map((item, index) => (
+                  <div
+                    key={index}
+                    onClick={() => {
+                      setRightPickedNews(rightNewsData[0]);
+                      setRightIsOpen(false);
+                      console.log(222);
+                    }}
+                  >
+                    <Row companyname={item} />
+                  </div>
+                ))
+              : rightPickedNews.map((item: any, index: number) => {
+                  return <NewsListItem item={item} key={index} />;
+                })}
           </div>
         </div>
 
