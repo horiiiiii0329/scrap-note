@@ -21,20 +21,29 @@ import {
 
 const leftNews = ["朝日新聞", "毎日新聞"];
 const rightNews = ["読売新聞", "産経新聞", "日経新聞"];
+const DUMMY_DATA = [
+  {
+    title: "wwwwwwwww",
+    href: "33333333333",
+    company: "浅子新聞",
+    time: "222222222222",
+    id: "111111111",
+  },
+];
 
 const Home: NextPage = ({ weatherNews }: any) => {
   const [isLoading, setIsLoading] = useState(false);
   const [leftIsOpen, setLeftIsOpen] = useState(true);
   const [rightIsOpen, setRightIsOpen] = useState(true);
 
-  const [asahiData, setAsahiData] = useState([]);
-  const [mainichiData, setMainichiData] = useState([]);
-  const [nikkeiData, setNikkeiData] = useState([]);
-  const [sankeiData, setSankeiData] = useState([]);
-  const [yomiuriData, setYomiuriData] = useState([]);
+  const [asahiData, setAsahiData] = useState(DUMMY_DATA);
+  const [mainichiData, setMainichiData] = useState(DUMMY_DATA);
+  const [nikkeiData, setNikkeiData] = useState(DUMMY_DATA);
+  const [sankeiData, setSankeiData] = useState(DUMMY_DATA);
+  const [yomiuriData, setYomiuriData] = useState(DUMMY_DATA);
 
-  const [leftPickedNews, setLeftPickedNews] = useState([]);
-  const [rightPickedNews, setRightPickedNews] = useState([]);
+  const [leftPickedNews, setLeftPickedNews] = useState([] as any);
+  const [rightPickedNews, setRightPickedNews] = useState([] as any);
 
   const leftNewsData = [asahiData, mainichiData];
   const rightNewsData = [yomiuriData, sankeiData, nikkeiData];
@@ -43,44 +52,44 @@ const Home: NextPage = ({ weatherNews }: any) => {
 
   useEffect(() => {
     setIsLoading(true);
-    const mData = async () =>
-      await axios
-        .get(
-          "https://10x4sx0ksf.execute-api.us-east-1.amazonaws.com/default/fetchMainichi"
-        )
-        .then((response) => setMainichiData(response.data.Items));
-    const yData = async () =>
-      await axios
-        .get(
-          "https://dfidli0e6a.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData"
-        )
-        .then((response) => setYomiuriData(response.data.Items));
-    const aData = async () =>
-      await axios
-        .get(
-          "https://364do95wh5.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData"
-        )
-        .then((response) => setAsahiData(response.data.Items));
+    // const mData = async () =>
+    //   await axios
+    //     .get(
+    //       "https://10x4sx0ksf.execute-api.us-east-1.amazonaws.com/default/fetchMainichi"
+    //     )
+    //     .then((response) => setMainichiData(response.data.Items));
+    // const yData = async () =>
+    //   await axios
+    //     .get(
+    //       "https://dfidli0e6a.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData"
+    //     )
+    //     .then((response) => setYomiuriData(response.data.Items));
+    // const aData = async () =>
+    //   await axios
+    //     .get(
+    //       "https://364do95wh5.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData"
+    //     )
+    //     .then((response) => setAsahiData(response.data.Items));
 
-    const sData = async () =>
-      await axios
-        .get(
-          "https://69y7orpkvf.execute-api.us-east-1.amazonaws.com/default/fetchSankei"
-        )
-        .then((response) => setSankeiData(response.data.Items));
+    // const sData = async () =>
+    //   await axios
+    //     .get(
+    //       "https://69y7orpkvf.execute-api.us-east-1.amazonaws.com/default/fetchSankei"
+    //     )
+    //     .then((response) => setSankeiData(response.data.Items));
 
-    const nData = async () =>
-      await axios
-        .get(
-          "https://oz0czga9rj.execute-api.us-east-1.amazonaws.com/default/nikkeiData"
-        )
-        .then((response) => setNikkeiData(response.data.Items));
+    // const nData = async () =>
+    //   await axios
+    //     .get(
+    //       "https://oz0czga9rj.execute-api.us-east-1.amazonaws.com/default/nikkeiData"
+    //     )
+    //     .then((response) => setNikkeiData(response.data.Items));
 
-    mData();
-    yData();
-    nData();
-    aData();
-    sData();
+    // mData();
+    // yData();
+    // nData();
+    // aData();
+    // sData();
     setIsLoading(false);
   }, []);
 
@@ -124,13 +133,29 @@ const Home: NextPage = ({ weatherNews }: any) => {
           <div className={styles.main__left}>
             {leftIsOpen ? (
               leftNews.map((item, index) => (
-                <div key={index}>
+                <div
+                  key={index}
+                  onClick={() => {
+                    setRightPickedNews(rightNewsData[0]);
+                    setRightIsOpen(false);
+                    console.log(222);
+                  }}
+                >
                   <Row companyname={item} />
                 </div>
               ))
             ) : (
               <NewsList newsData={leftPickedNews} />
             )}
+            <p
+              onClick={() => {
+                setRightIsOpen(false);
+                console.log(222);
+              }}
+            >
+              {" "}
+              aaaaaaa
+            </p>
           </div>
           <div className={styles.main__right}>
             {rightIsOpen ? (
@@ -138,8 +163,9 @@ const Home: NextPage = ({ weatherNews }: any) => {
                 <div
                   key={index}
                   onClick={() => {
-                    setRightPickedNews(rightNewsData[index]);
+                    setRightPickedNews(rightNewsData[0]);
                     setRightIsOpen(false);
+                    console.log(222);
                   }}
                 >
                   <Row companyname={item} />
