@@ -56,7 +56,7 @@ function ArticleTypeItem() {
             appCtx.fetchSelectedTitle();
           }}
         >
-          <h3>未分類</h3>
+          <p>未分類</p>
         </div>
       </div>
 
@@ -74,7 +74,7 @@ function ArticleTypeItem() {
                   appCtx.fetchSelectedTitle();
                 }}
               >
-                <h3>{post.title}</h3>
+                <p>{post.title}</p>
               </div>
             </div>
           );

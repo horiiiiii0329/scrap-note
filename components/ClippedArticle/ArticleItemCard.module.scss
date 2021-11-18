@@ -1,10 +1,10 @@
 .articleitem {
   border-bottom: solid 1px black;
   display: flex;
-  height: 70px;
+  height: 60px;
 
   @media screen and (max-width: 1280px) {
-    height: 70px;
+    height: 60px;
   }
 
   .articlemenu {
@@ -24,7 +24,7 @@
     display: flex;
     flex: 9;
     align-items: center;
-    padding-left: 5px;
+    padding-left: 10px;
 
     time {
       font-size: 11px;
@@ -39,7 +39,7 @@
 
     .addbutton {
       display: flex;
-      flex: 7;
+      flex: 8;
       justify-content: center;
       align-items: center;
       border-right: solid 1px black;
@@ -69,14 +69,11 @@
 .articlemodal {
   border-bottom: solid 1px black;
   display: flex;
-  height: 70px;
+  height: 60px;
   z-index: 99999;
   position: relative;
+  width: 100%;
 
-  .menu {
-    content: "";
-    flex: 1;
-  }
   .articlemenu {
     display: flex;
     align-items: center;
@@ -90,20 +87,9 @@
     }
   }
 
-  .articlecontent {
-    display: flex;
-    align-items: center;
-    padding-left: 5px;
-    flex: 8;
-
-    time {
-      font-size: 12px;
-      font-weight: 200;
-    }
-  }
-
   .articlemenulist {
     display: flex;
+    flex: 9;
 
     .addbutton {
       display: flex;
@@ -124,7 +110,7 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      flex: 1;
+      flex: 2;
 
       &:hover {
         color: white;
