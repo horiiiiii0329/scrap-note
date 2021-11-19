@@ -3,7 +3,7 @@ import { supabase } from "../../api";
 import EditProfile from "./EditProfile";
 import styles from "./ProfileCard.module.scss";
 
-function ProfileCard() {
+function ProfileCard({ session }: any) {
   const [userName, setUserName] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -50,7 +50,9 @@ function ProfileCard() {
 
         <button onClick={() => setShowModal(!showModal)}>プロフィール</button>
       </div>
-      <div className={styles.modal}>{showModal && <EditProfile />}</div>
+      <div className={styles.modal}>
+        {showModal && <EditProfile session={session} />}
+      </div>
     </>
   );
 }

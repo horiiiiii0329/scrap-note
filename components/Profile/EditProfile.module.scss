@@ -5,6 +5,7 @@
   position: absolute;
   right: 0;
   height: calc(100vh - 80px);
+  border-top: solid black 1px;
 
   @media screen and (max-width: 1280px) {
     width: 100%;
