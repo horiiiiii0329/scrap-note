@@ -1,7 +1,7 @@
 .articleitem {
   border-bottom: solid 1px black;
   display: flex;
-  height: 60px;
+  height: 70px;
 
   @media screen and (max-width: 1280px) {
     height: 60px;
@@ -69,7 +69,7 @@
 .articlemodal {
   border-bottom: solid 1px black;
   display: flex;
-  height: 60px;
+  height: 70px;
   z-index: 99999;
   position: relative;
   width: 100%;

@@ -59,26 +59,27 @@ function ArticleTypeItem() {
           <p>未分類</p>
         </div>
       </div>
-
-      {posts &&
-        posts.map((post: Title, index: number) => {
-          return (
-            <div className={styles.scraplist} key={index}>
-              <div className={styles.scrapelist__count}>
-                <p>{`0${index + 1}`}</p>
+      <div className={styles.scraplist__wrapper}>
+        {posts &&
+          posts.map((post: Title, index: number) => {
+            return (
+              <div className={styles.scraplist} key={index}>
+                <div className={styles.scrapelist__count}>
+                  <p>{`0${index + 1}`}</p>
+                </div>
+                <div
+                  className={styles.scraplist__title}
+                  onClick={() => {
+                    appCtx.setSelectedTitle(post.title);
+                    appCtx.fetchSelectedTitle();
+                  }}
+                >
+                  <p>{post.title}</p>
+                </div>
               </div>
-              <div
-                className={styles.scraplist__title}
-                onClick={() => {
-                  appCtx.setSelectedTitle(post.title);
-                  appCtx.fetchSelectedTitle();
-                }}
-              >
-                <p>{post.title}</p>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+      </div>
 
       <div className={styles.addscrap}>
         <div

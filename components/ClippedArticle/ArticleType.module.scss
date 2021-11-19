@@ -10,7 +10,7 @@
     text-align: center;
     padding-right: 100px;
     margin: 0;
-    height: 60px;
+    height: 140px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,9 +21,5 @@
     @media screen and (max-width: 1280px) {
       height: auto;
     }
-  }
-
-  .categories {
-    overflow-y: scroll;
   }
 }

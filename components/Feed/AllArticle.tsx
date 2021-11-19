@@ -104,7 +104,7 @@ function AllArticle() {
       </div>
       <div className={styles.content_wrapper2}>
         <div className={styles.categories}>
-          <p
+          <h3
             onClick={() => {
               setActiveContent1(true);
               setActiveContent2(false);
@@ -112,8 +112,8 @@ function AllArticle() {
             className={activeContent1 ? styles.activecontent : undefined}
           >
             媒体
-          </p>
-          <p
+          </h3>
+          <h3
             onClick={() => {
               setActiveContent1(false);
               setActiveContent2(true);
@@ -121,7 +121,7 @@ function AllArticle() {
             className={activeContent2 ? styles.activecontent2 : undefined}
           >
             スクラップブック
-          </p>
+          </h3>
         </div>
 
         {activeContent1 && (
@@ -135,7 +135,7 @@ function AllArticle() {
                   className={styles.scraplist__title}
                   onClick={() => fetchPosts()}
                 >
-                  <h3>投稿</h3>
+                  <p>投稿</p>
                 </div>
               </div>
             </div>
