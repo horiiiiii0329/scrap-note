@@ -9,7 +9,15 @@
     border-bottom: solid 1px black;
     text-align: center;
     padding-right: 100px;
+    margin: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    h3 {
+      margin: 0;
+    }
     @media screen and (max-width: 1280px) {
       height: auto;
     }
