@@ -1,3 +1,4 @@
+import { ChevronDownIcon } from "@heroicons/react/solid";
 import { useState, useEffect } from "react";
 import { supabase } from "../../api";
 
@@ -110,6 +111,7 @@ function AllArticle() {
               setActiveContent2(false);
             }}
             className={activeContent1 ? styles.activecontent : undefined}
+            style={!activeContent1 ? { color: "#D3D3D3" } : {}}
           >
             媒体
           </h3>
@@ -119,6 +121,7 @@ function AllArticle() {
               setActiveContent2(true);
             }}
             className={activeContent2 ? styles.activecontent2 : undefined}
+            style={activeContent1 ? { color: "#D3D3D3" } : {}}
           >
             スクラップブック
           </h3>

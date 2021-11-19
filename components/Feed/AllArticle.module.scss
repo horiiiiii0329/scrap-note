@@ -29,17 +29,18 @@
     .categories {
       border-bottom: solid black 1px;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
+      height: 140px;
+      justify-content: space-evenly;
 
       @media screen and (max-width: 1280px) {
         height: auto;
       }
 
       h3 {
-        width: 100%;
+        width: 50%;
         text-align: center;
         margin: 0;
-        height: 60px;
       }
     }
   }
@@ -57,7 +58,7 @@
   border-bottom: solid 1px black;
   display: flex;
   align-items: center;
-  height: 60px;
+  height: 70px;
 
   .scrapelist__count {
     height: 100%;
@@ -69,7 +70,7 @@
   }
 
   .scraplist__title {
-    height: 60px;
+    height: 70px;
     display: flex;
     align-items: center;
     width: 100%;
@@ -79,7 +80,7 @@
       color: white;
     }
 
-    h3 {
+    p {
       padding-left: 10px;
       margin: 0;
     }
