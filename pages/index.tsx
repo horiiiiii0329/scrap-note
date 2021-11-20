@@ -1,5 +1,5 @@
 import type { GetStaticProps, NextPage } from "next";
-import { ChevronDownIcon, NewspaperIcon } from "@heroicons/react/outline";
+import { ChevronDownIcon } from "@heroicons/react/outline";
 import Head from "next/head";
 import NewsListItem from "../components/HomePage/NewsListItem";
 import Main from "../components/Layout/Main";
@@ -7,19 +7,9 @@ import LoadingThreeDots from "../components/Utility/LoadingThreeDots";
 import TopBar from "../components/Utility/TopBar";
 import styles from "../styles/Home.module.scss";
 import WeatherDate from "../components/HomePage/WeatherDate";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Row from "../components/Utility/Row";
 import axios from "axios";
-import { fetchNikkeiData } from "../lib/fetchNewsData";
-
-// import {
-//   fetchAsahiData,
-//   fetchMainichiData,
-//   fetchNikkeiData,
-//   fetchSankeiData,
-//   fetchYomiuriData,
-// } from "../lib/fetchNewsData";
-// import { Item } from "framer-motion/types/components/Reorder/Item";
 
 const leftNews = ["朝日新聞", "毎日新聞"];
 const rightNews = ["読売新聞", "産経新聞", "日経新聞"];
