@@ -26,9 +26,11 @@
   .main__left {
     border-right: solid black 1px;
     width: 50%;
+    overflow-y: scroll;
   }
 
   .main__right {
     width: 50%;
+    overflow-y: scroll;
   }
 }

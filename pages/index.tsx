@@ -154,9 +154,8 @@ const Home: NextPage = ({ weatherNews }: any) => {
                   <div
                     key={index}
                     onClick={() => {
-                      setRightPickedNews(rightNewsData[0]);
+                      setRightPickedNews(rightNewsData[index]);
                       setRightIsOpen(false);
-                      console.log(222);
                     }}
                   >
                     <Row companyname={item} />
