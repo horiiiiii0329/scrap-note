@@ -1,13 +1,13 @@
 import React from "react";
 
-import Post from "./Post";
+import PostContent from "./PostContent";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: "Components/Post",
-  component: Post,
+  component: PostContent,
 };
 
-const Template = () => <Post />;
+const Template = () => <PostContent />;
 
 export const Default = Template.bind({});

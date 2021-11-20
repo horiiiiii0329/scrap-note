@@ -1,4 +1,4 @@
-import styles from "./Post.module.scss";
+import styles from "./PostContent.module.scss";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { supabase } from "../../api";
@@ -16,7 +16,7 @@ const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
 });
 const initialState = { title: "", content: "", id: "" };
 
-function Post() {
+function PostContent() {
   const [post, setPost] = useState(initialState);
   const { title, content } = post;
   const router = useRouter();
@@ -59,4 +59,4 @@ function Post() {
   );
 }
 
-export default Post;
+export default PostContent;

@@ -1,16 +1,27 @@
 import Main from "../components/Layout/Main";
-import Post from "../components/Post/Post";
+import PostContent from "../components/Post/PostContent";
 import TopBar from "../components/Utility/TopBar";
+import { supabase } from "../api";
+import { useEffect, useState } from "react";
+import LoginCard from "../components/Utility/LoginCard";
 
-function post() {
+function Post() {
+  const [session, setSession] = useState<any | null>(null);
+
+  useEffect(() => {
+    setSession(supabase.auth.session());
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+  }, []);
+
   return (
     <div>
       <TopBar></TopBar>
-      <Main>
-        <Post />
-      </Main>
+      <Main>{!session ? <LoginCard /> : <PostContent />}</Main>
     </div>
   );
 }
 
-export default post;
+export default Post;
