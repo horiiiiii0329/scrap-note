@@ -9,6 +9,7 @@ import styles from "../styles/Home.module.scss";
 import WeatherDate from "../components/HomePage/WeatherDate";
 import { useState, useEffect } from "react";
 import Row from "../components/Utility/Row";
+import axios from "axios";
 
 // import {
 //   fetchAsahiData,
@@ -23,7 +24,7 @@ const leftNews = ["朝日新聞", "毎日新聞"];
 const rightNews = ["読売新聞", "産経新聞", "日経新聞"];
 const DUMMY_DATA = [
   {
-    title: "wwwwwwwww",
+    title: "undefined",
     href: "33333333333",
     company: "浅子新聞",
     time: "222222222222",
@@ -52,44 +53,44 @@ const Home: NextPage = ({ weatherNews }: any) => {
 
   useEffect(() => {
     setIsLoading(true);
-    // const mData = async () =>
-    //   await axios
-    //     .get(
-    //       "https://10x4sx0ksf.execute-api.us-east-1.amazonaws.com/default/fetchMainichi"
-    //     )
-    //     .then((response) => setMainichiData(response.data.Items));
-    // const yData = async () =>
-    //   await axios
-    //     .get(
-    //       "https://dfidli0e6a.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData"
-    //     )
-    //     .then((response) => setYomiuriData(response.data.Items));
-    // const aData = async () =>
-    //   await axios
-    //     .get(
-    //       "https://364do95wh5.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData"
-    //     )
-    //     .then((response) => setAsahiData(response.data.Items));
+    const mData = async () =>
+      await axios
+        .get(
+          "https://10x4sx0ksf.execute-api.us-east-1.amazonaws.com/default/fetchMainichi"
+        )
+        .then((response) => setMainichiData(response.data.Items));
+    const yData = async () =>
+      await axios
+        .get(
+          "https://dfidli0e6a.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData"
+        )
+        .then((response) => setYomiuriData(response.data.Items));
+    const aData = async () =>
+      await axios
+        .get(
+          "https://364do95wh5.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData"
+        )
+        .then((response) => setAsahiData(response.data.Items));
 
-    // const sData = async () =>
-    //   await axios
-    //     .get(
-    //       "https://69y7orpkvf.execute-api.us-east-1.amazonaws.com/default/fetchSankei"
-    //     )
-    //     .then((response) => setSankeiData(response.data.Items));
+    const sData = async () =>
+      await axios
+        .get(
+          "https://69y7orpkvf.execute-api.us-east-1.amazonaws.com/default/fetchSankei"
+        )
+        .then((response) => setSankeiData(response.data.Items));
 
-    // const nData = async () =>
-    //   await axios
-    //     .get(
-    //       "https://oz0czga9rj.execute-api.us-east-1.amazonaws.com/default/nikkeiData"
-    //     )
-    //     .then((response) => setNikkeiData(response.data.Items));
+    const nData = async () =>
+      await axios
+        .get(
+          "https://oz0czga9rj.execute-api.us-east-1.amazonaws.com/default/nikkeiData"
+        )
+        .then((response) => setNikkeiData(response.data.Items));
 
-    // mData();
-    // yData();
-    // nData();
-    // aData();
-    // sData();
+    mData();
+    yData();
+    nData();
+    aData();
+    sData();
     setIsLoading(false);
   }, []);
 
@@ -136,7 +137,7 @@ const Home: NextPage = ({ weatherNews }: any) => {
                   <div
                     key={index}
                     onClick={() => {
-                      setLeftPickedNews(rightNewsData[index]);
+                      setLeftPickedNews(leftNewsData[index]);
                       setLeftIsOpen(false);
                     }}
                   >
@@ -175,11 +176,6 @@ const Home: NextPage = ({ weatherNews }: any) => {
 };
 
 export async function getServerSideProps({ req }: any) {
-  //setUserCookie
-  // const { user } = await supabase.auth.api.getUserByCookie(req);
-
-  //getWeatherData
-
   let lat = 35.4122;
   let long = 139.413;
 
