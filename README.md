@@ -3,7 +3,7 @@
 News app based on multiple real world news resources created with  
 Next.js, Supabase.io and AWS
 
-> Live demo [_here_](https://newspaper-for-you-v2.vercel.app/).
+> Live demo [_here_](https://scrap-note.vercel.app/).
 
 ## Table of Contents
 
@@ -54,14 +54,6 @@ Next.js, Supabase.io and AWS
 
 <!-- If you have screenshots you'd like to share, include them here. -->
 
-## Setup
-
-- Use the package manager [yarn](https://yarnpkg.com/) to install package.
-
-```bash
-yarn install
-```
-
 ## Project Status
 
 Project is in progress...
@@ -77,8 +69,7 @@ Room for improvement:
 
 To do:
 
-- Like future which stored in database
-- Refactor code to typescrtipt
+- state of clipped which stored in database
 
 <!-- Optional -->
 <!-- ## License -->
