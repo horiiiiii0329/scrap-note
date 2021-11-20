@@ -9,10 +9,10 @@ function note() {
     <div>
       <TopBar> </TopBar>
       <Main>
-        <div className={styles.wrapper}>
+        {/* <div className={styles.wrapper}>
           <ArticleItem />
           <ArticleType />
-        </div>
+        </div> */}
       </Main>
     </div>
   );
