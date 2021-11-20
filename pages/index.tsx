@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import { ChevronDownIcon, NewspaperIcon } from "@heroicons/react/outline";
 import Head from "next/head";
 import NewsListItem from "../components/HomePage/NewsListItem";
@@ -48,8 +48,6 @@ const Home: NextPage = ({ weatherNews }: any) => {
 
   const leftNewsData = [asahiData, mainichiData];
   const rightNewsData = [yomiuriData, sankeiData, nikkeiData];
-
-  console.log(leftPickedNews);
 
   useEffect(() => {
     setIsLoading(true);
@@ -174,7 +172,7 @@ const Home: NextPage = ({ weatherNews }: any) => {
   );
 };
 
-export async function getServerSideProps({ req }: any) {
+export const getStaticProps: GetStaticProps = async (context) => {
   let lat = 35.4122;
   let long = 139.413;
 
@@ -191,7 +189,8 @@ export async function getServerSideProps({ req }: any) {
     props: {
       weatherNews,
     },
+    revalidate: 60 * 60 * 24,
   };
-}
+};
 
 export default Home;
