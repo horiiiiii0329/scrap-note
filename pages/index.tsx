@@ -25,21 +25,21 @@ const DUMMY_DATA = [
 
 const Home: NextPage = ({
   weatherNews,
-  asahiData,
-  mainichiData,
-  yomiuriData,
-  sankeiData,
-  nikkeiData,
-}: any) => {
+}: // asahiData,
+// mainichiData,
+// yomiuriData,
+// sankeiData,
+// nikkeiData,
+any) => {
   const [isLoading, setIsLoading] = useState(false);
   const [leftIsOpen, setLeftIsOpen] = useState(true);
   const [rightIsOpen, setRightIsOpen] = useState(true);
 
-  // const [asahiData, setAsahiData] = useState(DUMMY_DATA);
-  // const [mainichiData, setMainichiData] = useState(DUMMY_DATA);
-  // const [nikkeiData, setNikkeiData] = useState(DUMMY_DATA);
-  // const [sankeiData, setSankeiData] = useState(DUMMY_DATA);
-  // const [yomiuriData, setYomiuriData] = useState(DUMMY_DATA);
+  const [asahiData, setAsahiData] = useState(DUMMY_DATA);
+  const [mainichiData, setMainichiData] = useState(DUMMY_DATA);
+  const [nikkeiData, setNikkeiData] = useState(DUMMY_DATA);
+  const [sankeiData, setSankeiData] = useState(DUMMY_DATA);
+  const [yomiuriData, setYomiuriData] = useState(DUMMY_DATA);
 
   const [leftPickedNews, setLeftPickedNews] = useState([] as any);
   const [rightPickedNews, setRightPickedNews] = useState([] as any);
@@ -140,34 +140,34 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const weatherNews = weatherJson;
 
   //get news list
-  const mData = await axios.get(
-    "https://10x4sx0ksf.execute-api.us-east-1.amazonaws.com/default/fetchMainichi"
-  );
+  // const mData = await axios.get(
+  //   "https://10x4sx0ksf.execute-api.us-east-1.amazonaws.com/default/fetchMainichi"
+  // );
 
-  const yData = await axios.get(
-    "https://dfidli0e6a.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData"
-  );
+  // const yData = await axios.get(
+  //   "https://dfidli0e6a.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData"
+  // );
 
-  const aData = await axios.get(
-    "https://364do95wh5.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData"
-  );
+  // const aData = await axios.get(
+  //   "https://364do95wh5.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData"
+  // );
 
-  const sData = await axios.get(
-    "https://69y7orpkvf.execute-api.us-east-1.amazonaws.com/default/fetchSankei"
-  );
+  // const sData = await axios.get(
+  //   "https://69y7orpkvf.execute-api.us-east-1.amazonaws.com/default/fetchSankei"
+  // );
 
-  const nData = await axios.get(
-    "https://oz0czga9rj.execute-api.us-east-1.amazonaws.com/default/nikkeiData"
-  );
+  // const nData = await axios.get(
+  //   "https://oz0czga9rj.execute-api.us-east-1.amazonaws.com/default/nikkeiData"
+  // );
 
   return {
     props: {
       weatherNews,
-      asahiData: aData.data.Items,
-      mainichiData: mData.data.Items,
-      yomiuriData: yData.data.Items,
-      sankeiData: sData.data.Items,
-      nikkeiData: nData.data.Items,
+      // asahiData: aData.data.Items,
+      // mainichiData: mData.data.Items,
+      // yomiuriData: yData.data.Items,
+      // sankeiData: sData.data.Items,
+      // nikkeiData: nData.data.Items,
     },
     revalidate: 60 * 60 * 24,
   };
