@@ -6,15 +6,10 @@ import TopBar from "../components/Utility/TopBar";
 import styles from "../styles/note.module.scss";
 import { useState, useEffect } from "react";
 import { supabase } from "../api";
-
-interface UserData {
-  username: string;
-  email: string;
-  prevState: null;
-}
+import { Session } from "@supabase/gotrue-js";
 
 function Note() {
-  const [session, setSession] = useState<any | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
     setSession(supabase.auth.session());

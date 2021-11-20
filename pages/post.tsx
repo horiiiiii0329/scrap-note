@@ -4,9 +4,10 @@ import TopBar from "../components/Utility/TopBar";
 import { supabase } from "../api";
 import { useEffect, useState } from "react";
 import LoginCard from "../components/Utility/LoginCard";
+import { Session } from "@supabase/gotrue-js";
 
 function Post() {
-  const [session, setSession] = useState<any | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
     setSession(supabase.auth.session());

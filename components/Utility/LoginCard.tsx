@@ -7,6 +7,7 @@ import { LightBulbIcon } from "@heroicons/react/outline";
 function LoginCard() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
   const handleLogin = async (email: string) => {
     try {
@@ -23,6 +24,24 @@ function LoginCard() {
       setLoading(false);
     }
   };
+
+  async function signIn() {
+    const { error, data } = await supabase.auth.signIn({
+      email,
+    });
+    if (error) {
+      console.log({ error });
+    } else {
+      setSubmitted(true);
+    }
+  }
+  if (submitted) {
+    return (
+      <div className={styles.container}>
+        <h1>Please check your email to sign in</h1>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -43,11 +62,11 @@ function LoginCard() {
         <button
           onClick={(e) => {
             e.preventDefault();
-            handleLogin(email);
+            signIn();
           }}
           disabled={loading}
         >
-          <span>{loading ? <LoadingThreeDots /> : "送信"}</span>
+          <span>{loading ? "送信中。。。" : "送信"}</span>
         </button>
       </div>
     </div>
