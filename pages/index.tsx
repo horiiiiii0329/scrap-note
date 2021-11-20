@@ -160,6 +160,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     "https://oz0czga9rj.execute-api.us-east-1.amazonaws.com/default/nikkeiData"
   );
 
+  Promise.all([aData, mData, yData, sData, nData]);
+
   return {
     props: {
       weatherNews,
