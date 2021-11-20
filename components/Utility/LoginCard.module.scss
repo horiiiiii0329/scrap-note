@@ -1,0 +1,39 @@
+.wrapper {
+  border: solid 1px black;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  .input {
+    border: 1px solid;
+    outline: none;
+    font-size: 20px;
+    height: 40px;
+    width: 400px;
+    padding-left: 5px;
+  }
+
+  button {
+    margin-top: 30px;
+
+    margin-left: 0;
+
+    cursor: pointer;
+
+    span {
+      border: black solid 1px;
+      padding: 10px 20px;
+    }
+
+    :hover {
+      background-color: black;
+      color: white;
+    }
+  }
+}

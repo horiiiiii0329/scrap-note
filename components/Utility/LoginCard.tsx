@@ -1,6 +1,8 @@
 import styles from "./LoginCard.module.scss";
 import { useState } from "react";
 import { supabase } from "../../api";
+import LoadingThreeDots from "./LoadingThreeDots";
+import { LightBulbIcon } from "@heroicons/react/outline";
 
 function LoginCard() {
   const [loading, setLoading] = useState(false);
@@ -15,42 +17,38 @@ function LoginCard() {
     } catch (error) {
       let errorMessage = "有効なメールアドレスを入力してください";
       if (error instanceof Error) {
-        errorMessage = error.message;
+        alert(errorMessage);
       }
-      alert(errorMessage);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="row flex flex-center">
-      <div className="col-6 form-widget">
-        <h1 className="header">Supabase + Next.js</h1>
-        <p className="description">
-          Sign in via magic link with your email below
-        </p>
-        <div>
-          <input
-            className="inputField"
-            type="email"
-            placeholder="Your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              handleLogin(email);
-            }}
-            className="button block"
-            disabled={loading}
-          >
-            <span>{loading ? "Loading" : "Send magic link"}</span>
-          </button>
-        </div>
+    <div className={styles.wrapper}>
+      <h1 className={styles.icon}>
+        <LightBulbIcon style={{ width: "80px", cursor: "pointer" }} />
+      </h1>
+      <p>メールアドレスにログインリンクを送信する</p>
+      <div>
+        <input
+          className={styles.input}
+          type="email"
+          placeholder="メールアドレス"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+      <div>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            handleLogin(email);
+          }}
+          disabled={loading}
+        >
+          <span>{loading ? <LoadingThreeDots /> : "送信"}</span>
+        </button>
       </div>
     </div>
   );
