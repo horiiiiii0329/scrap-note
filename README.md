@@ -1,34 +1,87 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NewsPaper for You - SNS like news compare app
 
-## Getting Started
+News app based on multiple real world news resources created with  
+Next.js, Supabase.io and AWS
 
-First, run the development server:
+> Live demo [_here_](https://newspaper-for-you-v2.vercel.app/).
+
+## Table of Contents
+
+- [General Info](#general-information)
+- [Architecture](#architecture)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [GIF](#gif)
+- [Setup](#setup)
+- [Project Status](#project-status)
+- [Room for Improvement](#room-for-improvement)
+<!-- * [License](#license) -->
+
+## General Information
+
+- User can compare news of two biggest news company in japan, while be able to
+  interact with other user by basic CRUD function
+- Information is overloaded these days. Though, picking a right tool to update your information is a matter of life and death. To make you choose a right channel to get information, I decide to make this app which could make user to choose resources while preventing from obtaining biased information. Also, user could know what other user saved and read.
+
+## Architecture
+
+![Example screenshot](./a.drawio.png)
+
+## Technologies Used
+
+- Next.js - version 11.1.2
+- SASS - version 1.39
+- storybook - version 6.3.8
+- puppeteer - 10.4.0
+- supabase - 1.22.6
+
+## Features
+
+- User can compare newswebsite side by side which update every 6 hours
+- User can save news title and link after logged in
+- User can read news title which other user saved
+- User can write a blog by using react simple mde editor
+
+## GIF
+
+- Overview
+
+  ![Example screenshot](https://media.giphy.com/media/KpTbqo1kqOZ9LvjTME/giphy.gif)
+
+- Saving, viewing, and adding to scrap book
+
+  ![Example screenshot](https://media.giphy.com/media/nEjcL6KGUwQO86TzUh/giphy.gif)
+
+<!-- If you have screenshots you'd like to share, include them here. -->
+
+## Setup
+
+- Use the package manager [yarn](https://yarnpkg.com/) to install package.
 
 ```bash
-npm run dev
-# or
-yarn dev
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Status
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Project is in progress...
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Room for Improvement
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Include areas you believe need improvement / could be improved. Also add TODOs for future development.
 
-## Learn More
+Room for improvement:
 
-To learn more about Next.js, take a look at the following resources:
+- UI design for smartphone
+- Logic for improving UX
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To do:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Like future which stored in database
+- Refactor code to typescrtipt
 
-## Deploy on Vercel
+<!-- Optional -->
+<!-- ## License -->
+<!-- This project is open source and available under the [... License](). -->
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<!-- You don't have to include all sections - just the one's relevant to your project -->
