@@ -10,6 +10,7 @@ import WeatherDate from "../components/HomePage/WeatherDate";
 import { useState, useEffect } from "react";
 import Row from "../components/Utility/Row";
 import axios from "axios";
+import { fetchNikkeiData } from "../lib/fetchNewsData";
 
 // import {
 //   fetchAsahiData,
@@ -32,65 +33,29 @@ const DUMMY_DATA = [
   },
 ];
 
-const Home: NextPage = ({ weatherNews }: any) => {
+const Home: NextPage = ({
+  weatherNews,
+  asahiData,
+  mainichiData,
+  yomiuriData,
+  sankeiData,
+  nikkeiData,
+}: any) => {
   const [isLoading, setIsLoading] = useState(false);
   const [leftIsOpen, setLeftIsOpen] = useState(true);
   const [rightIsOpen, setRightIsOpen] = useState(true);
 
-  const [asahiData, setAsahiData] = useState(DUMMY_DATA);
-  const [mainichiData, setMainichiData] = useState(DUMMY_DATA);
-  const [nikkeiData, setNikkeiData] = useState(DUMMY_DATA);
-  const [sankeiData, setSankeiData] = useState(DUMMY_DATA);
-  const [yomiuriData, setYomiuriData] = useState(DUMMY_DATA);
+  // const [asahiData, setAsahiData] = useState(DUMMY_DATA);
+  // const [mainichiData, setMainichiData] = useState(DUMMY_DATA);
+  // const [nikkeiData, setNikkeiData] = useState(DUMMY_DATA);
+  // const [sankeiData, setSankeiData] = useState(DUMMY_DATA);
+  // const [yomiuriData, setYomiuriData] = useState(DUMMY_DATA);
 
   const [leftPickedNews, setLeftPickedNews] = useState([] as any);
   const [rightPickedNews, setRightPickedNews] = useState([] as any);
 
   const leftNewsData = [asahiData, mainichiData];
   const rightNewsData = [yomiuriData, sankeiData, nikkeiData];
-
-  useEffect(() => {
-    setIsLoading(true);
-    const mData = async () =>
-      await axios
-        .get(
-          "https://10x4sx0ksf.execute-api.us-east-1.amazonaws.com/default/fetchMainichi"
-        )
-        .then((response) => setMainichiData(response.data.Items));
-    const yData = async () =>
-      await axios
-        .get(
-          "https://dfidli0e6a.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData"
-        )
-        .then((response) => setYomiuriData(response.data.Items));
-    const aData = async () =>
-      await axios
-        .get(
-          "https://364do95wh5.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData"
-        )
-        .then((response) => setAsahiData(response.data.Items));
-
-    const sData = async () =>
-      await axios
-        .get(
-          "https://69y7orpkvf.execute-api.us-east-1.amazonaws.com/default/fetchSankei"
-        )
-        .then((response) => setSankeiData(response.data.Items));
-
-    const nData = async () =>
-      await axios
-        .get(
-          "https://oz0czga9rj.execute-api.us-east-1.amazonaws.com/default/nikkeiData"
-        )
-        .then((response) => setNikkeiData(response.data.Items));
-
-    mData();
-    yData();
-    nData();
-    aData();
-    sData();
-    setIsLoading(false);
-  }, []);
 
   return (
     <div>
@@ -173,6 +138,7 @@ const Home: NextPage = ({ weatherNews }: any) => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  // getweatherdata
   let lat = 35.4122;
   let long = 139.413;
 
@@ -184,10 +150,34 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const weatherNews = weatherJson;
 
   //get news list
+  const mData = await axios.get(
+    "https://10x4sx0ksf.execute-api.us-east-1.amazonaws.com/default/fetchMainichi"
+  );
+
+  const yData = await axios.get(
+    "https://dfidli0e6a.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData"
+  );
+
+  const aData = await axios.get(
+    "https://364do95wh5.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData"
+  );
+
+  const sData = await axios.get(
+    "https://69y7orpkvf.execute-api.us-east-1.amazonaws.com/default/fetchSankei"
+  );
+
+  const nData = await axios.get(
+    "https://oz0czga9rj.execute-api.us-east-1.amazonaws.com/default/nikkeiData"
+  );
 
   return {
     props: {
       weatherNews,
+      asahiData: aData.data.Items,
+      mainichiData: mData.data.Items,
+      yomiuriData: yData.data.Items,
+      sankeiData: sData.data.Items,
+      nikkeiData: nData.data.Items,
     },
     revalidate: 60 * 60 * 24,
   };
