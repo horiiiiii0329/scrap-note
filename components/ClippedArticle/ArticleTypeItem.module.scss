@@ -40,7 +40,6 @@
     display: flex;
     align-items: center;
     height: 70px;
-    border-top: solid black 1px;
 
     .addscrapicon {
       height: 100%;
@@ -48,7 +47,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 80px;
+      width: 74px;
 
       &:hover {
         background-color: black;
@@ -75,5 +74,5 @@
 
 .scraplist__wrapper {
   overflow-y: scroll;
-  height: calc(100vh - (140px + 85px + 140px));
+  max-height: calc(100vh - (140px + 85px + 140px));
 }

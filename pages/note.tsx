@@ -21,7 +21,9 @@ function Note() {
 
   return (
     <div>
-      <TopBar> </TopBar>
+      <TopBar>
+        <h1 className={styles.title}>クリップした記事</h1>
+      </TopBar>
       <Main>
         {!session ? (
           <LoginCard />
