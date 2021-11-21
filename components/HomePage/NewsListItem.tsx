@@ -16,9 +16,28 @@ interface Item {
 
 function NewsListItem({ item }: Item) {
   const [status, setStatus] = useState(false);
-
+  const [data, setData] = useState<string[] | null>([]);
   const appCtx = useContext(AppWrapper);
   const user = supabase.auth.user();
+
+  useEffect(() => {
+    const user = supabase.auth.user();
+    async function fetchData() {
+      const { data } = await supabase
+        .from("save")
+        .select("headline")
+        .filter("user_id", "eq", user?.id);
+
+      setData(data);
+    }
+
+    fetchData();
+  }, []);
+
+  if (data) {
+    const checked = data.some((headline) => headline === item.title);
+    setStatus(checked);
+  }
 
   async function savePost({
     company,

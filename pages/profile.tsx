@@ -5,6 +5,7 @@ import TopBar from "../components/Utility/TopBar";
 import { useState, useEffect } from "react";
 import { supabase } from "../api";
 import { Session } from "inspector";
+import LoginCard from "../components/Utility/LoginCard";
 
 function Profile() {
   const [session, setSession] = useState<Session | any>(null);
@@ -19,12 +20,8 @@ function Profile() {
 
   return (
     <div>
-      <TopBar>
-        <ProfileCard session={session} />
-      </TopBar>
-      <Main>
-        <MyPosts />
-      </Main>
+      <TopBar>{session && <ProfileCard session={session} />}</TopBar>
+      <Main>{session ? <MyPosts /> : <LoginCard />}</Main>
     </div>
   );
 }

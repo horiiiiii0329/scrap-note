@@ -7,20 +7,14 @@ import ArticleItemCard from "./ArticleItemCard";
 function ArticleItem() {
   const appCtx = useContext(AppWrapper);
 
-  useEffect(() => {
-    const user = supabase.auth.user();
-    const fetchData = async () => {
-      const data = await appCtx.fetchPosts();
-    };
-    if (user?.id) {
-      fetchData();
-    }
-  }, [appCtx]);
-
   async function deletePost(id: string) {
     await supabase.from("save").delete().match({ id });
     appCtx.fetchSelectedTitle();
   }
+
+  useEffect(() => {
+    appCtx.fetchPosts();
+  }, []);
 
   return (
     <div className={styles.content_wrapper}>
