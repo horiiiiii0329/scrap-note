@@ -15,8 +15,7 @@ function ArticleItem() {
     if (user?.id) {
       fetchData();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [appCtx]);
 
   async function deletePost(id: string) {
     await supabase.from("save").delete().match({ id });

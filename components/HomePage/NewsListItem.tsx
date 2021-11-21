@@ -32,8 +32,8 @@ function NewsListItem({ item }: Item) {
     time: string;
   }) {
     try {
+      if (status) return;
       setStatus(false);
-      const user = supabase.auth.user();
 
       const { data, error } = await supabase
         .from("save")

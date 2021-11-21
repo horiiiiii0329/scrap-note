@@ -8,7 +8,6 @@ import {
   ChevronRightIcon,
   ChevronLeftIcon,
 } from "@heroicons/react/outline";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import Link from "next/dist/client/link";
 
@@ -18,7 +17,6 @@ const navBarIconStyle = { width: "30px", height: "30px", cursor: "pointer" };
 
 function Header() {
   const [isExpand, setIsExpand] = useState(false);
-  const router = useRouter();
 
   return (
     <header
@@ -29,10 +27,6 @@ function Header() {
         <Link href="/">
           <LightBulbIcon
             style={{ width: "50px", height: "50px", cursor: "pointer" }}
-            onClick={() => {
-              router.push("/");
-              router.reload();
-            }}
           />
         </Link>
       </div>
