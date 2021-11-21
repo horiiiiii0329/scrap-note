@@ -11,6 +11,9 @@ interface NewsList {
   time: string;
   company: string;
   link: string;
+  title: string;
+  user_name: string;
+  inserted_at: Date;
 }
 
 interface CompanyList {
@@ -89,12 +92,14 @@ function AllArticle() {
     setTitle(data || []);
   }
 
+  console.log(posts);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.content_wrapper}>
         {posts.map((post: NewsList, index: number) => (
           <AllArticleList
-            title={post.headline}
+            title={post.headline || post.title}
             time={post.time}
             company={post.company}
             key={index}
@@ -128,16 +133,16 @@ function AllArticle() {
 
         {activeContent1 && (
           <>
-            <div onClick={() => fetchFilteredPosts()}>
+            <div>
               <div className={styles.scraplist}>
                 <div className={styles.scrapelist__count}>
                   <p>00</p>
                 </div>
                 <div
                   className={styles.scraplist__title}
-                  onClick={() => fetchPosts()}
+                  onClick={() => fetchFilteredPosts()}
                 >
-                  <p>投稿</p>
+                  <p>みんなの記事</p>
                 </div>
               </div>
             </div>

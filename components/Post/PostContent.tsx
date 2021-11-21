@@ -27,7 +27,7 @@ function PostContent() {
       .from("posts")
       .insert([{ title, content, user_id: user?.id, user_email: user?.email }])
       .single();
-    router.push(`posts/${data.id}`);
+    router.push(`post/${data.id}`);
   }
 
   return (
