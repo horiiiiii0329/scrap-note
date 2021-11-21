@@ -13,7 +13,8 @@ interface NewsList {
   link: string;
   title: string;
   user_name: string;
-  inserted_at: Date;
+  inserted_at: string;
+  id: string;
 }
 
 interface CompanyList {
@@ -100,10 +101,10 @@ function AllArticle() {
         {posts.map((post: NewsList, index: number) => (
           <AllArticleList
             title={post.headline || post.title}
-            time={post.time}
+            time={post.time || post.inserted_at.slice(0, 10)}
             company={post.company}
             key={index}
-            link={post.link}
+            link={post.link || `/post/${post.id}`}
           />
         ))}
       </div>
