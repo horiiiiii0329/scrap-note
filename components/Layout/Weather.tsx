@@ -1,9 +1,6 @@
 import Image from "next/image";
+import { IWeatherCard } from "../../type";
 import styles from "./Weather.module.scss";
-
-interface IObjectKeys {
-  [key: string]: string | number;
-}
 
 interface Weather {
   dt: number;
@@ -20,7 +17,7 @@ interface Weather {
 
 const week = ["日", "月", "火", "水", "木", "金", "土"];
 
-function Weather({ weatherNews }: any) {
+function Weather({ weatherNews }: IWeatherCard | any) {
   return (
     <div className={styles.weather__weekly}>
       <ul className={styles.weather__weekly__list}>
