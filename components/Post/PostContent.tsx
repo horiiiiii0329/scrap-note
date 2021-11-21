@@ -6,11 +6,6 @@ import "easymde/dist/easymde.min.css";
 import dynamic from "next/dynamic";
 import { v4 as uuid } from "uuid";
 
-type Props = {
-  value: string;
-  onClick: Function;
-};
-
 const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
   ssr: false,
 });
