@@ -23,13 +23,13 @@ function Header() {
       className={styles.header}
       style={{ width: isExpand ? "200px" : "80px" }}
     >
-      <div className={styles.Icon}>
-        <Link href="/">
+      <Link href="/">
+        <div className={styles.Icon}>
           <LightBulbIcon
             style={{ width: "50px", height: "50px", cursor: "pointer" }}
           />
-        </Link>
-      </div>
+        </div>
+      </Link>
       <nav>
         <ul>
           <Link href="/">
