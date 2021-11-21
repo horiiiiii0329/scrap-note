@@ -10,6 +10,7 @@ import {
 } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Link from "next/dist/client/link";
 
 import styles from "./Header.module.scss";
 
@@ -25,96 +26,88 @@ function Header() {
       style={{ width: isExpand ? "200px" : "80px" }}
     >
       <div className={styles.Icon}>
-        <LightBulbIcon
-          style={{ width: "50px", height: "50px", cursor: "pointer" }}
-          onClick={() => {
-            router.push("/");
-            router.reload();
-          }}
-        />
+        <Link href="/">
+          <LightBulbIcon
+            style={{ width: "50px", height: "50px", cursor: "pointer" }}
+            onClick={() => {
+              router.push("/");
+              router.reload();
+            }}
+          />
+        </Link>
       </div>
       <nav>
         <ul>
-          <li
-            onClick={() => {
-              router.push("/");
-            }}
-          >
-            <span>
-              <NewspaperIcon style={navBarIconStyle} />
-            </span>
-            <span
-              style={{
-                opacity: isExpand ? "1" : "0",
-              }}
-            >
-              ホーム
-            </span>
-          </li>
-          <li
-            onClick={() => {
-              router.push("/note");
-            }}
-          >
-            <span>
-              <ScissorsIcon style={navBarIconStyle} />
-            </span>
-            <span
-              style={{
-                opacity: isExpand ? "1" : "0",
-              }}
-            >
-              クリップした記事
-            </span>
-          </li>
-          <li
-            onClick={() => {
-              router.push("/newspublic");
-            }}
-          >
-            <span>
-              <CloudIcon style={navBarIconStyle} />
-            </span>
-            <span
-              style={{
-                opacity: isExpand ? "1" : "0",
-              }}
-            >
-              みんなの記事
-            </span>
-          </li>
-          <li
-            onClick={() => {
-              router.push("/post");
-            }}
-          >
-            <span>
-              <PencilIcon style={navBarIconStyle} />
-            </span>
-            <span
-              style={{
-                opacity: isExpand ? "1" : "0",
-              }}
-            >
-              記事の作成
-            </span>
-          </li>
-          <li
-            onClick={() => {
-              router.push("/profile");
-            }}
-          >
-            <span>
-              <UserIcon style={navBarIconStyle} />
-            </span>
-            <span
-              style={{
-                opacity: isExpand ? "1" : "0",
-              }}
-            >
-              プロフィール
-            </span>
-          </li>
+          <Link href="/">
+            <li>
+              <span>
+                <NewspaperIcon style={navBarIconStyle} />
+              </span>
+              <span
+                style={{
+                  opacity: isExpand ? "1" : "0",
+                }}
+              >
+                ホーム
+              </span>
+            </li>
+          </Link>
+          <Link href="/note">
+            <li>
+              <span>
+                <ScissorsIcon style={navBarIconStyle} />
+              </span>
+              <span
+                style={{
+                  opacity: isExpand ? "1" : "0",
+                }}
+              >
+                クリップした記事
+              </span>
+            </li>
+          </Link>
+          <Link href="/newspublic">
+            <li>
+              <span>
+                <CloudIcon style={navBarIconStyle} />
+              </span>
+              <span
+                style={{
+                  opacity: isExpand ? "1" : "0",
+                }}
+              >
+                みんなの記事
+              </span>
+            </li>
+          </Link>
+          <Link href="/post">
+            <li>
+              <span>
+                <PencilIcon style={navBarIconStyle} />
+              </span>
+              <span
+                style={{
+                  opacity: isExpand ? "1" : "0",
+                }}
+              >
+                記事の作成
+              </span>
+            </li>
+          </Link>
+          <Link href="/profile">
+            <li>
+              <span>
+                <UserIcon style={navBarIconStyle} />
+              </span>
+              <span
+                style={{
+                  opacity: isExpand ? "1" : "0",
+                }}
+              >
+                プロフィール
+              </span>
+            </li>
+          </Link>
         </ul>
       </nav>
       <div>
