@@ -20,7 +20,7 @@ interface CompanyList {
 function AllArticle() {
   const [posts, setPosts] = useState<NewsList[]>([]);
   const [titles, setTitle] = useState<CompanyList[]>([]);
-  const [company, setCompany] = useState([]);
+  const [company, setCompany] = useState<string[]>([]);
   const [activeContent1, setActiveContent1] = useState(true);
   const [activeContent2, setActiveContent2] = useState(false);
 
@@ -52,7 +52,6 @@ function AllArticle() {
     setPosts(data || []);
   }
 
-  console.log(posts);
   async function fetchFilteredTitlePosts(title: string) {
     const { data } = await supabase
       .from("save")
@@ -74,7 +73,7 @@ function AllArticle() {
   async function fetchCompany() {
     const { data } = await supabase.from("save").select("company");
 
-    let unique = [] as any;
+    let unique: string[] = [];
     data?.forEach((item) => {
       if (!unique.includes(item.company)) {
         unique.push(item.company);
