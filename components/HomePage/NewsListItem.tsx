@@ -14,6 +14,13 @@ interface Item {
   };
 }
 
+interface ItemToSave {
+  company: string;
+  headline: string;
+  link: string;
+  time: string;
+}
+
 function NewsListItem({ item }: Item) {
   const [status, setStatus] = useState(false);
   const [data, setData] = useState<string[] | null>([]);
@@ -21,35 +28,24 @@ function NewsListItem({ item }: Item) {
   const user = supabase.auth.user();
 
   useEffect(() => {
-    const user = supabase.auth.user();
-    async function fetchData() {
-      const { data } = await supabase
-        .from("save")
-        .select("headline")
-        .filter("user_id", "eq", user?.id);
-
-      setData(data);
-    }
-
     fetchData();
+    if (data) {
+      const checked = data.some((headline) => headline === item.title);
+      setStatus(checked);
+    }
   }, []);
 
-  if (data) {
-    const checked = data.some((headline) => headline === item.title);
-    setStatus(checked);
+  async function fetchData() {
+    const user = supabase.auth.user();
+    const { data } = await supabase
+      .from("save")
+      .select("headline")
+      .filter("user_id", "eq", user?.id);
+
+    setData(data);
   }
 
-  async function savePost({
-    company,
-    headline,
-    link,
-    time,
-  }: {
-    company: string;
-    headline: string;
-    link: string;
-    time: string;
-  }) {
+  async function savePost({ company, headline, link, time }: ItemToSave) {
     try {
       if (status) return;
       setStatus(false);
