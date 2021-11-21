@@ -3,14 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { supabase } from "../../api";
 import AppWrapper from "../../lib/state";
 import { DotsHorizontalIcon } from "@heroicons/react/solid";
-
-interface NewsList {
-  id: string;
-  insertat: string;
-  headline: string;
-  link: string;
-  title: string;
-}
+import { NewsList } from "../../type";
 
 function ArticleItemCard({
   item,
@@ -21,7 +14,7 @@ function ArticleItemCard({
 }) {
   const [showModal, setShowModal] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
-  const [posts, setPosts] = useState([] as any);
+  const [posts, setPosts] = useState<NewsList[] | any>([]);
 
   const appCtx = useContext(AppWrapper);
 
