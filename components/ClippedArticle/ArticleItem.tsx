@@ -1,10 +1,12 @@
 import styles from "./ArticleItem.module.scss";
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { supabase } from "../../api";
 import AppWrapper from "../../lib/state";
 import ArticleItemCard from "./ArticleItemCard";
+import { NewsList } from "../../type";
 
 function ArticleItem() {
+  const [loading, setisLoading] = useState(true);
   const appCtx = useContext(AppWrapper);
 
   async function deletePost(id: string) {
@@ -14,11 +16,12 @@ function ArticleItem() {
 
   useEffect(() => {
     appCtx.fetchPosts();
+    setisLoading(false);
   }, []);
 
   return (
     <div className={styles.content_wrapper}>
-      {appCtx.posts.map((item: any, index: number) => {
+      {appCtx.posts.map((item: NewsList, index: number) => {
         return (
           <ArticleItemCard
             item={item}

@@ -30,3 +30,11 @@ export interface IWeatherCard {
   };
   dt_txt: string;
 }
+
+export interface NewsList {
+  id: string;
+  insertat: string;
+  headline: string;
+  link: string;
+  title: string;
+}
