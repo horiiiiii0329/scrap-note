@@ -1,6 +1,5 @@
 import styles from "./ArticleTypeItem.module.scss";
 import { PlusIcon } from "@heroicons/react/outline";
-
 import { supabase } from "../../api";
 import { useState, useEffect, useContext } from "react";
 import AppWrapper from "../../lib/state";
@@ -11,7 +10,7 @@ interface Title {
 
 function ArticleTypeItem() {
   const [title, setTitle] = useState<Title>({ title: "" });
-  const [posts, setPosts] = useState([] as any);
+  const [posts, setPosts] = useState<string[] | any>([]);
 
   const appCtx = useContext(AppWrapper);
 
