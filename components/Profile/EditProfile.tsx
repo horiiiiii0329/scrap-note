@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { supabase } from "../../api";
 import styles from "./EditProfile.module.scss";
 import { useRouter } from "next/router";
+import { Session } from "@supabase/gotrue-js";
 
-export default function EditProfile({ session }: any) {
+export default function EditProfile({ session }: Session | any) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState<string>("");
   const router = useRouter();

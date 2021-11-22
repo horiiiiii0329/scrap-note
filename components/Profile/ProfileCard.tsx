@@ -1,9 +1,10 @@
+import { Session } from "@supabase/gotrue-js";
 import { useState, useEffect } from "react";
 import { supabase } from "../../api";
 import EditProfile from "./EditProfile";
 import styles from "./ProfileCard.module.scss";
 
-function ProfileCard({ session }: any) {
+function ProfileCard({ session }: Session | any) {
   const [userName, setUserName] = useState(null);
   const [showModal, setShowModal] = useState(false);
 

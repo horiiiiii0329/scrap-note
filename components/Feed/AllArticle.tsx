@@ -1,4 +1,3 @@
-import { ChevronDownIcon } from "@heroicons/react/solid";
 import { useState, useEffect } from "react";
 import { supabase } from "../../api";
 

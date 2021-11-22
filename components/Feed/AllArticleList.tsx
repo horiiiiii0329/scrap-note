@@ -1,5 +1,4 @@
 import styles from "./AllArticleList.module.scss";
-import { useState } from "react";
 
 function AllArticleLIst({
   title,
