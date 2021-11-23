@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { arrayBuffer } from "stream/consumers";
 import { supabase } from "../../api";
 
 import styles from "./AllArticle.module.scss";
@@ -16,19 +17,27 @@ interface NewsList {
   id: string;
 }
 
-interface CompanyList {
+interface ScrapList {
   title: string;
 }
 
 function AllArticle() {
-  const [posts, setPosts] = useState<NewsList[]>([]);
-  const [titles, setTitle] = useState<CompanyList[]>([]);
-  const company = ["朝日新聞", "毎日新聞", "読売新聞", "産経新聞", "日経新聞"];
+  const [posts, setPosts] = useState<NewsList[] | any>([]);
+  const [titles, setTitle] = useState<ScrapList[]>([]);
   const [activeContent1, setActiveContent1] = useState(true);
   const [activeContent2, setActiveContent2] = useState(false);
 
+  const company = ["朝日新聞", "毎日新聞", "読売新聞", "産経新聞", "日経新聞"];
+
   useEffect(() => {
     fetchTitle();
+    const mySubscription = supabase
+      .from("save-scrap-title")
+      .on("*", () => fetchTitle())
+      .subscribe();
+    return () => {
+      supabase.removeSubscription(mySubscription);
+    };
   }, []);
 
   useEffect(() => {
@@ -40,12 +49,14 @@ function AllArticle() {
     return () => {
       supabase.removeSubscription(mySubscription);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function fetchPosts() {
     const { data } = await supabase.from("save").select("*");
 
     setPosts(data || []);
+    filteredPosts();
   }
 
   async function fetchFilteredPosts() {
@@ -70,6 +81,7 @@ function AllArticle() {
       .filter("company", "eq", item);
 
     setPosts(data || []);
+    filteredPosts();
   }
 
   async function fetchTitle() {
@@ -78,8 +90,13 @@ function AllArticle() {
     setTitle(data || []);
   }
 
-  async function CountFetchedTitle() {
-    posts;
+  function filteredPosts() {
+    const uniqueArray = [
+      ...new Map(
+        posts.map((item: { [x: string]: any }) => [item["headline"], item])
+      ).values(),
+    ];
+    setPosts(uniqueArray);
   }
 
   return (
@@ -144,7 +161,7 @@ function AllArticle() {
         )}
 
         {activeContent2 &&
-          titles.map((title: CompanyList, index: number) => (
+          titles.map((title: ScrapList, index: number) => (
             <div
               key={index}
               onClick={() => fetchFilteredTitlePosts(title.title)}
