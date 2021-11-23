@@ -17,6 +17,10 @@
   p:nth-child(2) {
     padding-right: 30px;
   }
+
+  @media screen and (max-width: 1280px) {
+    display: none;
+  }
 }
 
 .main {
@@ -32,5 +36,20 @@
   .main__right {
     width: 50%;
     overflow-y: scroll;
+  }
+
+  @media screen and (max-width: 1280px) {
+    height: 100%;
+    flex-direction: column;
+
+    .main__left {
+      width: 100%;
+      overflow-y: visible;
+    }
+
+    .main__right {
+      width: 100%;
+      overflow-y: visible;
+    }
   }
 }

@@ -33,11 +33,11 @@ function MobileHeader() {
         <div onClick={() => setShowModal(!showModal)}>
           {showModal ? (
             <XIcon
-              style={{ width: "40px", height: "40px", cursor: "pointer" }}
+              style={{ width: "30px", height: "30px", cursor: "pointer" }}
             />
           ) : (
             <MenuIcon
-              style={{ width: "40px", height: "40px", cursor: "pointer" }}
+              style={{ width: "30px", height: "30px", cursor: "pointer" }}
             />
           )}
         </div>
@@ -46,19 +46,19 @@ function MobileHeader() {
         <nav className={styles.menu}>
           <ul>
             <Link href="/">
-              <li>ホーム</li>
+              <li onClick={() => setShowModal(false)}>ホーム</li>
             </Link>
             <Link href="/note">
-              <li>クリップした記事</li>
+              <li onClick={() => setShowModal(false)}>クリップした記事</li>
             </Link>
             <Link href="/newsoublic">
-              <li>みんなの記事</li>
+              <li onClick={() => setShowModal(false)}>みんなの記事</li>
             </Link>
             <Link href="/post">
-              <li>作成</li>
+              <li onClick={() => setShowModal(false)}>作成</li>
             </Link>
             <Link href="/profile">
-              <li>プロフィール</li>
+              <li onClick={() => setShowModal(false)}>プロフィール</li>
             </Link>
           </ul>
         </nav>
