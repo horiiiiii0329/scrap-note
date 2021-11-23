@@ -6,12 +6,23 @@ function AllArticleLIst({
   time,
   company,
   link,
+  posts,
 }: {
   title: string;
   time: string;
   company: string;
   link: string;
+  posts: [
+    {
+      headline: string;
+    }
+  ];
 }) {
+  const count = posts.reduce(
+    (counter, post) => (post.headline === title ? (counter += 1) : counter),
+    0
+  );
+
   return (
     <div className={styles.wrapper}>
       <a href={link} target="_blank" rel="noopener noreferrer">
@@ -22,6 +33,10 @@ function AllArticleLIst({
 
         <time className={styles.time}>発行日：{time}</time>
       </a>
+      <div>
+        <p>{count}</p>
+        <p></p>
+      </div>
     </div>
   );
 }

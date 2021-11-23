@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../api";
 import LoadingThreeDots from "../Utility/LoadingThreeDots";
-
 import styles from "./AllArticle.module.scss";
 import AllArticleList from "./AllArticleList";
 import AllArticleType from "./AllArticleType";
@@ -57,7 +56,7 @@ function AllArticle() {
   async function fetchPosts() {
     setIsLoading(true);
     const { data } = await supabase.from("save").select("*");
-
+    setPosts(data);
     filteredPostsFunction(data);
     setIsLoading(false);
   }
@@ -104,6 +103,7 @@ function AllArticle() {
         data?.map((item: { [x: string]: any }) => [item["headline"], item])
       ).values(),
     ];
+
     setFilteredPosts(uniqueArray);
   }
 
@@ -122,6 +122,7 @@ function AllArticle() {
               company={post.company}
               key={index}
               link={post.link || `/post/${post.id}`}
+              posts={posts}
             />
           ))
         )}
