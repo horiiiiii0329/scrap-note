@@ -23,17 +23,13 @@
     cursor: pointer;
 
     @media screen and (max-width: 1280px) {
-      padding: 0;
+      padding: 20px 50px;
     }
-  }
-
-  button:hover {
-    background-color: black;
-    color: white;
   }
 
   @media screen and (max-width: 1280px) {
     position: static;
+    border-bottom: solid black 1px;
   }
 }
 
