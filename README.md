@@ -1,6 +1,6 @@
-# NewsPaper for You - SNS like news compare app
+# ScrapppNoteee - SNS like News Comparing app inspired by scrapbook
 
-News app based on multiple real world news resources created with  
+An app based on multiple real world news resources created with  
 Next.js, Supabase.io and AWS
 
 > Live demo [_here_](https://scrap-note.vercel.app/).
@@ -19,40 +19,43 @@ Next.js, Supabase.io and AWS
 
 ## General Information
 
-- User can compare news of two biggest news company in japan, while be able to
-  interact with other user by basic CRUD function
-- Information is overloaded these days. Though, picking a right tool to update your information is a matter of life and death. To make you choose a right channel to get information, I decide to make this app which could make user to choose resources while preventing from obtaining biased information. Also, user could know what other user saved and read.
+- User can compare several news published by news company in japan which updated everyday, and be able to store news in your scrapbook
+- User can post article by using WYSIWYG editor
+- Basic CRUD function
+- Information is overloaded these days. Though, picking a right tool to update your information is so crucial. To make you choose a right resouce to get information, I decide to make this app which could make user to compare each news resource. Also, user could know what other user saved and read. I hope anyone could get an good quality news by using this app.
 
 ## Architecture
 
-![Example screenshot](./a.drawio.png)
+![Example screenshot](./aaaa.png)
 
 ## Technologies Used
 
-- Next.js - version 11.1.2
-- SASS - version 1.39
-- storybook - version 6.3.8
-- puppeteer - 10.4.0
+- Next.js - version 12.0.3
+- SASS - version 1.42.4
+- storybook - version 6.3.12
 - supabase - 1.22.6
+- TypeScript - 4.4.4
 
 ## Features
 
-- User can compare newswebsite side by side which update every 6 hours
+- User can compare newswebsite side by side which update everyday
 - User can save news title and link after logged in
 - User can read news title which other user saved
 - User can write a blog by using react simple mde editor
 
 ## GIF
 
-- Overview
+- Home
 
-  ![Example screenshot](https://media.giphy.com/media/KpTbqo1kqOZ9LvjTME/giphy.gif)
+  ![Example screenshot](https://media.giphy.com/media/irNd1P4ZkgFeMcEgQj/giphy.gif)
 
-- Saving, viewing, and adding to scrap book
+- Scrapbook
 
-  ![Example screenshot](https://media.giphy.com/media/nEjcL6KGUwQO86TzUh/giphy.gif)
+  ![Example screenshot](https://media.giphy.com/media/3OgHcwWwJkdczzlrFO/giphy.gif)
 
-<!-- If you have screenshots you'd like to share, include them here. -->
+- Publicfeed
+
+  ![Example screenshot](https://media.giphy.com/media/2gcgGKb0DgxYjbKg6o/giphy.gif)
 
 ## Project Status
 
@@ -60,16 +63,14 @@ Project is in progress...
 
 ## Room for Improvement
 
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
 Room for improvement:
 
-- UI design for smartphone
-- Logic for improving UX
+- editor which easy to use
 
 To do:
 
-- state of clipped which stored in database
+- UI design for smartphone
+- improve react-mde-editor to more user friendly editor
 
 <!-- Optional -->
 <!-- ## License -->

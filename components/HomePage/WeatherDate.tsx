@@ -3,9 +3,11 @@ import Weather from "../Layout/Weather";
 import { useState, useEffect } from "react";
 import moment from "moment";
 import "moment/locale/ja";
+import { IWeatherCard } from "../../type";
+
 moment.locale("ja");
 
-function WeatherDate({ weatherNews }: any) {
+function WeatherDate({ weatherNews }: IWeatherCard | any) {
   const [dateState, setDateState] = useState(
     moment().format("MMMM Do YYYY, h:mm:ss a")
   );

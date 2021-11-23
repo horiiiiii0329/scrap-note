@@ -1,31 +1,27 @@
 import styles from "./ArticleItem.module.scss";
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { supabase } from "../../api";
 import AppWrapper from "../../lib/state";
 import ArticleItemCard from "./ArticleItemCard";
+import { NewsList } from "../../type";
 
 function ArticleItem() {
+  const [loading, setisLoading] = useState(true);
   const appCtx = useContext(AppWrapper);
-
-  useEffect(() => {
-    const user = supabase.auth.user();
-    const fetchData = async () => {
-      const data = await appCtx.fetchPosts();
-    };
-    if (user?.id) {
-      fetchData();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   async function deletePost(id: string) {
     await supabase.from("save").delete().match({ id });
     appCtx.fetchSelectedTitle();
   }
 
+  useEffect(() => {
+    appCtx.fetchPosts();
+    setisLoading(false);
+  }, []);
+
   return (
     <div className={styles.content_wrapper}>
-      {appCtx.posts.map((item: any, index: number) => {
+      {appCtx.posts.map((item: NewsList, index: number) => {
         return (
           <ArticleItemCard
             item={item}

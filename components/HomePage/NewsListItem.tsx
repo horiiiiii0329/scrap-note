@@ -14,26 +14,41 @@ interface Item {
   };
 }
 
+interface ItemToSave {
+  company: string;
+  headline: string;
+  link: string;
+  time: string;
+}
+
 function NewsListItem({ item }: Item) {
   const [status, setStatus] = useState(false);
-
+  const [data, setData] = useState<string[] | null>([]);
   const appCtx = useContext(AppWrapper);
   const user = supabase.auth.user();
 
-  async function savePost({
-    company,
-    headline,
-    link,
-    time,
-  }: {
-    company: string;
-    headline: string;
-    link: string;
-    time: string;
-  }) {
+  useEffect(() => {
+    fetchData();
+    if (data) {
+      const checked = data.some((headline) => headline === item.title);
+      setStatus(checked);
+    }
+  }, []);
+
+  async function fetchData() {
+    const user = supabase.auth.user();
+    const { data } = await supabase
+      .from("save")
+      .select("headline")
+      .filter("user_id", "eq", user?.id);
+
+    setData(data);
+  }
+
+  async function savePost({ company, headline, link, time }: ItemToSave) {
     try {
+      if (status) return;
       setStatus(false);
-      const user = supabase.auth.user();
 
       const { data, error } = await supabase
         .from("save")

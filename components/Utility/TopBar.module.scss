@@ -4,5 +4,11 @@
   width: 100%;
   position: relative;
   padding-left: 80px;
-  z-index: 3;
+  z-index: 1;
+
+  @media screen and (max-width: 1280px) {
+    height: auto;
+    border-bottom: none;
+    padding-left: 0px;
+  }
 }

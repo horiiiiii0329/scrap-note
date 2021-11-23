@@ -40,7 +40,7 @@ export default function MyPosts() {
             <Link href={`/edit/${post.id}`}>
               <a>編集</a>
             </Link>
-            <Link href={`/posts/${post.id}`}>
+            <Link href={`/post/${post.id}`}>
               <a>詳細を見る</a>
             </Link>
             <button onClick={() => deletePost(post.id)}>消去</button>

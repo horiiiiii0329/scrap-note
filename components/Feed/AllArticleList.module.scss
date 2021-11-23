@@ -2,10 +2,15 @@
   border-bottom: solid black 1px;
   padding-left: 10px;
   height: 70px;
-
+  display: flex;
+  justify-content: space-between;
   padding-bottom: 10px;
+
   .title {
     padding-top: 10px;
+    @media screen and (max-width: 1280px) {
+      font-size: 14px;
+    }
   }
 
   .company {
@@ -15,5 +20,29 @@
 
   .time {
     font-size: 10px;
+    @media screen and (max-width: 1280px) {
+      font-size: 8px;
+    }
+  }
+
+  .iconList {
+    display: flex;
+    align-items: flex-end;
+    padding-right: 20px;
+    margin-bottom: -5px;
+
+    .count {
+      margin-right: 30px;
+      color: gray;
+      position: relative;
+
+      span {
+        color: black;
+        font-size: 13px;
+        position: absolute;
+        bottom: 3px;
+        right: -10px;
+      }
+    }
   }
 }

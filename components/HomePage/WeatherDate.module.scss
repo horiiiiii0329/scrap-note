@@ -8,13 +8,15 @@
     display: block;
     height: 200px;
     align-items: center;
+    border-top: none;
   }
 }
 
 .bottom_left {
   width: 70%;
   @media screen and (max-width: 1280px) {
-    display: none;
+    width: 100%;
+    margin-top: 30px;
     align-items: center;
   }
 }
@@ -26,4 +28,11 @@
   width: 30%;
   border-left: solid black 1px;
   height: 100%;
+
+  @media screen and (max-width: 1280px) {
+    width: 100%;
+    margin-top: 30px;
+    align-items: center;
+    border-top: solid black 1px;
+  }
 }

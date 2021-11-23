@@ -3,7 +3,6 @@ import { ChevronDownIcon } from "@heroicons/react/outline";
 import Head from "next/head";
 import NewsListItem from "../components/HomePage/NewsListItem";
 import Main from "../components/Layout/Main";
-import LoadingThreeDots from "../components/Utility/LoadingThreeDots";
 import TopBar from "../components/Utility/TopBar";
 import styles from "../styles/Home.module.scss";
 import WeatherDate from "../components/HomePage/WeatherDate";
@@ -31,7 +30,6 @@ const Home: NextPage = ({
   sankeiData,
   nikkeiData,
 }: any) => {
-  const [isLoading, setIsLoading] = useState(false);
   const [leftIsOpen, setLeftIsOpen] = useState(true);
   const [rightIsOpen, setRightIsOpen] = useState(true);
 
@@ -41,8 +39,8 @@ const Home: NextPage = ({
   // const [sankeiData, setSankeiData] = useState(DUMMY_DATA);
   // const [yomiuriData, setYomiuriData] = useState(DUMMY_DATA);
 
-  const [leftPickedNews, setLeftPickedNews] = useState([] as any);
-  const [rightPickedNews, setRightPickedNews] = useState([] as any);
+  const [leftPickedNews, setLeftPickedNews] = useState([]);
+  const [rightPickedNews, setRightPickedNews] = useState([]);
 
   const leftNewsData = [asahiData, mainichiData];
   const rightNewsData = [yomiuriData, sankeiData, nikkeiData];
@@ -139,7 +137,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const weatherJson = await weatherRes.json();
   const weatherNews = weatherJson;
 
-  //get news list
+  // get news list
   const mData = await axios.get(
     "https://10x4sx0ksf.execute-api.us-east-1.amazonaws.com/default/fetchMainichi"
   );
@@ -171,7 +169,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       sankeiData: sData.data.Items,
       nikkeiData: nData.data.Items,
     },
-    revalidate: 60 * 60 * 24,
+    // revalidate: 60 * 60 * 24,
   };
 };
 

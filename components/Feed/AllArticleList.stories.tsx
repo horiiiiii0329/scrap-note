@@ -14,7 +14,10 @@ const Template = () => (
     time="18：26"
     company="琉球新聞"
     link="/"
+    posts={data}
   />
 );
+
+const data: [{ headline: string }] = [{ headline: "lol" }];
 
 export const Default = Template.bind({});

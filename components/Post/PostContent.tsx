@@ -6,11 +6,6 @@ import "easymde/dist/easymde.min.css";
 import dynamic from "next/dynamic";
 import { v4 as uuid } from "uuid";
 
-type Props = {
-  value: string;
-  onClick: Function;
-};
-
 const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
   ssr: false,
 });
@@ -32,7 +27,7 @@ function PostContent() {
       .from("posts")
       .insert([{ title, content, user_id: user?.id, user_email: user?.email }])
       .single();
-    router.push(`posts/${data.id}`);
+    router.push(`post/${data.id}`);
   }
 
   return (

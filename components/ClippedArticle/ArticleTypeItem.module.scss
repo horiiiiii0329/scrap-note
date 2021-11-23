@@ -2,6 +2,10 @@
   width: 100%;
   height: calc(100vh - 85px);
 
+  @media screen and (max-width: 1280px) {
+    height: 100%;
+  }
+
   .scraplist {
     border-bottom: solid 1px black;
     display: flex;
@@ -43,11 +47,10 @@
 
     .addscrapicon {
       height: 100%;
-      border-right: solid 1px black;
+      width: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 74px;
 
       &:hover {
         background-color: black;
@@ -58,7 +61,7 @@
     input {
       border: none;
       font-size: 24px;
-      padding-left: 10px;
+      padding-left: 5px;
       height: 100%;
       align-items: center;
       width: 100%;
@@ -75,4 +78,9 @@
 .scraplist__wrapper {
   overflow-y: scroll;
   max-height: calc(100vh - (140px + 85px + 140px));
+
+  @media screen and (max-width: 1280px) {
+    overflow-y: visible;
+    max-height: 100%;
+  }
 }

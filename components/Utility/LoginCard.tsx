@@ -25,24 +25,6 @@ function LoginCard() {
     }
   };
 
-  async function signIn() {
-    const { error, data } = await supabase.auth.signIn({
-      email,
-    });
-    if (error) {
-      console.log({ error });
-    } else {
-      setSubmitted(true);
-    }
-  }
-  if (submitted) {
-    return (
-      <div className={styles.container}>
-        <h1>Please check your email to sign in</h1>
-      </div>
-    );
-  }
-
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.icon}>
@@ -59,15 +41,21 @@ function LoginCard() {
         />
       </div>
       <div>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            signIn();
-          }}
-          disabled={loading}
-        >
-          <span>{loading ? "送信中。。。" : "送信"}</span>
-        </button>
+        {!loading ? (
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              handleLogin(email);
+            }}
+            disabled={loading}
+          >
+            <span>送信</span>
+          </button>
+        ) : (
+          <span className={styles.loader}>
+            <LoadingThreeDots />
+          </span>
+        )}
       </div>
     </div>
   );
