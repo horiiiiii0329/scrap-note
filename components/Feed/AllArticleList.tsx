@@ -1,4 +1,5 @@
 import styles from "./AllArticleList.module.scss";
+import { supabase } from "../../api";
 
 function AllArticleLIst({
   title,
