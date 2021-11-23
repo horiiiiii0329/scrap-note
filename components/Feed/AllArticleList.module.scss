@@ -4,10 +4,13 @@
   height: 70px;
   display: flex;
   justify-content: space-between;
-
   padding-bottom: 10px;
+
   .title {
     padding-top: 10px;
+    @media screen and (max-width: 1280px) {
+      font-size: 14px;
+    }
   }
 
   .company {
@@ -17,6 +20,9 @@
 
   .time {
     font-size: 10px;
+    @media screen and (max-width: 1280px) {
+      font-size: 8px;
+    }
   }
 
   .iconList {

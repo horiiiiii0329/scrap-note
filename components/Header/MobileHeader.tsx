@@ -51,7 +51,7 @@ function MobileHeader() {
             <Link href="/note">
               <li onClick={() => setShowModal(false)}>クリップした記事</li>
             </Link>
-            <Link href="/newsoublic">
+            <Link href="/newspublic">
               <li onClick={() => setShowModal(false)}>みんなの記事</li>
             </Link>
             <Link href="/post">
