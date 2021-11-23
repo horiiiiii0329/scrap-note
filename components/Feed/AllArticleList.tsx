@@ -41,11 +41,18 @@ function AllArticleLIst({
           <ScissorsIcon style={{ width: "13px", height: "13px" }} />
           <span>{count}</span>
         </p>
-        <p className={styles.share}>
-          <ShareIcon
-            style={{ width: "13px", height: "13px", cursor: "pointer" }}
-          />
-        </p>
+        <a
+          className="twitter-share-button"
+          href={`https://twitter.com/intent/tweet?text=${company}の「${title}」について興味がありました。&url=${link}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <p className={styles.share}>
+            <ShareIcon
+              style={{ width: "13px", height: "13px", cursor: "pointer" }}
+            />
+          </p>
+        </a>
       </div>
     </div>
   );
