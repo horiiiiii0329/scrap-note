@@ -3,7 +3,6 @@ import { ChevronDownIcon } from "@heroicons/react/outline";
 import Head from "next/head";
 import NewsListItem from "../components/HomePage/NewsListItem";
 import Main from "../components/Layout/Main";
-import LoadingThreeDots from "../components/Utility/LoadingThreeDots";
 import TopBar from "../components/Utility/TopBar";
 import styles from "../styles/Home.module.scss";
 import WeatherDate from "../components/HomePage/WeatherDate";
@@ -31,7 +30,6 @@ const Home: NextPage = ({
 // sankeiData,
 // nikkeiData,
 any) => {
-  const [isLoading, setIsLoading] = useState(false);
   const [leftIsOpen, setLeftIsOpen] = useState(true);
   const [rightIsOpen, setRightIsOpen] = useState(true);
 
@@ -169,7 +167,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       // sankeiData: sData.data.Items,
       // nikkeiData: nData.data.Items,
     },
-    revalidate: 60 * 60 * 24,
+    // revalidate: 60 * 60 * 24,
   };
 };
 
