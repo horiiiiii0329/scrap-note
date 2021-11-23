@@ -20,9 +20,9 @@ Next.js, Supabase.io and AWS
 ## General Information
 
 - User can compare several news published by news company in japan which updated everyday, and be able to store news in your scrapbook
-- User can see post article from an app by using WYSIWYG editor
+- User can post article by using WYSIWYG editor
 - Basic CRUD function
-- Information is overloaded these days. Though, picking a right tool to update your information is a matter of life and death. To make you choose a right channel to get information, I decide to make this app which could make user to choose resources while preventing from obtaining biased information. Also, user could know what other user saved and read.
+- Information is overloaded these days. Though, picking a right tool to update your information is so crucial. To make you choose a right resouce to get information, I decide to make this app which could make user to compare each news resource. Also, user could know what other user saved and read. I hope anyone could get an good quality news by using this app.
 
 ## Architecture
 
@@ -59,16 +59,14 @@ Project is in progress...
 
 ## Room for Improvement
 
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
 Room for improvement:
 
-- UI design for smartphone
+- editor which easy to use
 
 To do:
 
 - UI design for smartphone
-- improve user friendly editor
+- improve react-mde-editor to more user friendly editor
 
 <!-- Optional -->
 <!-- ## License -->
