@@ -45,13 +45,17 @@ Next.js, Supabase.io and AWS
 
 ## GIF
 
-- Overview
+- Home
 
-  ![Example screenshot](https://media.giphy.com/media/KpTbqo1kqOZ9LvjTME/giphy.gif)
+  ![Example screenshot](https://media.giphy.com/media/irNd1P4ZkgFeMcEgQj/giphy.gif)
 
-- Saving, viewing, and adding to scrap book
+- Scrapbook
 
-  ![Example screenshot](https://media.giphy.com/media/nEjcL6KGUwQO86TzUh/giphy.gif)
+  ![Example screenshot](https://media.giphy.com/media/3OgHcwWwJkdczzlrFO/giphy.gif)
+
+- Publicfeed
+
+  ![Example screenshot](https://media.giphy.com/media/2gcgGKb0DgxYjbKg6o/giphy.gif)
 
 ## Project Status
 
