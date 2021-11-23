@@ -1,5 +1,4 @@
 import styles from "./AllArticleList.module.scss";
-import { supabase } from "../../api";
 import { ScissorsIcon, ShareIcon } from "@heroicons/react/outline";
 
 function AllArticleLIst({

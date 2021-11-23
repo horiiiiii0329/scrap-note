@@ -1,6 +1,6 @@
-# NewsPaper for You - SNS like news compare app
+# ScrapppNoteee - SNS like News Comparing app inspired by scrapbook
 
-News app based on multiple real world news resources created with  
+An app based on multiple real world news resources created with  
 Next.js, Supabase.io and AWS
 
 > Live demo [_here_](https://scrap-note.vercel.app/).
@@ -19,25 +19,26 @@ Next.js, Supabase.io and AWS
 
 ## General Information
 
-- User can compare news of two biggest news company in japan, while be able to
-  interact with other user by basic CRUD function
+- User can compare several news published by news company in japan which updated everyday, and be able to store news in your scrapbook
+- User can see post article from an app by using WYSIWYG editor
+- Basic CRUD function
 - Information is overloaded these days. Though, picking a right tool to update your information is a matter of life and death. To make you choose a right channel to get information, I decide to make this app which could make user to choose resources while preventing from obtaining biased information. Also, user could know what other user saved and read.
 
 ## Architecture
 
-![Example screenshot](./a.drawio.png)
+![Example screenshot](./aaaa.png)
 
 ## Technologies Used
 
-- Next.js - version 11.1.2
-- SASS - version 1.39
-- storybook - version 6.3.8
-- puppeteer - 10.4.0
+- Next.js - version 12.0.3
+- SASS - version 1.42.4
+- storybook - version 6.3.12
 - supabase - 1.22.6
+- TypeScript - 4.4.4
 
 ## Features
 
-- User can compare newswebsite side by side which update every 6 hours
+- User can compare newswebsite side by side which update everyday
 - User can save news title and link after logged in
 - User can read news title which other user saved
 - User can write a blog by using react simple mde editor
@@ -52,8 +53,6 @@ Next.js, Supabase.io and AWS
 
   ![Example screenshot](https://media.giphy.com/media/nEjcL6KGUwQO86TzUh/giphy.gif)
 
-<!-- If you have screenshots you'd like to share, include them here. -->
-
 ## Project Status
 
 Project is in progress...
@@ -65,11 +64,11 @@ Include areas you believe need improvement / could be improved. Also add TODOs f
 Room for improvement:
 
 - UI design for smartphone
-- Logic for improving UX
 
 To do:
 
-- state of clipped which stored in database
+- UI design for smartphone
+- improve user friendly editor
 
 <!-- Optional -->
 <!-- ## License -->
