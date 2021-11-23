@@ -4,6 +4,12 @@
   position: relative;
   width: 50%;
 
+  @media screen and (max-width: 1280px) {
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+  }
+
   .articlecontent {
     border-bottom: solid 1px black;
     display: flex;

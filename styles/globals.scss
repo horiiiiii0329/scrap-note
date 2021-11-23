@@ -12,6 +12,10 @@ body {
   min-height: 100vh;
   overflow-y: hidden;
   box-sizing: border-box;
+
+  @media screen and (max-width: 1280px) {
+    overflow-y: visible;
+  }
 }
 
 a {
