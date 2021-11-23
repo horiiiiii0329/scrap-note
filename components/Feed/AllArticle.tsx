@@ -23,13 +23,12 @@ interface CompanyList {
 function AllArticle() {
   const [posts, setPosts] = useState<NewsList[]>([]);
   const [titles, setTitle] = useState<CompanyList[]>([]);
-  const [company, setCompany] = useState<string[]>([]);
+  const company = ["朝日新聞", "毎日新聞", "読売新聞", "産経新聞", "日経新聞"];
   const [activeContent1, setActiveContent1] = useState(true);
   const [activeContent2, setActiveContent2] = useState(false);
 
   useEffect(() => {
     fetchTitle();
-    fetchCompany();
   }, []);
 
   useEffect(() => {
@@ -73,26 +72,15 @@ function AllArticle() {
     setPosts(data || []);
   }
 
-  async function fetchCompany() {
-    const { data } = await supabase.from("save").select("company");
-
-    let unique: string[] = [];
-    data?.forEach((item) => {
-      if (!unique.includes(item.company)) {
-        unique.push(item.company);
-      }
-    });
-
-    setCompany(unique);
-  }
-
   async function fetchTitle() {
     const { data } = await supabase.from("save-scrap-title").select("*");
 
     setTitle(data || []);
   }
 
-  console.log(posts);
+  async function CountFetchedTitle() {
+    posts;
+  }
 
   return (
     <div className={styles.wrapper}>
