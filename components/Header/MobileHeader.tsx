@@ -7,62 +7,28 @@ import {
   UserIcon,
   ChevronRightIcon,
   ChevronLeftIcon,
-  menuIcon,
+  MenuIcon,
+  XIcon,
 } from "@heroicons/react/outline";
-import { MenuIcon } from "@heroicons/react/outline";
-import styles from "./TitleBar.module.scss";
-import { useState, useEffect, useContext } from "react";
-import { supabase } from "../../api";
-import { Session } from "@supabase/gotrue-js";
+import Link from "next/dist/client/link";
+import styles from "./MobileHeader.module.scss";
+import { useState, useEffect } from "react";
+
+const navBarIconStyle = { width: "30px", height: "30px", cursor: "pointer" };
 
 function MobileHeader() {
   const [showModal, setShowModal] = useState(false);
-  const [authState, setAuthenticatedState] = useState("");
-
-  const appCtx = useContext(AppWrapper);
-
-  useEffect(() => {
-    const { data: authListener } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        handleAuthChange(event, session);
-        if (event === "SIGNED_IN") {
-          setAuthenticatedState("authenticated");
-        }
-        if (event === "SIGNED_OUT") {
-          setAuthenticatedState("not-authenticated");
-        }
-      }
-    );
-    checkUser();
-    return () => {
-      authListener?.unsubscribe();
-    };
-  }, []);
-
-  async function handleAuthChange(event: string, session: Session | null) {
-    await fetch("/api/auth", {
-      method: "POST",
-      headers: new Headers({ "Content-Type": "application/json" }),
-      credentials: "same-origin",
-      body: JSON.stringify({ event, session }),
-    });
-  }
-
-  async function checkUser() {
-    const user = await supabase.auth.user();
-    if (user) {
-      setAuthenticatedState("authenticated");
-    }
-  }
 
   return (
     <>
       <header className={styles.Header}>
         <div>
-          <LightBulbIcon
-            style={{ width: "50px", height: "50px", cursor: "pointer" }}
-            onClick={() => {}}
-          />
+          <Link href="/">
+            <LightBulbIcon
+              style={{ width: "50px", height: "50px", cursor: "pointer" }}
+              onClick={() => {}}
+            />
+          </Link>
         </div>
         <div onClick={() => setShowModal(!showModal)}>
           {showModal ? (
@@ -77,54 +43,25 @@ function MobileHeader() {
         </div>
       </header>
       {showModal && (
-        <div className={styles.menu}>
+        <nav className={styles.menu}>
           <ul>
-            <li
-              onClick={() => {
-                appCtx.setActiveContent("Homepage");
-
-                setShowModal(false);
-              }}
-            >
-              ホーム
-            </li>
-            <li
-              onClick={() => {
-                appCtx.setActiveContent("article");
-
-                setShowModal(false);
-              }}
-            >
-              クリップした記事
-            </li>
-            <li
-              onClick={() => {
-                appCtx.setActiveContent("feed");
-
-                setShowModal(false);
-              }}
-            >
-              みんなの記事
-            </li>
-            <li
-              onClick={() => {
-                appCtx.setActiveContent("create");
-
-                setShowModal(false);
-              }}
-            >
-              作成
-            </li>
-            <li
-              onClick={() => {
-                appCtx.setActiveContent("profile");
-                setShowModal(false);
-              }}
-            >
-              {authState === "authenticated" ? "個人" : "サインイン"}
-            </li>
+            <Link href="/">
+              <li>ホーム</li>
+            </Link>
+            <Link href="/note">
+              <li>クリップした記事</li>
+            </Link>
+            <Link href="/newsoublic">
+              <li>みんなの記事</li>
+            </Link>
+            <Link href="/post">
+              <li>作成</li>
+            </Link>
+            <Link href="/profile">
+              <li>プロフィール</li>
+            </Link>
           </ul>
-        </div>
+        </nav>
       )}
     </>
   );
