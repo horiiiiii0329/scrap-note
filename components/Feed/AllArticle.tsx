@@ -33,17 +33,32 @@ function AllArticle() {
 
   useEffect(() => {
     fetchTitle();
+    const mySubscription = supabase
+      .from("save-scrap-title")
+      .on("*", () => fetchTitle())
+      .subscribe();
+    return () => {
+      supabase.removeSubscription(mySubscription);
+    };
   }, []);
 
   useEffect(() => {
     fetchPosts();
+    const mySubscription = supabase
+      .from("save")
+      .on("*", () => fetchPosts())
+      .subscribe();
+    return () => {
+      supabase.removeSubscription(mySubscription);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function fetchPosts() {
     setIsLoading(true);
     const { data } = await supabase.from("save").select("*");
-    setPosts(data);
-    filteredPostsFunction();
+
+    filteredPostsFunction(data);
     setIsLoading(false);
   }
 
@@ -62,8 +77,7 @@ function AllArticle() {
       .select("*")
       .filter("title", "eq", title);
 
-    setPosts(data);
-    filteredPostsFunction();
+    filteredPostsFunction(data);
     setIsLoading(false);
   }
 
@@ -74,8 +88,7 @@ function AllArticle() {
       .select("*")
       .filter("company", "eq", item);
 
-    setPosts(data);
-    filteredPostsFunction();
+    filteredPostsFunction(data);
     setIsLoading(false);
   }
 
@@ -85,10 +98,10 @@ function AllArticle() {
     setTitle(data || []);
   }
 
-  function filteredPostsFunction() {
+  function filteredPostsFunction(data: NewsList[] | null) {
     const uniqueArray = [
       ...new Map(
-        posts.map((item: { [x: string]: any }) => [item["headline"], item])
+        data?.map((item: { [x: string]: any }) => [item["headline"], item])
       ).values(),
     ];
     setFilteredPosts(uniqueArray);
@@ -98,7 +111,9 @@ function AllArticle() {
     <div className={styles.wrapper}>
       <div className={styles.content_wrapper}>
         {isLoading ? (
-          <LoadingThreeDots />
+          <div className={styles.loader}>
+            <LoadingThreeDots />
+          </div>
         ) : (
           filteredPosts.map((post: NewsList, index: number) => (
             <AllArticleList
