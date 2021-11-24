@@ -1,7 +1,7 @@
 import Main from "../components/Layout/Main";
 import MyPosts from "../components/Profile/MyPost";
 import ProfileCard from "../components/Profile/ProfileCard";
-import TopBar from "../components/Utility/TopBar";
+import TopBar from "../components/Layout/TopBar";
 import { useState, useEffect } from "react";
 import { supabase } from "../api";
 import { Session } from "inspector";

@@ -3,11 +3,11 @@ import { ChevronDownIcon } from "@heroicons/react/outline";
 import Head from "next/head";
 import NewsListItem from "../components/HomePage/NewsListItem";
 import Main from "../components/Layout/Main";
-import TopBar from "../components/Utility/TopBar";
+import TopBar from "../components/Layout/TopBar";
 import styles from "../styles/Home.module.scss";
 import WeatherDate from "../components/HomePage/WeatherDate";
 import { useState } from "react";
-import Row from "../components/Utility/Row";
+import Row from "../components/Layout/Row";
 import axios from "axios";
 
 const leftNews = ["朝日新聞", "毎日新聞"];
