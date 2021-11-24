@@ -12,7 +12,7 @@ import {
 } from "@heroicons/react/outline";
 import Link from "next/dist/client/link";
 import styles from "./MobileHeader.module.scss";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const navBarIconStyle = { width: "30px", height: "30px", cursor: "pointer" };
 
@@ -21,7 +21,7 @@ function MobileHeader() {
 
   return (
     <>
-      <header className={styles.Header}>
+      <header className={styles.wrapper}>
         <div>
           <Link href="/">
             <LightBulbIcon
