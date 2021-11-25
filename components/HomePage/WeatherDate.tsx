@@ -1,5 +1,5 @@
 import styles from "./WeatherDate.module.scss";
-import Weather from "../Layout/Weather";
+import Weather from "./Weather";
 import { useState, useEffect } from "react";
 import moment from "moment";
 import "moment/locale/ja";

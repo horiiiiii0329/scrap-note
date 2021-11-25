@@ -7,8 +7,8 @@ import MobileHeader from "../components/Header/MobileHeader";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AppWrapperProvider>
-      <MobileHeader />
       <Header />
+      <MobileHeader />
       <Component {...pageProps} />
     </AppWrapperProvider>
   );
