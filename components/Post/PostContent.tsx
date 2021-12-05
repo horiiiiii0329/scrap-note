@@ -5,6 +5,21 @@ import { supabase } from "../../api";
 import "easymde/dist/easymde.min.css";
 import dynamic from "next/dynamic";
 import { v4 as uuid } from "uuid";
+import {
+  useEditor,
+  EditorContent,
+  BubbleMenu,
+  FloatingMenu,
+} from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import SideMenu from "./side-menu/SideMenu";
+import PopupMenu from "./popupmenu/PopupMenu";
+import Link from "@tiptap/extension-link";
+import "remixicon/fonts/remixicon.css";
+import TextAlign from "@tiptap/extension-text-align";
+import Giphy from "./giphy/Giphy";
+import Modal from "react-modal";
+import CustomImage from "./extensions/image";
 
 const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
   ssr: false,
