@@ -71,26 +71,19 @@ ul {
   list-style-type: none;
 }
 
-body {
-  height: 500px;
-  &::-webkit-scrollbar {
-    background-color: transparent;
-    width: 10px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: transparent;
-  }
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
-
-body:hover {
-  &::-webkit-scrollbar-thumb {
-    background-color: black;
-  }
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
 }
-
-.full-width {
-  width: 100%;
-  background: blue;
-  padding: 30px;
-  color: white;
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, 0.9);
 }
