@@ -55,23 +55,23 @@ any) => {
 
       <TopBar>
         <div className={styles.topbar}>
-          <p>
+          <p style={leftIsOpen ? { color: "gray" } : { color: "black" }}>
             <span>
               <ChevronDownIcon
                 style={{ width: "15px", height: "15px", cursor: "pointer" }}
                 onClick={() => {
-                  setLeftIsOpen(!leftIsOpen);
+                  setLeftIsOpen(true);
                 }}
               />
             </span>
             新聞紙を選ぶ
           </p>
-          <p>
+          <p style={rightIsOpen ? { color: "gray" } : { color: "black" }}>
             <span>
               <ChevronDownIcon
                 style={{ width: "15px", height: "15px", cursor: "pointer" }}
                 onClick={() => {
-                  setRightIsOpen(!rightIsOpen);
+                  setRightIsOpen(true);
                 }}
               />
             </span>

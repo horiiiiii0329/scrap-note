@@ -70,3 +70,27 @@ a {
 ul {
   list-style-type: none;
 }
+
+body {
+  height: 500px;
+  &::-webkit-scrollbar {
+    background-color: transparent;
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+}
+
+body:hover {
+  &::-webkit-scrollbar-thumb {
+    background-color: black;
+  }
+}
+
+.full-width {
+  width: 100%;
+  background: blue;
+  padding: 30px;
+  color: white;
+}
