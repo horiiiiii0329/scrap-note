@@ -1,3 +1,21 @@
+import { Extension } from "@tiptap/core";
+
+export interface CustomExtensionOptions {
+  awesomeness: number;
+}
+
+const CustomExtension = Extension.create<CustomExtensionOptions>({
+  addOptions() {
+    return {
+      awesomeness: 100,
+    };
+  },
+});
+
+export interface CustomExtensionStorage {
+  awesomeness: number;
+}
+
 export interface IWeatherCard {
   dt: number;
   main: {
@@ -37,4 +55,15 @@ export interface NewsList {
   headline: string;
   link: string;
   title: string;
+}
+
+declare module "@tiptap/core" {
+  interface Commands<ReturnType> {
+    customExtension: {
+      /**
+       * Comments will be added to the autocomplete.
+       */
+      yourCommand: (someProp: any) => ReturnType;
+    };
+  }
 }

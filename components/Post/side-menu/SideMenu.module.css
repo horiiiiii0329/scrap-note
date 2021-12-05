@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  position: absolute;
+  z-index: 9999;
+}
+
+.openIcon {
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  height: 23px;
+  width: 23px;
+  background-color: #ffffff;
+  border: black solid 1px;
+  background: white;
+  border-radius: 50%;
+  justify-content: center;
+  margin-right: 5px;
+  justify-content: center;
+}
+
+.tooltip {
+  display: flex;
+  margin-left: 10px;
+  transition: all 200ms;
+}

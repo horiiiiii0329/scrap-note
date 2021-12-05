@@ -64,11 +64,7 @@ function Giphy({ closeModalHandler, editor }: any) {
       </div>
       <div className={styles.gridwrapper} onClick={closeModalHandler}>
         <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
-          <Masonry
-            columnsCount={3}
-            gutter="10px"
-            onClick={() => closeModalHandler}
-          >
+          <Masonry columnsCount={3} gutter="10px">
             {gifs.map((item: any, index: number) => (
               // eslint-disable-next-line @next/next/no-img-element
 
