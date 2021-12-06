@@ -1,6 +1,6 @@
 import styles from "./LoginCard.module.scss";
 import { useState } from "react";
-import { supabase } from "../../api";
+import { supabase } from "../../../api";
 import LoadingThreeDots from "./LoadingThreeDots";
 import { LightBulbIcon } from "@heroicons/react/outline";
 

@@ -1,6 +1,6 @@
 import styles from "./ArticleTypeItem.module.scss";
 import { PlusIcon } from "@heroicons/react/outline";
-import { supabase } from "../../api";
+import { supabase } from "../../../api";
 import { useState, useEffect, useContext } from "react";
 import AppWrapper from "../../lib/state";
 

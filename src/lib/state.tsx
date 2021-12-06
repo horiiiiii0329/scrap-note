@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ReactNode } from "react";
-import { supabase } from "../api";
+import { supabase } from "../../api";
 
 const AppWrapper = React.createContext({
   selectedContent: "",

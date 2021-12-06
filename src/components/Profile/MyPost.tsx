@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { supabase } from "../../api";
+import { supabase } from "../../../api";
 import Link from "next/link";
 import styles from "./MyPost.module.scss";
 

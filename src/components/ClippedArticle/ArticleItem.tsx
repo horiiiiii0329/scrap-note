@@ -1,9 +1,9 @@
 import styles from "./ArticleItem.module.scss";
 import { useEffect, useContext, useState } from "react";
-import { supabase } from "../../api";
+import { supabase } from "../../../api";
 import AppWrapper from "../../lib/state";
 import ArticleItemCard from "./ArticleItemCard";
-import { NewsList } from "../../type";
+import { NewsList } from "../../../type";
 
 function ArticleItem() {
   const [loading, setisLoading] = useState(true);

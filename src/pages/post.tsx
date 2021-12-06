@@ -1,7 +1,7 @@
 import Main from "../components/Layout/Main";
 import PostContent from "../components/Post/PostContent";
 import TopBar from "../components/Layout/TopBar";
-import { supabase } from "../api";
+import { supabase } from "../../api";
 import { useEffect, useState } from "react";
 import LoginCard from "../components/Utility/LoginCard";
 import { Session } from "@supabase/gotrue-js";

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { supabase } from "../../api";
+import { supabase } from "../../../api";
 import LoadingThreeDots from "../Utility/LoadingThreeDots";
 import styles from "./AllArticle.module.scss";
 import AllArticleList from "./AllArticleList";

@@ -1,6 +1,6 @@
 import styles from "./NewsListItem.module.scss";
 import { useState, useContext, useEffect } from "react";
-import { supabase } from "../../api";
+import { supabase } from "../../../api";
 import AppWrapper from "../../lib/state";
 import { CheckIcon, ScissorsIcon } from "@heroicons/react/outline";
 

@@ -3,7 +3,7 @@ import MyPosts from "../components/Profile/MyPost";
 import ProfileCard from "../components/Profile/ProfileCard";
 import TopBar from "../components/Layout/TopBar";
 import { useState, useEffect } from "react";
-import { supabase } from "../api";
+import { supabase } from "../../api";
 import { Session } from "inspector";
 import LoginCard from "../components/Utility/LoginCard";
 

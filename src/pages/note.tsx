@@ -5,7 +5,7 @@ import LoginCard from "../components/Utility/LoginCard";
 import TopBar from "../components/Layout/TopBar";
 import styles from "../styles/note.module.scss";
 import { useState, useEffect } from "react";
-import { supabase } from "../api";
+import { supabase } from "../../api";
 import { Session } from "@supabase/gotrue-js";
 
 function Note() {

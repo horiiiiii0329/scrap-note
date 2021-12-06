@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { IWeatherCard } from "../../type";
+import { IWeatherCard } from "../../../type";
 import styles from "./Weather.module.scss";
 
 interface Weather {

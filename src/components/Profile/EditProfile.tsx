@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { supabase } from "../../api";
+import { supabase } from "../../../api";
 import styles from "./EditProfile.module.scss";
 import { useRouter } from "next/router";
 import { Session } from "@supabase/gotrue-js";

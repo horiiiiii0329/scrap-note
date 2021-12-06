@@ -1,6 +1,6 @@
 import { Session } from "@supabase/gotrue-js";
 import { useState, useEffect } from "react";
-import { supabase } from "../../api";
+import { supabase } from "../../../api";
 import EditProfile from "./EditProfile";
 import styles from "./ProfileCard.module.scss";
 

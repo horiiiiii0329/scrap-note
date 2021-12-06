@@ -3,7 +3,7 @@ import Weather from "./Weather";
 import { useState, useEffect } from "react";
 import moment from "moment";
 import "moment/locale/ja";
-import { IWeatherCard } from "../../type";
+import { IWeatherCard } from "../../../type";
 
 moment.locale("ja");
 

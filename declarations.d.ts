@@ -1,4 +1,4 @@
-import MobileheaderStories from "./components/Header/Mobileheader.stories";
+import MobileheaderStories from "./src/components/Header/Mobileheader.stories";
 
 namespace NodeJS {
   interface ProcessEnv {

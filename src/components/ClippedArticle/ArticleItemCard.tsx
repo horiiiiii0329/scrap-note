@@ -1,9 +1,9 @@
 import styles from "./ArticleItemCard.module.scss";
 import { useState, useEffect, useContext } from "react";
-import { supabase } from "../../api";
+import { supabase } from "../../../api";
 import AppWrapper from "../../lib/state";
 import { DotsHorizontalIcon } from "@heroicons/react/solid";
-import { NewsList } from "../../type";
+import { NewsList } from "../../../type";
 
 function ArticleItemCard({
   item,
