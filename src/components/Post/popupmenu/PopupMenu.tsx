@@ -241,4 +241,4 @@ function PopupMenu({ editor }: any) {
   );
 }
 
-export default PopupMenu;
+export { PopupMenu };

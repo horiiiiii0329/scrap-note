@@ -117,4 +117,4 @@ function ArticleItemCard({
   );
 }
 
-export default ArticleItemCard;
+export { ArticleItemCard };

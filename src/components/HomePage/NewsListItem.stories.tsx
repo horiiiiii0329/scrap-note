@@ -1,6 +1,6 @@
 import React from "react";
 
-import NewsListItem from "./NewsListItem";
+import { NewsListItem } from "./NewsListItem";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {

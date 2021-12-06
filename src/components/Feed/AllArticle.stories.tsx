@@ -1,6 +1,6 @@
 import React from "react";
 
-import AllArticle from "./AllArticle";
+import { AllArticle } from "./AllArticle";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {

@@ -1,6 +1,6 @@
 import React from "react";
 
-import ArticleType from "./ArticleType";
+import { ArticleType } from "./ArticleType";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {

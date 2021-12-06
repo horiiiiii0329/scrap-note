@@ -61,4 +61,4 @@ function LoginCard() {
   );
 }
 
-export default LoginCard;
+export { LoginCard };

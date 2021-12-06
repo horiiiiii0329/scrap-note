@@ -1,6 +1,6 @@
 import React from "react";
 
-import MobileHeader from "./MobileHeader";
+import { MobileHeader } from "./MobileHeader";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {

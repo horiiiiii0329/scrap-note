@@ -56,4 +56,4 @@ function LoadingThreeDots() {
   );
 }
 
-export default LoadingThreeDots;
+export { LoadingThreeDots };

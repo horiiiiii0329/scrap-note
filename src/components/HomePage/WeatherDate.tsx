@@ -1,5 +1,5 @@
 import styles from "./WeatherDate.module.scss";
-import Weather from "./Weather";
+import { Weather } from "./Weather";
 import { useState, useEffect } from "react";
 import moment from "moment";
 import "moment/locale/ja";
@@ -29,4 +29,4 @@ function WeatherDate({ weatherNews }: IWeatherCard | any) {
   );
 }
 
-export default WeatherDate;
+export { WeatherDate };

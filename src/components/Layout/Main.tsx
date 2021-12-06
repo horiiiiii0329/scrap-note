@@ -5,4 +5,4 @@ function Main({ children }: { children: ReactElement | ReactElement[] }) {
   return <main className={styles.main}>{children}</main>;
 }
 
-export default Main;
+export { Main };

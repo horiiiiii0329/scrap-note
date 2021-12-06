@@ -5,4 +5,4 @@ function TopBar({ children }: { children: ReactChild }) {
   return <div className={styles.topbar}>{children}</div>;
 }
 
-export default TopBar;
+export { TopBar };

@@ -61,4 +61,4 @@ function Weather({ weatherNews }: IWeatherCard | any) {
   );
 }
 
-export default Weather;
+export { Weather };

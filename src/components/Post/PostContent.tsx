@@ -12,11 +12,11 @@ import {
 } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import SideMenu from "./side-menu/SideMenu";
-import PopupMenu from "./popupmenu/PopupMenu";
+import { PopupMenu } from "./popupmenu/PopupMenu";
 import Link from "@tiptap/extension-link";
 import "remixicon/fonts/remixicon.css";
 import TextAlign from "@tiptap/extension-text-align";
-import Giphy from "./giphy/Giphy";
+import { Giphy } from "./giphy/Giphy";
 import Modal from "react-modal";
 import CustomImage from "./extensions/image";
 

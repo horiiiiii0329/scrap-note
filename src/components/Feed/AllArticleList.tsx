@@ -1,7 +1,7 @@
 import styles from "./AllArticleList.module.scss";
 import { ScissorsIcon, ShareIcon } from "@heroicons/react/outline";
 
-function AllArticleLIst({
+function AllArticleList({
   title,
   time,
   company,
@@ -57,4 +57,4 @@ function AllArticleLIst({
   );
 }
 
-export default AllArticleLIst;
+export { AllArticleList };

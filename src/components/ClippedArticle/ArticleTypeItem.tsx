@@ -105,4 +105,4 @@ function ArticleTypeItem() {
   );
 }
 
-export default ArticleTypeItem;
+export { ArticleTypeItem };

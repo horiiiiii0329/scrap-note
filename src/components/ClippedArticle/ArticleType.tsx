@@ -1,5 +1,5 @@
 import styles from "./ArticleType.module.scss";
-import ArticleTypeItem from "./ArticleTypeItem";
+import { ArticleTypeItem } from "./ArticleTypeItem";
 
 function ArticleType() {
   return (
@@ -14,4 +14,4 @@ function ArticleType() {
   );
 }
 
-export default ArticleType;
+export { ArticleType };

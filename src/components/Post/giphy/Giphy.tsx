@@ -85,4 +85,4 @@ function Giphy({ closeModalHandler, editor }: any) {
   );
 }
 
-export default Giphy;
+export { Giphy };

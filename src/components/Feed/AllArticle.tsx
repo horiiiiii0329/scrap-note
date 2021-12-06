@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { supabase } from "../../../api";
 import LoadingThreeDots from "../Utility/LoadingThreeDots";
 import styles from "./AllArticle.module.scss";
-import AllArticleList from "./AllArticleList";
-import AllArticleType from "./AllArticleType";
+import { AllArticleList } from "./AllArticleList";
+import { AllArticleType } from "./AllArticleType";
 
 interface NewsList {
   headline: string;
@@ -189,4 +189,4 @@ function AllArticle() {
   );
 }
 
-export default AllArticle;
+export { AllArticle };

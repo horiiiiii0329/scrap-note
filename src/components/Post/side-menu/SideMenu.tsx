@@ -6,7 +6,6 @@ import {
 } from "@heroicons/react/outline";
 import styles from "./SideMenu.module.css";
 import { useState, useEffect } from "react";
-import GiphyJS from "../blocks/giphy/GiphyJS";
 
 const iconStyle = { width: "12px" };
 

@@ -67,4 +67,4 @@ function MobileHeader() {
   );
 }
 
-export default MobileHeader;
+export { MobileHeader };

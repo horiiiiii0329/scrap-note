@@ -1,8 +1,8 @@
-import ArticleItem from "../components/ClippedArticle/ArticleItem";
-import ArticleType from "../components/ClippedArticle/ArticleType";
-import Main from "../components/Layout/Main";
-import LoginCard from "../components/Utility/LoginCard";
-import TopBar from "../components/Layout/TopBar";
+import { ArticleItem } from "../components/ClippedArticle/ArticleItem";
+import { ArticleType } from "../components/ClippedArticle/ArticleType";
+import { Main } from "../components/Layout/Main";
+import { LoginCard } from "../components/Utility/LoginCard";
+import { TopBar } from "../components/Layout/TopBar";
 import styles from "../styles/note.module.scss";
 import { useState, useEffect } from "react";
 import { supabase } from "../../api";

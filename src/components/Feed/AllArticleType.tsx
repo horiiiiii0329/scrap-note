@@ -13,4 +13,4 @@ function AllArticleType({ title, index }: { title: string; index: number }) {
   );
 }
 
-export default AllArticleType;
+export { AllArticleType };

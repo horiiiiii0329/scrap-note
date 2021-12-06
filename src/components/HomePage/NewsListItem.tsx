@@ -103,4 +103,4 @@ function NewsListItem({ item }: Item) {
   );
 }
 
-export default NewsListItem;
+export { NewsListItem };

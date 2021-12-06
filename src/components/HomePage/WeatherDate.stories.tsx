@@ -1,6 +1,6 @@
 import React from "react";
 
-import WeatherDate from "./WeatherDate";
+import { WeatherDate } from "./WeatherDate";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {

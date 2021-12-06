@@ -1,6 +1,6 @@
 import React from "react";
 
-import Weather from "./Weather";
+import { Weather } from "./Weather";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
