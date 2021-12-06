@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import { ReactNode } from "react";
 import { supabase } from "../../api";
 
-const AppWrapper = React.createContext({
+const AppWrapper = createContext({
   selectedContent: "",
   posts: [] as any,
   selectedTitle: "",
+});
+
+const AppwrapperInnerContext = createContext({
   setSelectedTitle: (title: string) => {},
   fetchSelectedTitle: () => {},
   setActiveContent: (content: string) => {},
@@ -40,6 +43,9 @@ export const AppWrapperProvider = ({ children }: { children: ReactNode }) => {
     selectedContent: activeContent,
     posts,
     selectedTitle: selectedTitle,
+  };
+
+  const innerContextValue = {
     setSelectedTitle: titleSelectHandler,
     fetchSelectedTitle: fetchPosts,
     setActiveContent: contentHandler,
@@ -47,7 +53,11 @@ export const AppWrapperProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <AppWrapper.Provider value={contextValue}>{children}</AppWrapper.Provider>
+    <AppWrapper.Provider value={contextValue}>
+      <AppwrapperInnerContext.Provider value={innerContextValue}>
+        {children}
+      </AppwrapperInnerContext.Provider>
+    </AppWrapper.Provider>
   );
 };
 
