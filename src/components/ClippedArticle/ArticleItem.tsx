@@ -1,21 +1,22 @@
 import styles from "./ArticleItem.module.scss";
 import { useEffect, useContext, useState } from "react";
 import { supabase } from "../../../api";
-import AppWrapper from "../../lib/state";
+import { AppwrapperInnerContext, AppWrapper } from "../../lib/state";
 import { ArticleItemCard } from "./ArticleItemCard";
 import { NewsList } from "../../../type";
 
 function ArticleItem() {
   const [loading, setisLoading] = useState(true);
+  const appInnerCtx = useContext(AppwrapperInnerContext);
   const appCtx = useContext(AppWrapper);
 
   async function deletePost(id: string) {
     await supabase.from("save").delete().match({ id });
-    appCtx.fetchSelectedTitle();
+    appInnerCtx.fetchSelectedTitle();
   }
 
   useEffect(() => {
-    appCtx.fetchPosts();
+    appInnerCtx.fetchPosts();
     setisLoading(false);
   }, []);
 

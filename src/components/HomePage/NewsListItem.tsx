@@ -1,7 +1,7 @@
 import styles from "./NewsListItem.module.scss";
 import { useState, useContext, useEffect } from "react";
 import { supabase } from "../../../api";
-import AppWrapper from "../../lib/state";
+import { AppWrapper, AppwrapperInnerContext } from "../../lib/state";
 import { CheckIcon, ScissorsIcon } from "@heroicons/react/outline";
 
 interface Item {
@@ -25,6 +25,7 @@ function NewsListItem({ item }: Item) {
   const [status, setStatus] = useState(false);
   const [data, setData] = useState<string[] | null>([]);
   const appCtx = useContext(AppWrapper);
+  const appInnerCtx = useContext(AppwrapperInnerContext);
   const user = supabase.auth.user();
 
   useEffect(() => {
@@ -57,7 +58,7 @@ function NewsListItem({ item }: Item) {
       alert(Error);
     } finally {
       setStatus(true);
-      appCtx.fetchSelectedTitle();
+      appInnerCtx.fetchSelectedTitle();
     }
   }
 

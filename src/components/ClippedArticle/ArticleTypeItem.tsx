@@ -2,7 +2,7 @@ import styles from "./ArticleTypeItem.module.scss";
 import { PlusIcon } from "@heroicons/react/outline";
 import { supabase } from "../../../api";
 import { useState, useEffect, useContext } from "react";
-import AppWrapper from "../../lib/state";
+import { AppWrapper, AppwrapperInnerContext } from "../../lib/state";
 
 interface Title {
   title: string;
@@ -13,6 +13,7 @@ function ArticleTypeItem() {
   const [posts, setPosts] = useState<string[] | any>([]);
 
   const appCtx = useContext(AppWrapper);
+  const appInnerCtx = useContext(AppwrapperInnerContext);
 
   useEffect(() => {
     fetchList();
@@ -51,8 +52,8 @@ function ArticleTypeItem() {
         <div
           className={styles.scraplist__title}
           onClick={() => {
-            appCtx.setSelectedTitle("全て");
-            appCtx.fetchSelectedTitle();
+            appInnerCtx.setSelectedTitle("全て");
+            appInnerCtx.fetchSelectedTitle();
           }}
         >
           <p>未分類</p>
@@ -69,8 +70,8 @@ function ArticleTypeItem() {
                 <div
                   className={styles.scraplist__title}
                   onClick={() => {
-                    appCtx.setSelectedTitle(post.title);
-                    appCtx.fetchSelectedTitle();
+                    appInnerCtx.setSelectedTitle(post.title);
+                    appInnerCtx.fetchSelectedTitle();
                   }}
                 >
                   <p>{post.title}</p>

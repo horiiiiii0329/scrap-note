@@ -1,7 +1,7 @@
 import styles from "./ArticleItemCard.module.scss";
 import { useState, useEffect, useContext } from "react";
 import { supabase } from "../../../api";
-import AppWrapper from "../../lib/state";
+import { AppWrapper, AppwrapperInnerContext } from "../../lib/state";
 import { DotsHorizontalIcon } from "@heroicons/react/solid";
 import { NewsList } from "../../../type";
 
@@ -17,6 +17,7 @@ function ArticleItemCard({
   const [posts, setPosts] = useState<NewsList[] | any>([]);
 
   const appCtx = useContext(AppWrapper);
+  const appInnerCtx = useContext(AppwrapperInnerContext);
 
   useEffect(() => {
     fetchList();
@@ -46,7 +47,7 @@ function ArticleItemCard({
 
     setShowAddModal(false);
     setShowModal(false);
-    appCtx.fetchSelectedTitle();
+    appInnerCtx.fetchSelectedTitle();
   }
 
   return (

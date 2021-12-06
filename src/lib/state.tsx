@@ -2,13 +2,13 @@ import React, { useState, createContext } from "react";
 import { ReactNode } from "react";
 import { supabase } from "../../api";
 
-const AppWrapper = createContext({
+export const AppWrapper = createContext({
   selectedContent: "",
   posts: [] as any,
   selectedTitle: "",
 });
 
-const AppwrapperInnerContext = createContext({
+export const AppwrapperInnerContext = createContext({
   setSelectedTitle: (title: string) => {},
   fetchSelectedTitle: () => {},
   setActiveContent: (content: string) => {},
@@ -60,5 +60,3 @@ export const AppWrapperProvider = ({ children }: { children: ReactNode }) => {
     </AppWrapper.Provider>
   );
 };
-
-export default AppWrapper;
