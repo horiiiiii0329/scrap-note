@@ -1,5 +1,3 @@
-import MobileheaderStories from "./src/components/Header/Mobileheader.stories";
-
 namespace NodeJS {
   interface ProcessEnv {
     NEXT_PUBLIC_SUPABASE_URL: string;
