@@ -6,7 +6,11 @@ function BlogWrapper({
 }: {
   children: ReactElement | ReactElement[] | any;
 }) {
-  return <main className={styles.wrapper}>{children}</main>;
+  return (
+    <main className={styles.wrapper}>
+      <div className={styles.innerWrapper}>{children}</div>
+    </main>
+  );
 }
 
 export { BlogWrapper };
