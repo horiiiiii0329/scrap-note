@@ -57,8 +57,6 @@ function EditPost() {
     }
   }, [id]);
 
-  console.log(content);
-
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -88,7 +86,7 @@ function EditPost() {
   }
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setPost(() => ({ ...post, [title]: e.target.value }));
+    setPost({ ...post, [title]: e.target.value });
   }
 
   function openModal() {

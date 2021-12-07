@@ -84,7 +84,7 @@ function PostContent() {
   }
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setPost(() => ({ ...post, [title]: e.target.value }));
+    setPost({ ...post, [title]: e.target.value });
   }
 
   return (
