@@ -5,17 +5,11 @@ import { NewsListItem } from "../components/HomePage/NewsListItem";
 import { Main } from "../components/Layout/Main";
 import { TopBar } from "../components/Layout/TopBar";
 import styles from "../styles/Home.module.scss";
-<<<<<<< HEAD:pages/index.tsx
-import WeatherDate from "../components/HomePage/WeatherDate";
-import { ReactNode, useState } from "react";
-import Row from "../components/Layout/Row";
-=======
 import { WeatherDate } from "../components/HomePage/WeatherDate";
 import { useState } from "react";
 import { Row } from "../components/Layout/Row";
->>>>>>> dev-server:src/pages/index.tsx
 import axios from "axios";
-import { IWeatherCard } from "../type";
+import { IWeatherCard } from "../../type";
 
 const leftNews = ["朝日新聞", "毎日新聞"];
 const rightNews = ["読売新聞", "産経新聞", "日経新聞"];
