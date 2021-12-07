@@ -57,7 +57,7 @@ Next.js, Supabase.io and AWS
 
   ![Example screenshot](https://media.giphy.com/media/2gcgGKb0DgxYjbKg6o/giphy.gif)
 
-- Editor(!!!!!!Due to migrate to a new editor, this editor is currently developping, feel free to reach me out!!!!!!!!!!)
+- Editor(!!!!!!This Editor is still not available!!!!!!!!!!)
 
   ![Example screenshot](https://media.giphy.com/media/5r79gvEMHvqG7njJiZ/giphy.gif)
 
