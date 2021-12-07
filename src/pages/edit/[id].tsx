@@ -1,18 +1,44 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
-import "easymde/dist/easymde.min.css";
 import { supabase } from "../../../api";
 import styles from "./edit.module.scss";
+import { v4 as uuid } from "uuid";
+import {
+  useEditor,
+  EditorContent,
+  BubbleMenu,
+  FloatingMenu,
+} from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import { SideMenu } from "../../components/Post/side-menu/SideMenu";
+import { PopupMenu } from "../../components/Post/popupmenu/PopupMenu";
+import Link from "@tiptap/extension-link";
+import "remixicon/fonts/remixicon.css";
+import TextAlign from "@tiptap/extension-text-align";
+import { Giphy } from "../../components/Post/giphy/Giphy";
+import Modal from "react-modal";
+import CustomImage from "../../components/Post/extensions/image";
 
-const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
-  ssr: false,
-});
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    border: "none",
+    backgroundColor: "transparent",
+    padding: "0px",
+  },
+};
 
 const initialState = { title: "", content: "" };
 
 function EditPost() {
   const [post, setPost] = useState(initialState);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const { title, content } = post;
   const router = useRouter();
   const { id } = router.query;
 
@@ -28,16 +54,49 @@ function EditPost() {
       setPost(data);
     }
   }, [id]);
+
+  console.log(content);
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Link,
+      TextAlign.configure({ types: ["paragraph", "image"] }),
+      CustomImage.configure({
+        HTMLAttributes: {
+          class: "custom-image",
+        },
+      }),
+    ],
+
+    content: content,
+
+    onUpdate: ({ editor }) => {
+      const json = editor.getJSON();
+      setPost(() => ({ ...post, [content]: json }));
+    },
+  });
+
   if (!post) return null;
-  function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setPost(() => ({ ...post, [e.target.name]: e.target.value }));
-  }
-  const { title, content } = post;
+
   async function updateCurrentPost() {
     if (!title || !content) return;
     await supabase.from("posts").update([{ title, content }]).match({ id });
-    router.push("/my-posts");
+    router.push("/profile");
   }
+
+  function onChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setPost(() => ({ ...post, [title]: e.target.value }));
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   return (
     <div className={styles.container}>
       <h1>編集</h1>
@@ -47,10 +106,36 @@ function EditPost() {
         placeholder="タイトル"
         value={post.title}
       />
-      <SimpleMDE
-        value={post.content}
-        onChange={(value) => setPost({ ...post, content: value })}
-      />
+      <EditorContent editor={editor} />
+      {editor && (
+        <BubbleMenu
+          className="bubble-menu"
+          tippyOptions={{ duration: 100 }}
+          editor={editor}
+        >
+          <PopupMenu editor={editor} />
+        </BubbleMenu>
+      )}
+
+      {editor && (
+        <FloatingMenu editor={editor} tippyOptions={{ duration: 100 }}>
+          <div style={{ position: "absolute", top: -15, left: -55 }}>
+            <SideMenu
+              position={{}}
+              editor={editor}
+              display={true || "displaySidebar"}
+              gifClickHandler={openModal}
+            />
+          </div>
+        </FloatingMenu>
+      )}
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+      >
+        <Giphy editor={editor} closeModalHandler={() => setIsOpen(false)} />
+      </Modal>
       <button className={styles.button} onClick={updateCurrentPost}>
         更新
       </button>

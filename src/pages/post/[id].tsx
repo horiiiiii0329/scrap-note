@@ -1,8 +1,6 @@
 import { useRouter } from "next/router";
-import ReactMarkdown from "react-markdown";
 import { supabase } from "../../../api";
 import styles from "./posts.module.scss";
-import React, { useState, useEffect } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 

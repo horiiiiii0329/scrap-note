@@ -11,7 +11,7 @@ import {
   FloatingMenu,
 } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import SideMenu from "./side-menu/SideMenu";
+import { SideMenu } from "./side-menu/SideMenu";
 import { PopupMenu } from "./popupmenu/PopupMenu";
 import Link from "@tiptap/extension-link";
 import "remixicon/fonts/remixicon.css";
@@ -86,7 +86,6 @@ function PostContent() {
   return (
     <div>
       <input
-        onChange={onChange}
         name="title"
         placeholder="タイトルを入力する"
         value={post.title}
