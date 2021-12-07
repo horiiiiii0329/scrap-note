@@ -13,15 +13,15 @@ import { IWeatherCard } from "../../type";
 
 const leftNews = ["朝日新聞", "毎日新聞"];
 const rightNews = ["読売新聞", "産経新聞", "日経新聞"];
-const DUMMY_DATA = [
-  {
-    title: "undefined",
-    href: "33333333333",
-    company: "浅子新聞",
-    time: "222222222222",
-    id: "111111111",
-  },
-];
+// const DUMMY_DATA = [
+//   {
+//     title: "undefined",
+//     href: "33333333333",
+//     company: "浅子新聞",
+//     time: "222222222222",
+//     id: "111111111",
+//   },
+// ];
 
 const Home: NextPage = ({
   weatherNews,
@@ -179,7 +179,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       sankeiData: sData.data.Items,
       nikkeiData: nData.data.Items,
     },
-    // revalidate: 60 * 60 * 24,
+    revalidate: 60 * 60 * 24,
   };
 };
 

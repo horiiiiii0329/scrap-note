@@ -57,6 +57,10 @@ Next.js, Supabase.io and AWS
 
   ![Example screenshot](https://media.giphy.com/media/2gcgGKb0DgxYjbKg6o/giphy.gif)
 
+- Editor(!!!!!!Due to migrate to new editor, this functionality is currently developping feel free to reach me out!!!!!!!!!!)
+
+  ![Example screenshot](https://media.giphy.com/media/5r79gvEMHvqG7njJiZ/giphy.gif)
+
 ## Project Status
 
 Project is in progress...

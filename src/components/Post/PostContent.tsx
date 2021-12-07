@@ -64,17 +64,16 @@ function PostContent() {
     ],
 
     content: `<p>ご自由にお書きください。。。</p>`,
-    onUpdate: ({ editor }) => {
-      const html = editor.getHTML();
-
-      setPost(() => ({ ...post, content: html }));
-    },
+    // onUpdate: ({ editor }) => {},
   });
 
   async function createNewPost() {
     if (!title || !editor?.getJSON()) {
       console.log(title + editor);
     }
+    const html = editor?.getHTML();
+
+    setPost(() => ({ ...post, content: html }));
     const user = supabase.auth.user();
     const id = uuid();
     post.id = id;
