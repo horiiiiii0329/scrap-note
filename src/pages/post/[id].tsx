@@ -3,6 +3,7 @@ import { supabase } from "../../../api";
 import styles from "./posts.module.scss";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import { BlogWrapper } from "../../components/Layout/BlogWrapper";
 
 interface Item {
   post: {
@@ -27,13 +28,15 @@ export default function Post({ post }: Item) {
     return <div>Loading...</div>;
   }
   return (
-    <div className={styles.container}>
-      <h1>{post.title}</h1>
-      <p> {post.user_email}</p>
-      <div>
-        <EditorContent editor={editor} />
+    <BlogWrapper>
+      <div className={styles.container}>
+        <h1>{post.title}</h1>
+        <p> {post.user_email}</p>
+        <div>
+          <EditorContent editor={editor} />
+        </div>
       </div>
-    </div>
+    </BlogWrapper>
   );
 }
 

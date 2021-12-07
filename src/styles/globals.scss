@@ -90,6 +90,7 @@ ul {
 
 .ProseMirror {
   transition: all 1s ease-in;
+  min-height: 300px;
 
   &:focus,
   &:active {
