@@ -63,8 +63,7 @@ function PostContent() {
       }),
     ],
 
-    content: `
-    `,
+    content: `<p>ご自由にお書きください。。。</p>`,
 
     onUpdate: ({ editor }) => {
       const json = editor.getJSON();
@@ -84,14 +83,19 @@ function PostContent() {
     router.push(`post/${data.id}`);
   }
 
+  function onChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setPost(() => ({ ...post, [title]: e.target.value }));
+  }
+
   return (
     <BlogWrapper>
       <div>
         <input
           name="title"
           placeholder="タイトルを入力する"
-          value={post.title}
+          value={title}
           className={styles.input_title}
+          onChange={onChange}
         />
         <EditorContent editor={editor} />
         {editor && (
