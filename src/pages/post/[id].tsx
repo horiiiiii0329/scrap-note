@@ -4,6 +4,10 @@ import styles from "./posts.module.scss";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { BlogWrapper } from "../../components/Layout/BlogWrapper";
+import Link from "@tiptap/extension-link";
+import TextAlign from "@tiptap/extension-text-align";
+import CustomImage from "../../components/Post/extensions/image";
+import { TopBar } from "../../components/Layout/TopBar";
 
 interface Item {
   post: {
@@ -17,7 +21,16 @@ interface Item {
 export default function Post({ post }: Item) {
   const editor = useEditor({
     editable: false,
-    extensions: [StarterKit],
+    extensions: [
+      StarterKit,
+      Link,
+      TextAlign.configure({ types: ["paragraph"] }),
+      CustomImage.configure({
+        HTMLAttributes: {
+          class: "custom-image",
+        },
+      }),
+    ],
     content: post.content,
   });
 
@@ -28,15 +41,20 @@ export default function Post({ post }: Item) {
     return <div>Loading...</div>;
   }
   return (
-    <BlogWrapper>
-      <div className={styles.container}>
-        <h1>{post.title}</h1>
-        <p> {post.user_email}</p>
-        <div>
-          <EditorContent editor={editor} />
+    <>
+      <TopBar>
+        <h1 className={styles.title}></h1>
+      </TopBar>
+      <BlogWrapper>
+        <div className={styles.container}>
+          <h1>{post.title}</h1>
+          <p> {post.user_email}</p>
+          <div>
+            <EditorContent editor={editor} />
+          </div>
         </div>
-      </div>
-    </BlogWrapper>
+      </BlogWrapper>
+    </>
   );
 }
 

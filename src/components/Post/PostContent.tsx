@@ -38,7 +38,7 @@ const customStyles = {
 const initialState = { title: "", content: "", id: "" };
 
 function PostContent() {
-  const [post, setPost] = useState(initialState);
+  const [post, setPost] = useState<any>(initialState);
   const { title, content } = post;
   const router = useRouter();
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -64,15 +64,17 @@ function PostContent() {
     ],
 
     content: `<p>ご自由にお書きください。。。</p>`,
-
     onUpdate: ({ editor }) => {
-      const json = editor.getJSON();
-      setPost({ ...post, content: json.stringify });
+      const html = editor.getHTML();
+
+      setPost(() => ({ ...post, content: html }));
     },
   });
 
   async function createNewPost() {
-    if (!title || !content) return;
+    if (!title || !editor?.getJSON()) {
+      console.log(title + editor);
+    }
     const user = supabase.auth.user();
     const id = uuid();
     post.id = id;
@@ -84,7 +86,7 @@ function PostContent() {
   }
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setPost({ ...post, [e.target.name]: e.target.value });
+    setPost(() => ({ ...post, [e.target.name]: e.target.value }));
   }
 
   return (

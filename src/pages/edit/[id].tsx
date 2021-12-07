@@ -20,6 +20,9 @@ import Modal from "react-modal";
 import CustomImage from "../../components/Post/extensions/image";
 import { BlogWrapper } from "../../components/Layout/BlogWrapper";
 import { TopBar } from "../../components/Layout/TopBar";
+import { Params } from "next/dist/server/router";
+
+//////////////////edit is not rendering
 
 const customStyles = {
   content: {
@@ -38,11 +41,30 @@ const customStyles = {
 const initialState = { title: "", content: "" };
 
 function EditPost() {
-  const [post, setPost] = useState(initialState);
+  const [post, setPost] = useState<any>(initialState);
   const [modalIsOpen, setIsOpen] = useState(false);
   const { title, content } = post;
+
   const router = useRouter();
   const { id } = router.query;
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Link,
+      TextAlign.configure({ types: ["paragraph"] }),
+      CustomImage.configure({
+        HTMLAttributes: {
+          class: "custom-image",
+        },
+      }),
+    ],
+    content: post.content,
+    onUpdate: ({ editor }) => {
+      const html = editor.getHTML();
+      setPost(() => ({ ...post, content: html }));
+    },
+  });
 
   useEffect(() => {
     fetchPost();
@@ -57,26 +79,6 @@ function EditPost() {
     }
   }, [id]);
 
-  const editor = useEditor({
-    extensions: [
-      StarterKit,
-      Link,
-      TextAlign.configure({ types: ["paragraph"] }),
-      CustomImage.configure({
-        HTMLAttributes: {
-          class: "custom-image",
-        },
-      }),
-    ],
-
-    content: content,
-
-    onUpdate: ({ editor }) => {
-      const json = editor.getJSON();
-      setPost({ ...post, content: json.stringify });
-    },
-  });
-
   if (!post) return null;
 
   async function updateCurrentPost() {
@@ -86,7 +88,7 @@ function EditPost() {
   }
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setPost({ ...post, [e.target.name]: e.target.value });
+    setPost(() => ({ ...post, [e.target.name]: e.target.value }));
   }
 
   function openModal() {
@@ -100,7 +102,7 @@ function EditPost() {
   return (
     <>
       <TopBar>
-        <h1 className={styles.title}>みんなの記事</h1>
+        <h1 className={styles.title}>編集</h1>
       </TopBar>
       <BlogWrapper>
         <div className={styles.container}>
