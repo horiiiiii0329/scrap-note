@@ -2,6 +2,9 @@ import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "../../../api";
 import styles from "./posts.module.scss";
+import React, { useState, useEffect } from "react";
+import { useEditor, EditorContent } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
 
 interface Item {
   post: {
@@ -13,6 +16,14 @@ interface Item {
 }
 
 export default function Post({ post }: Item) {
+  const editor = useEditor({
+    editable: false,
+    extensions: [StarterKit],
+    content: post.content,
+  });
+
+  if (!editor) null;
+
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -22,7 +33,7 @@ export default function Post({ post }: Item) {
       <h1>{post.title}</h1>
       <p> {post.user_email}</p>
       <div>
-        <ReactMarkdown className="prose">{post.content}</ReactMarkdown>
+        <EditorContent editor={editor} />
       </div>
     </div>
   );

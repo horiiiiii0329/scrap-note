@@ -37,6 +37,9 @@ const customStyles = {
 const initialState = { title: "", content: "", id: "" };
 
 function PostContent() {
+  const [post, setPost] = useState(initialState);
+  const { title, content } = post;
+  const router = useRouter();
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
@@ -61,15 +64,13 @@ function PostContent() {
 
     content: `
     `,
+
+    onUpdate: ({ editor }) => {
+      const json = editor.getJSON();
+      setPost(() => ({ ...post, [content]: json }));
+    },
   });
 
-  const [post, setPost] = useState(initialState);
-  const { title, content } = post;
-  const router = useRouter();
-
-  function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setPost(() => ({ ...post, [e.target.name]: e.target.value }));
-  }
   async function createNewPost() {
     if (!title || !content) return;
     const user = supabase.auth.user();
