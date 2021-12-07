@@ -12,4 +12,4 @@ function Row({ companyname }: { companyname: string }) {
   );
 }
 
-export { Row };
+export default Row;

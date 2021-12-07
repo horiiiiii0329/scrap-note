@@ -7,7 +7,7 @@ import { TopBar } from "../components/Layout/TopBar";
 import styles from "../styles/Home.module.scss";
 import { WeatherDate } from "../components/HomePage/WeatherDate";
 import { useState } from "react";
-import { Row } from "../components/Layout/Row";
+import Row from "../components/Layout/Row";
 import axios from "axios";
 import { IWeatherCard } from "../../type";
 
