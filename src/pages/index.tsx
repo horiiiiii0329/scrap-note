@@ -8,7 +8,6 @@ import styles from "../styles/Home.module.scss";
 import { WeatherDate } from "../components/HomePage/WeatherDate";
 import { useState } from "react";
 import { Row } from "../components/Layout/Row";
-import axios from "axios";
 
 const leftNews = ["朝日新聞", "毎日新聞"];
 const rightNews = ["読売新聞", "産経新聞", "日経新聞"];
