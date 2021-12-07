@@ -1,7 +1,9 @@
+//need to find an good
+
 /* eslint-disable @next/next/no-img-element */
 import axios from "axios";
 import { useState, useEffect } from "react";
-import styles from "./Giphy.module.css";
+import styles from "./Giphy.module.scss";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 function Giphy({ closeModalHandler, editor }: any) {
@@ -10,7 +12,7 @@ function Giphy({ closeModalHandler, editor }: any) {
   const [limit, setLimit] = useState(20);
   const [input_ref, setInput] = useState<any>(null);
 
-  const onSearchSubmit = (e: any) => {
+  const onSearchSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key !== "Enter") {
       return;
     }
@@ -24,7 +26,7 @@ function Giphy({ closeModalHandler, editor }: any) {
     search("", "trend");
   }, []);
 
-  const search = (term: any, kind = "search") => {
+  const search = (term: string, kind = "search") => {
     const url =
       kind === "search"
         ? `https://api.giphy.com/v1/gifs/search?q=${term}`
@@ -41,7 +43,7 @@ function Giphy({ closeModalHandler, editor }: any) {
       });
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value;
     setTerm(term);
   };

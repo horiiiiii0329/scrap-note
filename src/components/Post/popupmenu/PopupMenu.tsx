@@ -1,6 +1,6 @@
 import "remixicon/fonts/remixicon.css";
 import { useCallback } from "react";
-import styles from "./PopupMenu.module.css";
+import styles from "./PopupMenu.module.scss";
 
 function PopupMenu({ editor }: any) {
   const setLink = useCallback(() => {

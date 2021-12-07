@@ -19,6 +19,7 @@ import TextAlign from "@tiptap/extension-text-align";
 import { Giphy } from "./giphy/Giphy";
 import Modal from "react-modal";
 import CustomImage from "./extensions/image";
+import { BlogWrapper } from "../Layout/BlogWrapper";
 
 const customStyles = {
   content: {
@@ -54,7 +55,7 @@ function PostContent() {
     extensions: [
       StarterKit,
       Link,
-      TextAlign.configure({ types: ["paragraph", "image"] }),
+      TextAlign.configure({ types: ["paragraph"] }),
       CustomImage.configure({
         HTMLAttributes: {
           class: "custom-image",
@@ -84,51 +85,53 @@ function PostContent() {
   }
 
   return (
-    <div>
-      <input
-        name="title"
-        placeholder="タイトルを入力する"
-        value={post.title}
-        className={styles.input_title}
-      />
-      <EditorContent editor={editor} />
-      {editor && (
-        <BubbleMenu
-          className="bubble-menu"
-          tippyOptions={{ duration: 100 }}
-          editor={editor}
-        >
-          <PopupMenu editor={editor} />
-        </BubbleMenu>
-      )}
+    <BlogWrapper>
+      <div>
+        <input
+          name="title"
+          placeholder="タイトルを入力する"
+          value={post.title}
+          className={styles.input_title}
+        />
+        <EditorContent editor={editor} />
+        {editor && (
+          <BubbleMenu
+            className="bubble-menu"
+            tippyOptions={{ duration: 100 }}
+            editor={editor}
+          >
+            <PopupMenu editor={editor} />
+          </BubbleMenu>
+        )}
 
-      {editor && (
-        <FloatingMenu editor={editor} tippyOptions={{ duration: 100 }}>
-          <div style={{ position: "absolute", top: -15, left: -55 }}>
-            <SideMenu
-              position={{}}
-              editor={editor}
-              display={true || "displaySidebar"}
-              gifClickHandler={openModal}
-            />
-          </div>
-        </FloatingMenu>
-      )}
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-      >
-        <Giphy editor={editor} closeModalHandler={() => setIsOpen(false)} />
-      </Modal>
-      <button
-        type="button"
-        className={styles.button__md}
-        onClick={createNewPost}
-      >
-        投稿する
-      </button>
-    </div>
+        {editor && (
+          <FloatingMenu editor={editor} tippyOptions={{ duration: 100 }}>
+            <div style={{ position: "absolute", top: -15, left: -55 }}>
+              <SideMenu
+                position={{}}
+                editor={editor}
+                display={true || "displaySidebar"}
+                gifClickHandler={openModal}
+              />
+            </div>
+          </FloatingMenu>
+        )}
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={customStyles}
+        >
+          <Giphy editor={editor} closeModalHandler={() => setIsOpen(false)} />
+        </Modal>
+        <button
+          type="button"
+          className={styles.button__md}
+          onClick={createNewPost}
+        >
+          投稿する
+        </button>
+      </div>
+    </BlogWrapper>
   );
 }
 

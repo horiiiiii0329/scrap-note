@@ -4,7 +4,7 @@ import {
   MinusIcon,
   FilmIcon,
 } from "@heroicons/react/outline";
-import styles from "./SideMenu.module.css";
+import styles from "./SideMenu.module.scss";
 import { useState, useEffect } from "react";
 
 const iconStyle = { width: "12px" };

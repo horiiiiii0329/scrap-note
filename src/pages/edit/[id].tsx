@@ -61,7 +61,7 @@ function EditPost() {
     extensions: [
       StarterKit,
       Link,
-      TextAlign.configure({ types: ["paragraph", "image"] }),
+      TextAlign.configure({ types: ["paragraph"] }),
       CustomImage.configure({
         HTMLAttributes: {
           class: "custom-image",
