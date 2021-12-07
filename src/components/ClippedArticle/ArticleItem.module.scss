@@ -1,0 +1,22 @@
+.content_wrapper {
+  overflow-y: scroll;
+  height: calc(100vh - 85px);
+  position: relative;
+  width: 50%;
+  border-right: black solid 1px;
+
+  @media screen and (max-width: 1280px) {
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+    border-right: none;
+  }
+
+  .articlecontent {
+    border-bottom: solid 1px black;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    height: 70px;
+  }
+}

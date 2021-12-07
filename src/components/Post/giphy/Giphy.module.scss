@@ -1,0 +1,26 @@
+.wrapper {
+  border-radius: 1em;
+  padding: 10px;
+  width: 400px;
+  border: black solid 1px;
+  background-color: white;
+}
+
+.gridwrapper {
+  overflow-y: scroll;
+
+  height: 300px;
+}
+
+.searchbox {
+  margin-bottom: 10px;
+  border-bottom: black solid 1px;
+}
+
+.searchbox input {
+  font-size: 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding-bottom: 8px;
+}
