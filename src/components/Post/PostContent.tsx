@@ -67,7 +67,7 @@ function PostContent() {
 
     onUpdate: ({ editor }) => {
       const json = editor.getJSON();
-      setPost(() => ({ ...post, [content]: json }));
+      setPost({ ...post, content: json.stringify });
     },
   });
 
