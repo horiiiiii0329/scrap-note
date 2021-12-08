@@ -9,6 +9,7 @@ import {
   EditorContent,
   BubbleMenu,
   FloatingMenu,
+  NodeViewWrapper,
 } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { SideMenu } from "./side-menu/SideMenu";
@@ -121,13 +122,15 @@ function PostContent() {
             </div>
           </FloatingMenu>
         )}
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          style={customStyles}
-        >
-          <Giphy editor={editor} closeModalHandler={() => setIsOpen(false)} />
-        </Modal>
+        <NodeViewWrapper>
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            style={customStyles}
+          >
+            <Giphy editor={editor} closeModalHandler={() => setIsOpen(false)} />
+          </Modal>
+        </NodeViewWrapper>
         <button
           type="button"
           className={styles.button__md}

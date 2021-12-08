@@ -33,6 +33,10 @@ function SideMenu({ editor, gifClickHandler }: any) {
   //   }
   // };
 
+  function closeModal() {
+    setIsModalOpen(false);
+  }
+
   return (
     <div className={styles.wrapper}>
       <div
@@ -56,7 +60,7 @@ function SideMenu({ editor, gifClickHandler }: any) {
         </span>
 
         <span className={styles.openIcon} onClick={gifClickHandler}>
-          <FilmIcon style={iconStyle} />
+          <FilmIcon style={iconStyle} onClick={closeModal} />
         </span>
         <span className={styles.openIcon} onClick={setHorizontal}>
           <MinusIcon style={iconStyle} />
