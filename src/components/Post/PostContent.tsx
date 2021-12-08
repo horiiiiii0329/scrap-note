@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { supabase } from "../../../api";
 import "easymde/dist/easymde.min.css";
-import { v4 as uuid } from "uuid";
 import {
   useEditor,
   EditorContent,
@@ -21,6 +20,7 @@ import { Giphy } from "./giphy/Giphy";
 import Modal from "react-modal";
 import CustomImage from "./extensions/image";
 import { BlogWrapper } from "../Layout/BlogWrapper";
+import Placeholder from "@tiptap/extension-placeholder";
 
 const customStyles = {
   content: {
@@ -35,8 +35,6 @@ const customStyles = {
     padding: "0px",
   },
 };
-
-const initialState = { title: "", content: "", id: "" };
 
 function PostContent() {
   const [title, setTitle] = useState("");
@@ -58,14 +56,15 @@ function PostContent() {
       StarterKit,
       Link,
       TextAlign.configure({ types: ["paragraph"] }),
+      Placeholder.configure({
+        placeholder: "ご自由にお書きください :)",
+      }),
       CustomImage.configure({
         HTMLAttributes: {
           class: "custom-image",
         },
       }),
     ],
-
-    content: `<p>ご自由にお書きください。。。</p>`,
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
 
