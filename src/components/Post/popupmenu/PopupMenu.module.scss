@@ -4,32 +4,31 @@
   align-items: center;
   border: black solid 1px;
   background-color: white;
-  justify-content: space-between;
+  justify-content: space-around;
+  min-width: 400px;
+  min-height: 45px;
+
+  li {
+    display: inline-block;
+  }
 }
 
 .wrapper:first-of-type {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
-  padding-left: 0;
+  padding-left: 5px;
 }
 
 .wrapper:last-of-type {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
-  padding-right: 0;
+  padding-right: 5px;
 }
 
 .icon {
-  padding: 3px 5px;
-  min-width: 10px;
-  font-size: 15px;
   filter: opacity(100%);
 }
 
 .isActiveIcon {
-  padding: 3px 5px;
-  min-width: 10px;
-
-  font-size: 15px;
   filter: opacity(60%);
 }

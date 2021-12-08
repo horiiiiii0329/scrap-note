@@ -38,8 +38,9 @@ const customStyles = {
 const initialState = { title: "", content: "", id: "" };
 
 function PostContent() {
-  const [post, setPost] = useState<any>(initialState);
-  const { title, content } = post;
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
   const router = useRouter();
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -67,17 +68,15 @@ function PostContent() {
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
 
-      setPost(() => ({ ...post, content: html }));
+      setContent(html);
     },
   });
 
   async function createNewPost() {
-    if (!title || !editor?.getJSON()) {
-      console.log(title + editor);
+    if (!title || !content) {
+      return <p>文字を入力してください</p>;
     }
     const user = supabase.auth.user();
-    const id = uuid();
-    post.id = id;
     const { data } = await supabase
       .from("posts")
       .insert([{ title, content, user_id: user?.id, user_email: user?.email }])
@@ -86,7 +85,7 @@ function PostContent() {
   }
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setPost(() => ({ ...post, [e.target.name]: e.target.value }));
+    setTitle(() => e.target.value);
   }
 
   return (
