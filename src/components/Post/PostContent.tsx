@@ -111,7 +111,7 @@ function PostContent() {
 
         {editor && (
           <FloatingMenu editor={editor} tippyOptions={{ duration: 100 }}>
-            <div style={{ position: "absolute", top: -15, left: -55 }}>
+            <div style={{ position: "absolute", top: -15, left: -70 }}>
               <SideMenu
                 position={{}}
                 editor={editor}

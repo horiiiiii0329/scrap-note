@@ -7,7 +7,7 @@ import {
 import styles from "./SideMenu.module.scss";
 import { useState, useEffect } from "react";
 
-const iconStyle = { width: "12px" };
+const iconStyle = { width: "22px" };
 
 function SideMenu({ editor, gifClickHandler }: any) {
   const [isModalopen, setIsModalOpen] = useState(false);
@@ -65,9 +65,7 @@ function SideMenu({ editor, gifClickHandler }: any) {
           className={styles.openIcon}
           onClick={() => editor.chain().focus().unsetTextAlign().run()}
         >
-          <span>
-            <i className="ri-align-left ri-xs"></i>
-          </span>
+          <i className="ri-align-left ri-lg"></i>
         </span>
       </div>
     </div>

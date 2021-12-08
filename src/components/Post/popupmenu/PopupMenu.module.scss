@@ -2,15 +2,12 @@
   list-style-type: none;
   display: flex;
   align-items: center;
+
   border: black solid 1px;
   background-color: white;
   justify-content: space-around;
-  min-width: 400px;
-  min-height: 45px;
-
-  li {
-    display: inline-block;
-  }
+  min-width: 370px;
+  min-height: 35px;
 }
 
 .wrapper:first-of-type {
