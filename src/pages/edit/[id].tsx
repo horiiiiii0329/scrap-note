@@ -38,12 +38,10 @@ const customStyles = {
   },
 };
 
-const initialState = { title: "", content: "" };
-
 function EditPost() {
-  const [post, setPost] = useState<any>(initialState);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
-  const { title, content } = post;
 
   const router = useRouter();
   const { id } = router.query;
@@ -59,10 +57,10 @@ function EditPost() {
         },
       }),
     ],
-    content: post.content,
+    content: content,
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
-      setPost(() => ({ ...post, content: html }));
+      setContent(html);
     },
   });
 
@@ -75,11 +73,12 @@ function EditPost() {
         .select()
         .filter("id", "eq", id)
         .single();
-      setPost(data);
+      setContent(data.content);
+      setTitle(data.title);
     }
   }, [id]);
 
-  if (!post) return null;
+  if (!content) return null;
 
   async function updateCurrentPost() {
     if (!title || !content) return;
@@ -88,7 +87,7 @@ function EditPost() {
   }
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setPost(() => ({ ...post, [e.target.name]: e.target.value }));
+    setTitle(e.target.value);
   }
 
   function openModal() {
@@ -110,7 +109,7 @@ function EditPost() {
             onChange={onChange}
             name="title"
             placeholder="タイトル"
-            value={post.title}
+            value={title}
           />
           <EditorContent editor={editor} />
           {editor && (
