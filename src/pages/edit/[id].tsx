@@ -57,7 +57,7 @@ function EditPost() {
         },
       }),
     ],
-    content: content,
+    content: ``,
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
       setContent(html);
@@ -75,10 +75,13 @@ function EditPost() {
         .single();
       setContent(data.content);
       setTitle(data.title);
+      editor?.commands.setContent(data.content);
     }
   }, [id]);
 
   if (!content) return null;
+
+  console.log(content);
 
   async function updateCurrentPost() {
     if (!title || !content) return;
