@@ -38,12 +38,10 @@ const customStyles = {
   },
 };
 
-const initialState = { title: "", content: "" };
-
-function EditPost() {
-  const [post, setPost] = useState<any>(initialState);
+function EditPost({ post }) {
+  const [title, setTitle] = useState(post.title);
+  const [content, setContent] = useState(post.content);
   const [modalIsOpen, setIsOpen] = useState(false);
-  const { title, content } = post;
 
   const router = useRouter();
   const { id } = router.query;
@@ -62,24 +60,13 @@ function EditPost() {
     content: post.content,
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
-      setPost(() => ({ ...post, content: html }));
+      setContent(html);
     },
   });
 
-  useEffect(() => {
-    fetchPost();
-    async function fetchPost() {
-      if (!id) return;
-      const { data } = await supabase
-        .from("posts")
-        .select()
-        .filter("id", "eq", id)
-        .single();
-      setPost(data);
-    }
-  }, [id]);
+  if (!content) return null;
 
-  if (!post) return null;
+  console.log(content);
 
   async function updateCurrentPost() {
     if (!title || !content) return;
@@ -88,7 +75,7 @@ function EditPost() {
   }
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setPost(() => ({ ...post, [e.target.name]: e.target.value }));
+    setTitle(e.target.value);
   }
 
   function openModal() {
@@ -110,7 +97,7 @@ function EditPost() {
             onChange={onChange}
             name="title"
             placeholder="タイトル"
-            value={post.title}
+            value={title}
           />
           <EditorContent editor={editor} />
           {editor && (
@@ -149,6 +136,37 @@ function EditPost() {
       </BlogWrapper>
     </>
   );
+}
+
+export async function getStaticPaths() {
+  const { data, error } = await supabase.from("posts").select("id");
+  const paths = data?.map((post) => ({
+    params: { id: JSON.stringify(post.id) },
+  }));
+  return {
+    paths,
+    fallback: true,
+  };
+}
+
+type Params = {
+  params: {
+    id: string;
+  };
+};
+
+export async function getStaticProps({ params }: Params) {
+  const { id } = params;
+  const { data } = await supabase
+    .from("posts")
+    .select()
+    .filter("id", "eq", id)
+    .single();
+  return {
+    props: {
+      post: data,
+    },
+  };
 }
 
 export default EditPost;

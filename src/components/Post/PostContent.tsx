@@ -3,12 +3,12 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { supabase } from "../../../api";
 import "easymde/dist/easymde.min.css";
-import { v4 as uuid } from "uuid";
 import {
   useEditor,
   EditorContent,
   BubbleMenu,
   FloatingMenu,
+  NodeViewWrapper,
 } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { SideMenu } from "./side-menu/SideMenu";
@@ -20,6 +20,7 @@ import { Giphy } from "./giphy/Giphy";
 import Modal from "react-modal";
 import CustomImage from "./extensions/image";
 import { BlogWrapper } from "../Layout/BlogWrapper";
+import Placeholder from "@tiptap/extension-placeholder";
 
 const customStyles = {
   content: {
@@ -35,11 +36,10 @@ const customStyles = {
   },
 };
 
-const initialState = { title: "", content: "", id: "" };
-
 function PostContent() {
-  const [post, setPost] = useState<any>(initialState);
-  const { title, content } = post;
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
   const router = useRouter();
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -56,27 +56,30 @@ function PostContent() {
       StarterKit,
       Link,
       TextAlign.configure({ types: ["paragraph"] }),
+      Placeholder.configure({
+        placeholder: "ご自由にお書きください :)",
+      }),
       CustomImage.configure({
         HTMLAttributes: {
           class: "custom-image",
         },
       }),
     ],
+    onUpdate: ({ editor }) => {
+      const html = editor.getHTML();
 
-    content: `<p>ご自由にお書きください。。。</p>`,
-    // onUpdate: ({ editor }) => {},
+      setContent(html);
+    },
   });
 
   async function createNewPost() {
-    if (!title || !editor?.getJSON()) {
-      console.log(title + editor);
+    if (!title || !content) {
+      return <p>文字を入力してください</p>;
     }
     const html = editor?.getHTML();
 
     setPost(() => ({ ...post, content: html }));
     const user = supabase.auth.user();
-    const id = uuid();
-    post.id = id;
     const { data } = await supabase
       .from("posts")
       .insert([{ title, content, user_id: user?.id, user_email: user?.email }])
@@ -85,7 +88,7 @@ function PostContent() {
   }
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setPost(() => ({ ...post, [e.target.name]: e.target.value }));
+    setTitle(() => e.target.value);
   }
 
   return (
@@ -111,7 +114,7 @@ function PostContent() {
 
         {editor && (
           <FloatingMenu editor={editor} tippyOptions={{ duration: 100 }}>
-            <div style={{ position: "absolute", top: -15, left: -55 }}>
+            <div style={{ position: "absolute", top: -15, left: -70 }}>
               <SideMenu
                 position={{}}
                 editor={editor}
@@ -121,13 +124,15 @@ function PostContent() {
             </div>
           </FloatingMenu>
         )}
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          style={customStyles}
-        >
-          <Giphy editor={editor} closeModalHandler={() => setIsOpen(false)} />
-        </Modal>
+        <NodeViewWrapper>
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            style={customStyles}
+          >
+            <Giphy editor={editor} closeModalHandler={() => setIsOpen(false)} />
+          </Modal>
+        </NodeViewWrapper>
         <button
           type="button"
           className={styles.button__md}

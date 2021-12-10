@@ -24,10 +24,11 @@ function MobileHeader() {
       <header className={styles.wrapper}>
         <div>
           <Link href="/">
-            <LightBulbIcon
-              style={{ width: "50px", height: "50px", cursor: "pointer" }}
-              onClick={() => {}}
-            />
+            <>
+              <LightBulbIcon
+                style={{ width: "50px", height: "50px", cursor: "pointer" }}
+              />
+            </>
           </Link>
         </div>
         <div onClick={() => setShowModal(!showModal)}>

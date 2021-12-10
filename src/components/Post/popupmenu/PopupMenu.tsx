@@ -42,7 +42,7 @@ function PopupMenu({ editor }: any) {
               editor.chain().focus().setImage({ size: "small" }).run()
             }
           >
-            <i className="ri-image-line ri-xs"></i>
+            <i className="ri-image-line ri-1x"></i>
           </span>
         </li>
         <li>
@@ -58,7 +58,7 @@ function PopupMenu({ editor }: any) {
               editor.chain().focus().setImage({ size: "medium" }).run()
             }
           >
-            <i className="ri-image-line ri-sm"></i>
+            <i className="ri-image-line  ri-lg"></i>
           </span>
         </li>
         <li>
@@ -74,7 +74,7 @@ function PopupMenu({ editor }: any) {
               editor.chain().focus().setImage({ size: "large" }).run()
             }
           >
-            <i className="ri-image-line"></i>
+            <i className="ri-image-line ri-xl"></i>
           </span>
         </li>
         <li>
@@ -90,7 +90,7 @@ function PopupMenu({ editor }: any) {
               editor.chain().focus().setImage({ float: "left" }).run()
             }
           >
-            <i className="ri-align-left"></i>
+            <i className="ri-align-left ri-xl"></i>
           </span>
         </li>
         <li>
@@ -106,7 +106,7 @@ function PopupMenu({ editor }: any) {
               editor.chain().focus().setImage({ float: "none" }).run()
             }
           >
-            <i className="ri-align-center"></i>
+            <i className="ri-align-center ri-xl"></i>
           </span>
         </li>
         <li>
@@ -122,7 +122,7 @@ function PopupMenu({ editor }: any) {
               editor.chain().focus().setImage({ float: "right" }).run()
             }
           >
-            <i className="ri-align-right"></i>
+            <i className="ri-align-right ri-xl"></i>
           </span>
         </li>
       </ul>
@@ -138,7 +138,7 @@ function PopupMenu({ editor }: any) {
           }
           onClick={setLink}
         >
-          <i className="ri-links-line"></i>
+          <i className="ri-links-line ri-xl"></i>
         </span>
       </li>
 
@@ -150,7 +150,7 @@ function PopupMenu({ editor }: any) {
         className={editor.isActive("bold") ? styles.icon : styles.isActiveIcon}
       >
         <span className={styles.icon}>
-          <i className="ri-bold"></i>
+          <i className="ri-bold ri-xl"></i>
         </span>
       </li>
       <li
@@ -160,7 +160,7 @@ function PopupMenu({ editor }: any) {
         }
       >
         <span className={styles.icon}>
-          <i className="ri-italic"></i>
+          <i className="ri-italic ri-xl"></i>
         </span>
       </li>
 
@@ -172,7 +172,7 @@ function PopupMenu({ editor }: any) {
             editor.isActive({ level: 1 }) ? styles.icon : styles.isActiveIcon
           }
         >
-          <i className="ri-h-1"></i>
+          <i className="ri-h-1 ri-xl"></i>
         </span>
       </li>
       <li
@@ -183,7 +183,7 @@ function PopupMenu({ editor }: any) {
             editor.isActive({ level: 2 }) ? styles.icon : styles.isActiveIcon
           }
         >
-          <i className="ri-h-2"></i>
+          <i className="ri-h-2 ri-xl"></i>
         </span>
       </li>
       <li
@@ -194,7 +194,7 @@ function PopupMenu({ editor }: any) {
             editor.isActive({ level: 3 }) ? styles.icon : styles.isActiveIcon
           }
         >
-          <i className="ri-h-3"></i>
+          <i className="ri-h-3 ri-xl"></i>
         </span>
       </li>
       <li
@@ -204,7 +204,7 @@ function PopupMenu({ editor }: any) {
         }
       >
         <span className={styles.icon}>
-          <i className="ri-list-unordered"></i>
+          <i className="ri-list-unordered ri-xl"></i>
         </span>
       </li>
       <li
@@ -214,7 +214,7 @@ function PopupMenu({ editor }: any) {
         }
       >
         <span className={styles.icon}>
-          <i className="ri-list-ordered"></i>
+          <i className="ri-list-ordered ri-xl"></i>
         </span>
       </li>
       <li
@@ -224,7 +224,7 @@ function PopupMenu({ editor }: any) {
         }
       >
         <span className={styles.icon}>
-          <i className="ri-code-line"></i>
+          <i className="ri-code-line ri-xl"></i>
         </span>
       </li>
       <li
@@ -234,7 +234,7 @@ function PopupMenu({ editor }: any) {
         }
       >
         <span className={styles.icon}>
-          <i className="ri-double-quotes-r"></i>
+          <i className="ri-double-quotes-r ri-xl"></i>
         </span>
       </li>
     </ul>
