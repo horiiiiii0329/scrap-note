@@ -9,11 +9,9 @@ export default Image.extend({
       ...Image.config.addAttributes(),
       size: {
         default: "small",
-        rendered: false,
       },
       float: {
         default: "none",
-        rendered: false,
       },
     };
   },
