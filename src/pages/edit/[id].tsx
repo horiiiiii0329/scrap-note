@@ -64,21 +64,6 @@ function EditPost({ post }) {
     },
   });
 
-  // useEffect(() => {
-  //   fetchPost();
-  //   async function fetchPost() {
-  //     if (!id) return;
-  //     const { data } = await supabase
-  //       .from("posts")
-  //       .select()
-  //       .filter("id", "eq", id)
-  //       .single();
-  //     setContent(data.content);
-  //     setTitle(data.title);
-  //     editor?.chain().focus().setContent(data.content);
-  //   }
-  // }, [id]);
-
   if (!content) return null;
 
   console.log(content);
