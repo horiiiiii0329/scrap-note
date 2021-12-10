@@ -38,9 +38,9 @@ const customStyles = {
   },
 };
 
-function EditPost() {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+function EditPost({ post }) {
+  const [title, setTitle] = useState(post.title);
+  const [content, setContent] = useState(post.content);
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const router = useRouter();
@@ -57,27 +57,27 @@ function EditPost() {
         },
       }),
     ],
-    content: ``,
+    content: post.content,
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
       setContent(html);
     },
   });
 
-  useEffect(() => {
-    fetchPost();
-    async function fetchPost() {
-      if (!id) return;
-      const { data } = await supabase
-        .from("posts")
-        .select()
-        .filter("id", "eq", id)
-        .single();
-      setContent(data.content);
-      setTitle(data.title);
-      editor?.commands.setContent(data.content);
-    }
-  }, [id]);
+  // useEffect(() => {
+  //   fetchPost();
+  //   async function fetchPost() {
+  //     if (!id) return;
+  //     const { data } = await supabase
+  //       .from("posts")
+  //       .select()
+  //       .filter("id", "eq", id)
+  //       .single();
+  //     setContent(data.content);
+  //     setTitle(data.title);
+  //     editor?.chain().focus().setContent(data.content);
+  //   }
+  // }, [id]);
 
   if (!content) return null;
 
@@ -151,6 +151,37 @@ function EditPost() {
       </BlogWrapper>
     </>
   );
+}
+
+export async function getStaticPaths() {
+  const { data, error } = await supabase.from("posts").select("id");
+  const paths = data?.map((post) => ({
+    params: { id: JSON.stringify(post.id) },
+  }));
+  return {
+    paths,
+    fallback: true,
+  };
+}
+
+type Params = {
+  params: {
+    id: string;
+  };
+};
+
+export async function getStaticProps({ params }: Params) {
+  const { id } = params;
+  const { data } = await supabase
+    .from("posts")
+    .select()
+    .filter("id", "eq", id)
+    .single();
+  return {
+    props: {
+      post: data,
+    },
+  };
 }
 
 export default EditPost;
