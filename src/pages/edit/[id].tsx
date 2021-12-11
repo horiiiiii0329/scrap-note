@@ -46,11 +46,9 @@ interface Item {
   };
 }
 
-const initialState = { title: "", content: "" };
-
 function EditPost({ post }: Item) {
-  const [title, setTitle] = useState(post.title);
-  const [content, setContent] = useState(post.content);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const { id } = router.query;
@@ -81,14 +79,12 @@ function EditPost({ post }: Item) {
         },
       }),
     ],
-    content: post.content,
+    content: content,
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
       setContent(html);
     },
   });
-
-  if (!post.content || !post.title) return null;
 
   async function updateCurrentPost() {
     if (!title || !content) return;

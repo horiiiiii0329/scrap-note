@@ -34,8 +34,6 @@ export default function Post({ post }: Item) {
     content: post.content,
   });
 
-  if (!editor) null;
-
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -59,16 +57,16 @@ export default function Post({ post }: Item) {
   );
 }
 
-// export async function getStaticPaths() {
-//   const { data, error } = await supabase.from("posts").select("id");
-//   const paths = data?.map((post) => ({
-//     params: { id: JSON.stringify(post.id) },
-//   }));
-//   return {
-//     paths,
-//     fallback: true,
-//   };
-// }
+export async function getStaticPaths() {
+  const { data, error } = await supabase.from("posts").select("id");
+  const paths = data?.map((post) => ({
+    params: { id: JSON.stringify(post.id) },
+  }));
+  return {
+    paths,
+    fallback: true,
+  };
+}
 
 type Params = {
   params: {
@@ -76,7 +74,7 @@ type Params = {
   };
 };
 
-export async function getServerSideProps({ params }: Params) {
+export async function getStaticProps({ params }: Params) {
   const { id } = params;
   const { data } = await supabase
     .from("posts")
