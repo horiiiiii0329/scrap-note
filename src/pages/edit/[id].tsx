@@ -19,6 +19,8 @@ import Modal from "react-modal";
 import CustomImage from "../../components/Post/extensions/image";
 import { BlogWrapper } from "../../components/Layout/BlogWrapper";
 import { TopBar } from "../../components/Layout/TopBar";
+import { useEffect } from "react";
+import { setContent } from "@tiptap/core/dist/packages/core/src/extensions/commands";
 
 //////////////////edit is not rendering
 
@@ -45,13 +47,29 @@ interface Item {
   };
 }
 
+const initialState = { title: "", content: "" };
+
 function EditPost({ post }: Item) {
   const [title, setTitle] = useState(post.title);
   const [content, setContent] = useState(post.content);
   const [modalIsOpen, setIsOpen] = useState(false);
-
   const router = useRouter();
   const { id } = router.query;
+
+  useEffect(() => {
+    async function fetchPost() {
+      if (!id) return;
+      const { data } = await supabase
+        .from("posts")
+        .select()
+        .filter("id", "eq", id)
+        .single();
+      setTitle(data.title);
+      setContent(data.content);
+    }
+
+    fetchPost();
+  }, [id]);
 
   const editor = useEditor({
     extensions: [
@@ -143,35 +161,35 @@ function EditPost({ post }: Item) {
   );
 }
 
-export async function getStaticPaths() {
-  const { data, error } = await supabase.from("posts").select("id");
-  const paths = data?.map((post) => ({
-    params: { id: JSON.stringify(post.id) },
-  }));
-  return {
-    paths,
-    fallback: true,
-  };
-}
+// export async function getStaticPaths() {
+//   const { data, error } = await supabase.from("posts").select("id");
+//   const paths = data?.map((post) => ({
+//     params: { id: JSON.stringify(post.id) },
+//   }));
+//   return {
+//     paths,
+//     fallback: true,
+//   };
+// }
 
-type Params = {
-  params: {
-    id: string;
-  };
-};
+// type Params = {
+//   params: {
+//     id: string;
+//   };
+// };
 
-export async function getStaticProps({ params }: Params) {
-  const { id } = params;
-  const { data } = await supabase
-    .from("posts")
-    .select()
-    .filter("id", "eq", id)
-    .single();
-  return {
-    props: {
-      post: data,
-    },
-  };
-}
+// export async function getStaticProps({ params }: Params) {
+//   const { id } = params;
+//   const { data } = await supabase
+//     .from("posts")
+//     .select()
+//     .filter("id", "eq", id)
+//     .single();
+//   return {
+//     props: {
+//       post: data,
+//     },
+//   };
+// }
 
 export default EditPost;
