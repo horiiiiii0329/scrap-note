@@ -1,5 +1,5 @@
 import React from "react";
-import LoginCard from "./LoginCard";
+import { LoginCard } from "./LoginCard";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {

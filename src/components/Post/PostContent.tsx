@@ -78,7 +78,6 @@ function PostContent() {
     }
     const html = editor?.getHTML();
 
-    setPost(() => ({ ...post, content: html }));
     const user = supabase.auth.user();
     const { data } = await supabase
       .from("posts")

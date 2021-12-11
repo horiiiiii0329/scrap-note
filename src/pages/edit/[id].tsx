@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import { supabase } from "../../../api";
 import styles from "./edit.module.scss";
-import { v4 as uuid } from "uuid";
 import {
   useEditor,
   EditorContent,
@@ -20,7 +19,6 @@ import Modal from "react-modal";
 import CustomImage from "../../components/Post/extensions/image";
 import { BlogWrapper } from "../../components/Layout/BlogWrapper";
 import { TopBar } from "../../components/Layout/TopBar";
-import { Params } from "next/dist/server/router";
 
 //////////////////edit is not rendering
 
@@ -38,7 +36,16 @@ const customStyles = {
   },
 };
 
-function EditPost({ post }) {
+interface Item {
+  post: {
+    title: string;
+    user_email: string;
+    content: string;
+    id: string;
+  };
+}
+
+function EditPost({ post }: Item) {
   const [title, setTitle] = useState(post.title);
   const [content, setContent] = useState(post.content);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -64,9 +71,7 @@ function EditPost({ post }) {
     },
   });
 
-  if (!content) return null;
-
-  console.log(content);
+  if (!post.content || !post.title) return null;
 
   async function updateCurrentPost() {
     if (!title || !content) return;
