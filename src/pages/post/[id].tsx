@@ -31,12 +31,16 @@ export default function Post({ post }: Item) {
         },
       }),
     ],
-    content: post.content,
+    content: post?.content,
   });
 
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
+  }
+
+  if (!post) {
+    return <div>...</div>;
   }
 
   return (
@@ -46,8 +50,8 @@ export default function Post({ post }: Item) {
       </TopBar>
       <BlogWrapper>
         <div className={styles.container}>
-          <h1>{post.title}</h1>
-          <p> {post.user_email}</p>
+          <h1>{post?.title}</h1>
+          <p> {post?.user_email}</p>
           <div>
             <EditorContent editor={editor} />
           </div>

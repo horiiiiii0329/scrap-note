@@ -61,8 +61,8 @@ function EditPost({ post }: Item) {
         .select()
         .filter("id", "eq", id)
         .single();
-      setTitle(data.title);
-      setContent(data.content);
+      setTitle(data?.title);
+      setContent(data?.content);
     }
 
     fetchPost();
