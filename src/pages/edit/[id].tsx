@@ -20,7 +20,6 @@ import CustomImage from "../../components/Post/extensions/image";
 import { BlogWrapper } from "../../components/Layout/BlogWrapper";
 import { TopBar } from "../../components/Layout/TopBar";
 import { useEffect } from "react";
-import { setContent } from "@tiptap/core/dist/packages/core/src/extensions/commands";
 
 //////////////////edit is not rendering
 
