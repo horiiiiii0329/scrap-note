@@ -2,7 +2,6 @@ import styles from "./PostContent.module.scss";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { supabase } from "../../../api";
-import "easymde/dist/easymde.min.css";
 import {
   useEditor,
   EditorContent,
