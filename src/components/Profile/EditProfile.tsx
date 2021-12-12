@@ -4,7 +4,7 @@ import styles from "./EditProfile.module.scss";
 import { useRouter } from "next/router";
 import { Session } from "@supabase/gotrue-js";
 
-export default function EditProfile({ session }: Session | any) {
+function EditProfile({ session }: Session | any) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState<string>("");
   const router = useRouter();
@@ -100,3 +100,5 @@ export default function EditProfile({ session }: Session | any) {
     </div>
   );
 }
+
+export { EditProfile };

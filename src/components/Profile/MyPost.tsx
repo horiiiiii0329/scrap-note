@@ -9,7 +9,7 @@ interface Post {
   id: string;
 }
 
-export default function MyPosts() {
+function MyPosts() {
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
@@ -50,3 +50,5 @@ export default function MyPosts() {
     </>
   );
 }
+
+export {};
