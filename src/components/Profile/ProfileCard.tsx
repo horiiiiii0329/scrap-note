@@ -1,7 +1,7 @@
 import { Session } from "@supabase/gotrue-js";
 import { useState, useEffect } from "react";
 import { supabase } from "../../../api";
-import EditProfile from "./EditProfile";
+import { EditProfile } from "./EditProfile";
 import styles from "./ProfileCard.module.scss";
 
 function ProfileCard({ session }: Session | any) {
@@ -58,4 +58,4 @@ function ProfileCard({ session }: Session | any) {
   );
 }
 
-export default ProfileCard;
+export { ProfileCard };

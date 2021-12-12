@@ -1,6 +1,6 @@
 import React from "react";
 
-import EditProfile from "./EditProfile";
+import { EditProfile } from "./EditProfile";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {

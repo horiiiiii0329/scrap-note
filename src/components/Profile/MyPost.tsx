@@ -51,4 +51,4 @@ function MyPosts() {
   );
 }
 
-export {};
+export { MyPosts };
