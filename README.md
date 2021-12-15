@@ -57,7 +57,7 @@ Next.js, Supabase.io and AWS
 
   ![Example screenshot](https://media.giphy.com/media/2gcgGKb0DgxYjbKg6o/giphy.gif)
 
-- Editor(Curerently available still optimaizig an edit page)
+- Editor(Curerently available, still optimaizig edit page)
 
   ![Example screenshot](https://media.giphy.com/media/5r79gvEMHvqG7njJiZ/giphy.gif)
 
@@ -74,7 +74,6 @@ Room for improvement:
 To do:
 
 - UI design for smartphone
-- improve react-mde-editor to more user friendly editor
 
 <!-- Optional -->
 <!-- ## License -->
