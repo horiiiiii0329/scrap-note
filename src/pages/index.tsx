@@ -13,6 +13,15 @@ import { IWeatherCard } from "../../type";
 
 const leftNews = ["朝日新聞", "毎日新聞"];
 const rightNews = ["読売新聞", "産経新聞", "日経新聞"];
+
+interface Item {
+  company: string;
+  title: string;
+  href: string;
+  time: string;
+  id: string;
+}
+
 // const DUMMY_DATA = [
 //   {
 //     title: "undefined",
@@ -105,7 +114,8 @@ const Home: NextPage = ({
                     <Row companyname={item} />
                   </div>
                 ))
-              : leftPickedNews.map((item: any, index: number) => {
+              : leftPickedNews?.map((item: any, index: number) => {
+                  console.log(item);
                   return <NewsListItem item={item} key={index} />;
                 })}
           </div>
@@ -122,7 +132,7 @@ const Home: NextPage = ({
                     <Row companyname={item} />
                   </div>
                 ))
-              : rightPickedNews.map((item: any, index: number) => {
+              : rightPickedNews?.map((item: any, index: number) => {
                   return <NewsListItem item={item} key={index} />;
                 })}
           </div>
