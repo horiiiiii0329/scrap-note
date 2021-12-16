@@ -26,7 +26,7 @@ Next.js, Supabase.io and AWS
 
 ## Architecture
 
-![Example screenshot](./aaaa.png)
+![Example screenshot](./architecuture.png)
 
 ## Technologies Used
 
