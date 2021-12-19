@@ -189,7 +189,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       sankeiData: sData.data.Items,
       nikkeiData: nData.data.Items,
     },
-    revalidate: 60 * 60 * 24,
+    // revalidate: 60 * 60 * 24,
   };
 };
 
