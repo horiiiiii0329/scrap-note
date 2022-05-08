@@ -3,7 +3,7 @@
 An app based on multiple real world news resources created with  
 Next.js, Supabase.io and AWS
 
-> Live demo [_here_](https://scrap-note.vercel.app/).
+> Live demo [_here_](https://scrap-note.vercel.app/) is closed.
 
 ## Table of Contents
 
